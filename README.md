@@ -4,6 +4,7 @@
 
 Faça o Fork deste projeto e desenvolva uma API CRUD em Java com o seguinte modelo de dados:
 
+![](modelo-dados.png)
 
 > **PS:** Não precisa fazer o Pull Request, apenas mande um e-mail para <queroserpaguer@meupag.com.br> com o link do seu **github**
 
