@@ -16,3 +16,10 @@ Faça o Fork deste projeto e desenvolva uma API REST em Java com o seguinte mode
 - Teste Unitário
 - Database Migration
 - Bean Validation
+
+### Bônus Master (AWS)
+- Lambda
+- API Gateway
+- Cognito
+- RDS / DynamoDB
+- [Serverless Framework](https://serverless.com/)
