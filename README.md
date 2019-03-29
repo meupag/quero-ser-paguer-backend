@@ -1,8 +1,8 @@
-# Quero ser Paguer
+![](logo_pag.png)
 
 ## Texto foda para convidar os dev's back-end a fazer parte deste time TOP!
 
-Faça o Fork deste projeto e desenvolva uma API REST em Java com o seguinte modelo de dados:
+Faça o Fork deste projeto e desenvolva uma **API REST em Java** com o seguinte modelo de dados:
 
 ![](modelo-dados.png)
 
