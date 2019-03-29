@@ -1,4 +1,4 @@
-![](logo_pag.png)
+![](logo.png)
 
 ## Texto foda para convidar os dev's back-end a fazer parte deste time TOP!
 
