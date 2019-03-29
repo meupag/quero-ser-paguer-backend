@@ -10,10 +10,11 @@ Faça o Fork deste projeto e desenvolva uma **API REST em Java** com o seguinte 
 
 ### Bônus
 - Spring boot
-- Cache de segundo nível
+- Clean Code
+- Teste Unitário
 - Controle de acesso
 - API Documentada
-- Teste Unitário
+- Cache de segundo nível
 - Database Migration
 - Bean Validation
 
