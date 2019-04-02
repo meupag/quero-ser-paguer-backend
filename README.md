@@ -9,7 +9,7 @@ Assim que concluir, faça um Pull Request.
 
 ![](modelo-dados.png)
 
-> **PS:** cada item do bônus que você incorporar ao seu projeto contará para sua avaliação. Fique à vontade para para adicionar outros conhecimentos.
+> **PS:** fique à vontade para incluir outros conhecimentos. Cada item do bônus que você adicionar ao seu projeto contará para a sua avaliação.
 
 ### Bônus
 - Spring boot
