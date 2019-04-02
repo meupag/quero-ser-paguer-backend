@@ -1,7 +1,7 @@
 
 ![](logo_pag.png)
 
-## Você gosta de encarar desafios e quer fazer parte de uma equipe que não para de crescer?
+### Você gosta de encarar desafios e quer fazer parte de uma equipe que não para de crescer?
 ### Então, venha para o time!
 ### Complete o desafio abaixo para a gente conhecer mais sobre você:
 
