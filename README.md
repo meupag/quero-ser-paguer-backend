@@ -5,7 +5,7 @@
 ### Complete o desafio abaixo para a gente conhecer mais sobre você:
 
 Faça o Fork deste projeto e desenvolva uma **API REST em Java** com o modelo de dados abaixo. 
-Assim que concluir, faça um Pull Request.
+Assim que concluir, faça um Pull Request e mande seu currículo para <queroserpaguer@meupag.com.br> com o assunto **quero-ser-paguer-backend**. Caso seja aprovado, iremos entrar em contato com você.
 
 ![](modelo-dados.png)
 
