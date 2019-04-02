@@ -1,9 +1,9 @@
 
 ![](logo_pag.png)
 
-### Você gosta de encarar desafios e quer fazer parte de uma equipe que não para de crescer?
+## Você gosta de encarar desafios e quer fazer parte de uma equipe que não para de crescer?
 ### Então, venha para o time!
-### Complete o desafio abaixo para conhecermos mais sobre você:
+### Complete o desafio abaixo para a gente conhecer mais sobre você:
 
 Faça o Fork deste projeto e desenvolva uma **API REST em Java** com o modelo de dados abaixo. 
 Assim que concluir, faça um Pull Request.
