@@ -1,13 +1,16 @@
+
 ![](logo_pag.png)
 
-## Texto foda para convidar os dev's back-end a fazer parte deste time TOP!
+### Você gosta de encarar desafios e quer fazer parte de uma equipe que não para de crescer?
+### Então, venha para o time!
+### Complete o desafio abaixo para conhecermos mais sobre você:
 
 Faça o Fork deste projeto e desenvolva uma **API REST em Java** com o modelo de dados abaixo. 
-Assim que conluir faça um Pull Request.
+Assim que concluir, faça um Pull Request.
 
 ![](modelo-dados.png)
 
-> **PS:** Cada item do bônus que você incorporar ao seu projeto te ajudará a ser melhor avaliado. Fique a vontade para para adicionar mais 
+> **PS:** cada item do bônus que você incorporar ao seu projeto contará para sua avaliação. Fique à vontade para para adicionar outros conhecimentos.
 
 ### Bônus
 - Spring boot
@@ -21,7 +24,7 @@ Assim que conluir faça um Pull Request.
 
 ### Bônus Master (AWS)
 - Lambda
+- RDS / DynamoDB
 - API Gateway
 - Cognito
-- RDS / DynamoDB
 - [Serverless Framework](https://serverless.com/)
