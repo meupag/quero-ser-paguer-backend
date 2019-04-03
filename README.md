@@ -20,6 +20,7 @@ Assim que concluir, faça um Pull Request e mande seu currículo para <queroserp
 - Cache de segundo nível
 - Database Migration
 - Bean Validation
+- Docker
 
 ### Bônus Master (AWS)
 - Lambda
