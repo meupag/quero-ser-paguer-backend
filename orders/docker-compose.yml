@@ -1,0 +1,19 @@
+version: "3.5"
+
+networks:
+  mynet:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.2.0.0/16
+
+services:
+    orders-docker:
+      build: .
+      ports:
+       - "8082:80"
+      volumes:
+       - ./www:/var/www/html
+      networks:
+        mynet:
+            ipv4_address: 10.2.0.2
