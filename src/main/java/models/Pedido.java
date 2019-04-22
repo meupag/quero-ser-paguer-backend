@@ -1,6 +1,7 @@
 package main.java.models;
 
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +15,9 @@ public class Pedido {
     @ManyToOne
     @JoinColumn(name="id_cliente", nullable = false)
     private Cliente cliente;
+
+    @OneToMany(mappedBy = "pedido")
+    private Set<ItemPedido> itemPedidos;
 
     @Column(name="valor")
     private float valor;
