@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,8 +18,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -41,10 +44,13 @@ public class Cliente {
 
   @NotBlank(message = "O número de CPF é obrigatório!")
   @Pattern(regexp = "[0-9]{11}", message = "O cpf deve conter 11 digitos!")
+  @Column(unique = true)
   @Size(max = 11)
   private String cpf;
 
   @Temporal(TemporalType.DATE)
+  @ApiModelProperty(required = false, example = "01/01/2001")
+  @JsonFormat(pattern = "dd/MM/yyyy")
   @NotNull(message = "A data de nascimento é obrigatória!")
   private Date dataNascimento;
 

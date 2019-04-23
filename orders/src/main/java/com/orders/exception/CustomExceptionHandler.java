@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
  
-@SuppressWarnings({"unchecked","rawtypes"})
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler
 {
@@ -22,7 +21,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse("Server Error", details);
-        return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
  
     @ExceptionHandler(RecordNotFoundException.class)
@@ -30,7 +29,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         ErrorResponse error = new ErrorResponse("Record Not Found", details);
-        return new ResponseEntity(error, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
  
     @Override
@@ -40,6 +39,6 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler
             details.add(error.getDefaultMessage());
         }
         ErrorResponse error = new ErrorResponse("Validation Failed", details);
-        return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 }

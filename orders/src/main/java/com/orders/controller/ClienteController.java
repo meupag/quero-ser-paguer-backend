@@ -23,8 +23,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ApiResponse;
+
 @RestController
 @RequestMapping({ "/clientes" })
+@ApiResponses(value = {
+    @ApiResponse(code = 200, message = "Operação realizada com sucesso."),
+    @ApiResponse(code = 401, message = "Você não está autorizado para fazer esta operação."),
+    @ApiResponse(code = 403, message = "Acesso proíbido."),
+    @ApiResponse(code = 404, message = "Não encontrado.")
+})
+@Api(value = "cliente", description = "Operações relacionadas ao Cliente", tags = "CLIENTE")
 public class ClienteController {
 
     private ClienteRepository repository;
@@ -33,33 +46,30 @@ public class ClienteController {
         this.repository = repository;
     }
 
+    @ApiOperation(value = "Vizualizar uma lista de clientes.", response = Cliente.class)
     @GetMapping
     public List<Cliente> findAll() {
         return repository.findAll();
     }
 
+    @ApiOperation(value = "Vizualizar um cliente por ID.", response = Cliente.class)
     @GetMapping(path = { "/{id}" })
     @Cacheable(value = "cliente", key = "#id")
-    public ResponseEntity<Cliente> findById(@PathVariable long id) {
+    public ResponseEntity<Cliente> findById(@ApiParam(value = "Id do cliente à ser recebido", required = true) @PathVariable long id) {
         return repository.findById(id).map(registro -> ResponseEntity.ok().body(registro))
                 .orElseThrow(() -> new RecordNotFoundException("Nenhum cliente encontrado com este id: " + id));
     }
 
-    @GetMapping(path = { "/{nome}/{cpf}" })
-    @Cacheable(value = "cliente", key = "#nome")
-    public ResponseEntity<Cliente> clienteLogin(@PathVariable String nome, @PathVariable String cpf) {
-        return repository.findByNomeAndCpf(nome, cpf).map(registro -> ResponseEntity.ok().body(registro))
-                .orElseThrow(() -> new RecordNotFoundException("Cliente não encontrado!"));
-    }
-
+    @ApiOperation(value = "Criar um novo cliente.")
     @PostMapping
-    public Cliente create(@Valid @RequestBody Cliente cliente) {
+    public Cliente create(@ApiParam(value = "Novo cliente para ser criado", required = true) @Valid @RequestBody Cliente cliente) {
         return repository.save(cliente);
     }
 
+    @ApiOperation(value = "Atualizar um cliente.")
     @PutMapping(value = "/{id}")
     @CacheEvict(value = "cliente", key = "#id")
-    public ResponseEntity<Cliente> update(@PathVariable("id") long id, @Valid @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> update(@ApiParam(value = "Id do cliente à ser recebido", required = true) @PathVariable("id") long id, @Valid @RequestBody Cliente cliente) {
         return repository.findById(id).map(registro -> {
             registro.setNome(cliente.getNome());
             registro.setCpf(cliente.getCpf());
@@ -72,8 +82,9 @@ public class ClienteController {
         }).orElse(ResponseEntity.notFound().build());
     }
 
+    @ApiOperation(value = "Apagar um cliente.", response = Cliente.class)
     @DeleteMapping(path = { "/{id}" })
-    public ResponseEntity<?> delete(@PathVariable("id") long id) {
+    public ResponseEntity<?> delete(@ApiParam(value = "Id do cliente à ser recebido", required = true) @PathVariable("id") long id) {
         return repository.findById(id).map(registro -> {
 
             repository.deleteById(id);
