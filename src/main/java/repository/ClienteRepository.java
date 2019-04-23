@@ -1,10 +1,11 @@
 package main.java.repository;
 
-import java.util.List;
+import java.util.Set;
 import main.java.models.Cliente;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ClienteRepository extends CrudRepository<Cliente, Integer> {
 
-    List<Cliente> findByNome(String nome);
+    Cliente findById(int id);
+    Set<Cliente> findAll();
 }

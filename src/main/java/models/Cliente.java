@@ -6,13 +6,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-
 @Entity
 @Table(name="cliente")
 public class Cliente {
 
     @Id 
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name="nome")
