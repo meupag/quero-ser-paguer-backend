@@ -6,11 +6,11 @@ provider:
   timeout: 30
   stage: dev
   environment:
-    RDS_ENDPOINT: "${self:custom.secrets.RDS_ENDPOINT}"
-    RDS_PORT: "${self:custom.secrets.RDS_PORT}"
-    RDS_DB: "${self:custom.secrets.RDS_DB}"
-    RDS_USER: "${self:custom.secrets.RDS_USER}"
-    RDS_PWD: "${self:custom.secrets.RDS_PWD}"
+    RDS_ENDPOINT: "${env:RDS_ENDPOINT}"
+    RDS_PORT: "$${env:RDS_PORT}"
+    RDS_DB: "${env:RDS_DB}"
+    RDS_USER: "${env:RDS_USER}"
+    RDS_PWD: "${env:RDS_PWD}"
   vpc:
     securityGroupIds:
       - sg-ff36deb9
@@ -26,10 +26,6 @@ package:
   artifact: target/orders-api-dev.jar
   exclude:
     - secrets.yml
-    
-custom:
-  stage: ${opt:stage, self:provider.stage}
-  secrets: ${file(secrets.yml):${self:custom.stage}}
 
 functions:
   createNewOrder:
