@@ -125,12 +125,12 @@ Resposta:
 Requisição:
 ```json
 {
-	"url": "/products",
-	"method": "POST"
-	"body": {
-		"name": "Jujuba",
-		"suggestedPrice": 0.50
-	}
+    "url": "/products",
+    "method": "POST"
+    "body": {
+        "name": "Jujuba",
+	"suggestedPrice": 0.50
+    }
 }
 ```
 Resposta:
@@ -145,11 +145,11 @@ Resposta:
 Requisição:
 ```json
 {
-	"url": "/products/13",
-	"method": "POST"
-	"body": {
-		"suggestedPrice": 0.75
-	}
+    "url": "/products/13",
+    "method": "PUT"
+    "body": {
+        "suggestedPrice": 0.75
+    }
 }
 ```
 Resposta:
@@ -192,7 +192,7 @@ Assim decidiu-se que o Spring não seria utilizado e que cada endpoint da API se
 
 Continuando com o paradigma da nuvem, que nos tira a necessidade de nos importar com infraestrutura, e permite um desenvolvimento mais ágil e entregas mais rápidas,  optou-se por utilizar um banco de dados instalado sobre RDS. A opção por DynamoDB não se demonstrou muito atrativa, dado que o próprio modelo de dados tomado como base é um modelo de dados relacional.
 
-Como solução de ORM foi escolhido o Hibernate, que foi configurado para rodar com cache de segundo nível através da API do EhCache. E para facilitar a validação do modelo de dados, optou-se pela utilização do Hibernate Validation, que implementa a especificação do Bean Validation e se integra de maneira transparemente com o Hibernate, permitindo a validação de todas as entidades em momento de persistência.
+Como solução de ORM foi escolhido o Hibernate, que foi configurado para rodar com cache de segundo nível através da API do EhCache. E para facilitar a validação do modelo de dados, optou-se pela utilização do Hibernate Validation, que implementa a especificação do Bean Validation e se integra de maneira transparente com o Hibernate, permitindo a validação de todas as entidades em momento de persistência.
 
 ## Trabalhos futuros (orders-api-2.0)
 Nesta release inicial, trabalhou-se num esboço de como seria a autenticação de uma API REST utilizando o AWS Cognito. De maneira simples, a arquitetura de autenticação imaginada foi a seguinte:
@@ -200,7 +200,7 @@ Nesta release inicial, trabalhou-se num esboço de como seria a autenticação d
 2. a API responde com um token que será válido durante um tempo determinado
 3. para cada nova requisição do front-end, será colocado no header da requisição uma tag *Authorization* referente ao token.
 
-Nos commits inicias dessa release foram implementados os passos 2 e 3. Como o passo 1 é essencial para garantir a usabilidade da API, optou-se por remover essa solução e deixá-la como um *todo*.
+Nos commits iniciais dessa release foram implementados os passos 2 e 3. Como o passo 1 é essencial para garantir a usabilidade da API, optou-se por remover essa solução e deixá-la como um *todo*.
 
 Fica pendente para a próxima release a implementação de todos os testes unitários. De preferência, a metodologia de desenvolvimento deve ser aprimorada para incluir o TDD (red, green, refactor).
 
