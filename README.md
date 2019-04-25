@@ -183,7 +183,7 @@ Para construção da API, optou-se por utilizar os serviços da AWS:
 - o banco de dados roda em um serviço RDS
 
 No início do projeto, vislumbrou-se uma arquitetura baseada em Spring Boot, mas que pudesse ser deployada via Lambda. Existem inclusive referências na internet de projetos semelhantes, mas todos eles caem num problema de design fundamental: os Lambdas foram desenhados para suportar microserviços e não aplicações complexas e robustas como as que rodam sobre Spring. Dessa maneira, apesar da vantagem inicial de se utilizar de um framework bem estruturado e que nos força a seguir design patterns bem estabelecidos, as desvantagens não tardaram a surgir. Dentre elas:
-- *cold start *dos Lambdas, o que ficaria ainda mais evidente dado o tamanho de um projeto construído com Spring
+- *cold start* dos Lambdas, o que ficaria ainda mais evidente dado o tamanho de um projeto construído com Spring
 - a quebra total do paradigma de microserviços, pois o Lambda serviria apenas de proxy para uma aplicação convencional
 
 >  na realidade faz muito mais sentido construir uma aplicação Spring e fazer deploy via EC2
