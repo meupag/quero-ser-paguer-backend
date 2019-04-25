@@ -40,6 +40,9 @@ import io.swagger.annotations.ApiResponse;
 @Api(value = "ItemPedido", description = "Operações relacionadas ao ItemPedido", tags = "ItemPedido")
 public class ItemPedidoController {
 
+    @Autowired
+    CacheManager cacheManager;
+
     private ItemPedidoRepository repository;
 
     ItemPedidoController(ItemPedidoRepository repository) {
@@ -91,9 +94,6 @@ public class ItemPedidoController {
 
         }).orElseThrow(() -> new RecordNotFoundException("Nenhum ItemPedido encontrado com este id: " + id));
     }
-
-    @Autowired
-    CacheManager cacheManager;
 
     public void evictSingleCacheValue(String cacheName, String cacheKey) {
         cacheManager.getCache(cacheName).evict(cacheKey);

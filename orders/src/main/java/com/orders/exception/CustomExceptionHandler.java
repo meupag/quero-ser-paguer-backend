@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 /**
  * Classe de Exceptions Customizadas
+ * 
  * @see #handleUserNotFoundException
  * @see #handleMethodArgumentNotValid
  * @see #handleMissingServletRequestParameter
@@ -36,8 +37,8 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<Object> handleUserNotFoundException(RecordNotFoundException ex, WebRequest request) {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
-        ErrorResponse error = new ErrorResponse("Registro não encontrado ", details);
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        ErrorResponse apiError = new ErrorResponse(HttpStatus.NOT_FOUND, "Registro não encontrado ", details);
+        return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
     /**
@@ -54,8 +55,8 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
             errors.add(error.getObjectName() + ": " + error.getDefaultMessage());
         }
 
-        ErrorResponse apiError = new ErrorResponse(ex.getLocalizedMessage(), errors);
-        return handleExceptionInternal(ex, apiError, headers, HttpStatus.BAD_REQUEST, request);
+        ErrorResponse apiError = new ErrorResponse(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), errors);
+        return handleExceptionInternal(ex, apiError, headers, apiError.getStatus(), request);
     }
 
     /**
@@ -67,12 +68,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         List<String> error = new ArrayList<String>();
         error.add(ex.getParameterName() + " é obrigatório(a)!");
 
-        ErrorResponse apiError = new ErrorResponse(ex.getLocalizedMessage(), error);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        ErrorResponse apiError = new ErrorResponse(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
+        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     /**
-     * Dispara um erro quando à um erro de constraints (i.e.: Unique)
+     * Dispara um erro quando à um erro de constraints (i.e.: Unique Constraint)
      */
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex, WebRequest request) {
@@ -80,8 +81,8 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
         errors.add(ex.getConstraintName());
 
-        ErrorResponse apiError = new ErrorResponse(ex.getLocalizedMessage(), errors);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        ErrorResponse apiError = new ErrorResponse(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), errors);
+        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     /**
@@ -94,7 +95,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         List<String> error = new ArrayList<String>();
         error.add(ex.getName() + " deveria ser do tipo: " + ex.getRequiredType().getName());
 
-        ErrorResponse apiError = new ErrorResponse(ex.getLocalizedMessage(), error);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        ErrorResponse apiError = new ErrorResponse(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
+        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 }

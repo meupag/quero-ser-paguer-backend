@@ -40,6 +40,9 @@ import io.swagger.annotations.ApiResponse;
 @Api(value = "cliente", description = "Operações relacionadas ao Cliente", tags = "CLIENTE")
 public class ClienteController {
 
+    @Autowired
+    CacheManager cacheManager;
+
     private ClienteRepository repository;
 
     ClienteController(ClienteRepository repository) {
@@ -93,9 +96,6 @@ public class ClienteController {
 
         }).orElseThrow(() -> new RecordNotFoundException("Nenhum cliente encontrado com este id: " + id));
     }
-
-    @Autowired
-    CacheManager cacheManager;
 
     public void evictSingleCacheValue(String cacheName, String cacheKey) {
         cacheManager.getCache(cacheName).evict(cacheKey);
