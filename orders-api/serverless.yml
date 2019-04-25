@@ -1,0 +1,150 @@
+service: orders-api 
+
+provider:
+  name: aws
+  runtime: java8
+  timeout: 30
+  stage: dev
+  environment:
+    RDS_ENDPOINT: ${env:RDS_ENDPOINT}
+    RDS_PORT: ${env:RDS_PORT}
+    RDS_DB: ${env:RDS_DB}
+    RDS_USER: ${env:RDS_USER}
+    RDS_PWD: ${env:RDS_PWD}
+  vpc:
+    securityGroupIds:
+      - sg-ff36deb9
+    subnetIds:
+      - subnet-b2bac3ee
+      - subnet-da5925bd
+      - subnet-8acfc3c0
+      - subnet-91bcc7bf
+      - subnet-68f6c067
+      - subnet-3a73f304
+      
+package:
+  artifact: target/orders-api-dev.jar
+  exclude:
+    - secrets.yml
+
+functions:
+  createNewOrder:
+    handler: com.br.meupag.ordersapi.lambda.handler.CreateNewOrderHandler
+    events:
+      - http:
+          path: /orders
+          method: post
+  listOrders:
+    handler: com.br.meupag.ordersapi.lambda.handler.ListOrdersHandler
+    events:
+      - http:
+          path: /orders
+          method: get
+  getOrder:
+    handler: com.br.meupag.ordersapi.lambda.handler.GetOrderHandler
+    events:
+      - http:
+          path: /orders/{id}
+          method: get
+  updateOrder:
+    handler: com.br.meupag.ordersapi.lambda.handler.UpdateOrderHandler
+    events:
+      - http:
+          path: /orders/{id}
+          method: put
+  deleteOrder:
+    handler: com.br.meupag.ordersapi.lambda.handler.DeleteOrderHandler
+    events:
+      - http:
+          path: /orders/{id}
+          method: delete
+  createNewClient:
+    handler: com.br.meupag.ordersapi.lambda.handler.CreateNewClientHandler
+    events:
+      - http:
+          path: /clients
+          method: post
+  listClients:
+    handler: com.br.meupag.ordersapi.lambda.handler.ListClientsHandler
+    events:
+      - http:
+          path: /clients
+          method: get
+  getClient:
+    handler: com.br.meupag.ordersapi.lambda.handler.GetClientHandler
+    events:
+      - http:
+          path: /clients/{id}
+          method: get
+  updateClient:
+    handler: com.br.meupag.ordersapi.lambda.handler.UpdateClientHandler
+    events:
+      - http:
+          path: /clients/{id}
+          method: put
+  deleteClient:
+    handler: com.br.meupag.ordersapi.lambda.handler.DeleteClientHandler
+    events:
+      - http:
+          path: /clients/{id}
+          method: delete   
+  createNewOrderItem:
+    handler: com.br.meupag.ordersapi.lambda.handler.CreateNewOrderItemHandler
+    events:
+      - http:
+          path: /orderItems
+          method: post
+  listOrderItems:
+    handler: com.br.meupag.ordersapi.lambda.handler.ListOrderItemsHandler
+    events:
+      - http:
+          path: /orderItems
+          method: get
+  getOrderItem:
+    handler: com.br.meupag.ordersapi.lambda.handler.GetOrderItemHandler
+    events:
+      - http:
+          path: /orderItems/{id}
+          method: get
+  updateOrderItem:
+    handler: com.br.meupag.ordersapi.lambda.handler.UpdateOrderItemHandler
+    events:
+      - http:
+          path: /orderItems/{id}
+          method: put
+  deleteOrderItem:
+    handler: com.br.meupag.ordersapi.lambda.handler.DeleteOrderItemHandler
+    events:
+      - http:
+          path: /orderItems/{id}
+          method: delete    
+  createNewProduct:
+    handler: com.br.meupag.ordersapi.lambda.handler.CreateNewProductHandler
+    events:
+      - http:
+          path: /products
+          method: post
+  listProducts:
+    handler: com.br.meupag.ordersapi.lambda.handler.ListProductsHandler
+    events:
+      - http:
+          path: /products
+          method: get
+  getProduct:
+    handler: com.br.meupag.ordersapi.lambda.handler.GetProductHandler
+    events:
+      - http:
+          path: /products/{id}
+          method: get
+  updateProduct:
+    handler: com.br.meupag.ordersapi.lambda.handler.UpdateProductHandler
+    events:
+      - http:
+          path: /products/{id}
+          method: put
+  deleteProduct:
+    handler: com.br.meupag.ordersapi.lambda.handler.DeleteProductHandler
+    events:
+      - http:
+          path: /products/{id}
+          method: delete

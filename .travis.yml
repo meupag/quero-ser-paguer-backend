@@ -1,0 +1,10 @@
+language: java
+
+java:
+  - "1.8"
+  
+script: 
+  - cd orders-api
+  - mvn clean package
+  - npm install -g serverless
+  - sls deploy
