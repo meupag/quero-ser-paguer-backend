@@ -6,11 +6,11 @@ provider:
   timeout: 30
   stage: dev
   environment:
-    RDS_ENDPOINT: "${env:RDS_ENDPOINT}"
-    RDS_PORT: ${env:RDS_PORT}"
-    RDS_DB: "${env:RDS_DB}"
-    RDS_USER: "${env:RDS_USER}"
-    RDS_PWD: "${env:RDS_PWD}"
+    RDS_ENDPOINT: ${env:RDS_ENDPOINT}
+    RDS_PORT: ${env:RDS_PORT}
+    RDS_DB: ${env:RDS_DB}
+    RDS_USER: ${env:RDS_USER}
+    RDS_PWD: ${env:RDS_PWD}
   vpc:
     securityGroupIds:
       - sg-ff36deb9
