@@ -5,4 +5,5 @@ java:
   
 script: 
   - npm install -g serverless
+  - cd orders-api
   - sls deploy
