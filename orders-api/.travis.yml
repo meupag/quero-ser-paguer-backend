@@ -1,4 +1,0 @@
-language: java
-script: 
-    - npm install -g serverless
-    - sls deploy
