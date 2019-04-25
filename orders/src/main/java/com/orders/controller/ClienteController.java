@@ -46,7 +46,7 @@ public class ClienteController {
         this.repository = repository;
     }
 
-    @ApiOperation(value = "Vizualizar uma lista de clientes.", response = Cliente.class)
+    @ApiOperation(value = "Vizualizar a lista de todos os clientes.", response = Cliente.class)
     @GetMapping
     public List<Cliente> findAll() {
         return repository.findAll();

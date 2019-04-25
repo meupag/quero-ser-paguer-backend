@@ -16,10 +16,12 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 public class ErrorResponse
 { 
+
     //Erros Genericos
     private String message;
  
-    //Erros especificados
+    //Erros especificos
     private List<String> details;
+
 
 }
