@@ -1,0 +1,214 @@
+service: orders-api 
+
+provider:
+  name: aws
+  runtime: java8
+  timeout: 30
+  stage: dev
+  environment:
+    RDS_ENDPOINT: "${self:custom.secrets.RDS_ENDPOINT}"
+    RDS_PORT: "${self:custom.secrets.RDS_PORT}"
+    RDS_DB: "${self:custom.secrets.RDS_DB}"
+    RDS_USER: "${self:custom.secrets.RDS_USER}"
+    RDS_PWD: "${self:custom.secrets.RDS_PWD}"
+  vpc:
+    securityGroupIds:
+      - sg-ff36deb9
+    subnetIds:
+      - subnet-b2bac3ee
+      - subnet-da5925bd
+      - subnet-8acfc3c0
+      - subnet-91bcc7bf
+      - subnet-68f6c067
+      - subnet-3a73f304
+      
+package:
+  artifact: target/orders-api-dev.jar
+  exclude:
+    - secrets.yml
+    
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  secrets: ${file(secrets.yml):${self:custom.stage}}
+
+functions:
+  createNewOrder:
+    handler: com.br.meupag.ordersapi.lambda.handler.CreateNewOrderHandler
+    events:
+      - http:
+          path: /orders
+          method: post
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  listOrders:
+    handler: com.br.meupag.ordersapi.lambda.handler.ListOrdersHandler
+    events:
+      - http:
+          path: /orders
+          method: get
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  getOrder:
+    handler: com.br.meupag.ordersapi.lambda.handler.GetOrderHandler
+    events:
+      - http:
+          path: /orders/{id}
+          method: get
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  updateOrder:
+    handler: com.br.meupag.ordersapi.lambda.handler.UpdateOrderHandler
+    events:
+      - http:
+          path: /orders/{id}
+          method: put
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  deleteOrder:
+    handler: com.br.meupag.ordersapi.lambda.handler.DeleteOrderHandler
+    events:
+      - http:
+          path: /orders/{id}
+          method: delete
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  createNewClient:
+    handler: com.br.meupag.ordersapi.lambda.handler.CreateNewClientHandler
+    events:
+      - http:
+          path: /clients
+          method: post
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  listClients:
+    handler: com.br.meupag.ordersapi.lambda.handler.ListClientsHandler
+    events:
+      - http:
+          path: /clients
+          method: get
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  getClient:
+    handler: com.br.meupag.ordersapi.lambda.handler.GetClientHandler
+    events:
+      - http:
+          path: /clients/{id}
+          method: get
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  updateClient:
+    handler: com.br.meupag.ordersapi.lambda.handler.UpdateClientHandler
+    events:
+      - http:
+          path: /clients/{id}
+          method: put
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  deleteClient:
+    handler: com.br.meupag.ordersapi.lambda.handler.DeleteClientHandler
+    events:
+      - http:
+          path: /clients/{id}
+          method: delete   
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z 
+  createNewOrderItem:
+    handler: com.br.meupag.ordersapi.lambda.handler.CreateNewOrderItemHandler
+    events:
+      - http:
+          path: /orderItems
+          method: post
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  listOrderItems:
+    handler: com.br.meupag.ordersapi.lambda.handler.ListOrderItemsHandler
+    events:
+      - http:
+          path: /orderItems
+          method: get
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  getOrderItem:
+    handler: com.br.meupag.ordersapi.lambda.handler.GetOrderItemHandler
+    events:
+      - http:
+          path: /orderItems/{id}
+          method: get
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  updateOrderItem:
+    handler: com.br.meupag.ordersapi.lambda.handler.UpdateOrderItemHandler
+    events:
+      - http:
+          path: /orderItems/{id}
+          method: put
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  deleteOrderItem:
+    handler: com.br.meupag.ordersapi.lambda.handler.DeleteOrderItemHandler
+    events:
+      - http:
+          path: /orderItems/{id}
+          method: delete 
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z     
+  createNewProduct:
+    handler: com.br.meupag.ordersapi.lambda.handler.CreateNewProductHandler
+    events:
+      - http:
+          path: /products
+          method: post
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  listProducts:
+    handler: com.br.meupag.ordersapi.lambda.handler.ListProductsHandler
+    events:
+      - http:
+          path: /products
+          method: get
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  getProduct:
+    handler: com.br.meupag.ordersapi.lambda.handler.GetProductHandler
+    events:
+      - http:
+          path: /products/{id}
+          method: get
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  updateProduct:
+    handler: com.br.meupag.ordersapi.lambda.handler.UpdateProductHandler
+    events:
+      - http:
+          path: /products/{id}
+          method: put
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
+  deleteProduct:
+    handler: com.br.meupag.ordersapi.lambda.handler.DeleteProductHandler
+    events:
+      - http:
+          path: /products/{id}
+          method: delete
+          authorizer:
+            name: authorizer
+            arn: arn:aws:cognito-idp:us-east-1:551053615864:userpool/us-east-1_gikTt3H8z
