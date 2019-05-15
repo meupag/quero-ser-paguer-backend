@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.pag.queroserpaguer.domain.Produto;
 import br.com.pag.queroserpaguer.domain.Produto;
 import br.com.pag.queroserpaguer.service.ProdutoService;
 import io.swagger.annotations.ApiOperation;
@@ -44,8 +46,7 @@ public class ProdutoController {
 	@ApiOperation(value = "Busca o produto pelo Id")
 	@GetMapping("/{id}")
 	public ResponseEntity<Produto> findById(@PathVariable Long id) {
-		return  produtoService.findById(id).map(produto -> 
-		ResponseEntity.ok().body(produto)).orElse(ResponseEntity.notFound().build());
+		return produtoService.findById(id).map(produto -> ResponseEntity.ok().body(produto)).orElse(ResponseEntity.notFound().build());
 	}
 
 	/**
@@ -79,17 +80,13 @@ public class ProdutoController {
 	 * 			Not Found se o Ciente não existir.
 	 */
 	@ApiOperation(value = " Atualiza um produto")
-	@PutMapping
-	public ResponseEntity<Produto> updateProduto(@Valid @RequestBody Produto produto)  {
-		return produtoService.findById(produto.getId())
-				.map(updateProduto -> {
-					updateProduto.setNome(produto.getNome());
-					updateProduto.setPrecoSugerido(produto.getPrecoSugerido()	);
-					updateProduto.setNome(produto.getNome());
-					updateProduto = produtoService.save(updateProduto);
-					return  ResponseEntity.ok().body( updateProduto ) ;
-				}
-						).orElse(ResponseEntity.notFound().build());
+	@PutMapping("/{id}")
+	public ResponseEntity<Produto> updateProduto(@PathVariable Long id,@Valid @RequestBody Produto produto)  {
+		Optional<Produto> produtoAtualizado = produtoService.update(id, produto); 
+		if(produtoAtualizado.isPresent())
+			return ResponseEntity.ok().body( produtoAtualizado.get() );
+		else
+			return ResponseEntity.notFound().build();
 
 	}
 
@@ -113,13 +110,8 @@ public class ProdutoController {
 	 */
 	@ApiOperation(value = "apaga um Produto")
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> deleteProduto(@PathVariable Long id) {
-
-		return produtoService.findById(id)
-				.map(produto -> {
-					produtoService.delete(produto.getId());
-					return ResponseEntity.ok().build();
-				}
-						).orElse(ResponseEntity.notFound().build());
+	public void deleteProduto(@PathVariable Long id) {
+		produtoService.delete(id);
 	}
+
 }

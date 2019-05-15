@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.pag.queroserpaguer.domain.Pedido;
 import br.com.pag.queroserpaguer.domain.ItemPedido;
 import br.com.pag.queroserpaguer.domain.Pedido;
 import br.com.pag.queroserpaguer.repository.PedidoRepository;
@@ -37,16 +38,10 @@ public class PedidoServiceImpl implements PedidoService {
 		this.pedidoRepository = pedidoRepository;
 	}
 
-	/**
-	 * Save a pedido.
-	 *
-	 * @param pedido the entity to save.
-	 * @return the persisted entity.
-	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Pedido save(Pedido pedido) {
-		pedido.setValor(getValor(pedido.getItensPedido()));
+		pedido.setValor(calculaValorDoPedido(pedido.getItensPedido()));
 		pedido =  pedidoRepository.save(pedido);
 		updateItensPedido(pedido);
 		
@@ -58,13 +53,23 @@ public class PedidoServiceImpl implements PedidoService {
 		pedido.getItensPedido().stream().forEach(p->{p.setPedido(pedido);itemPedidoService.save(p);});
 		pedidosAntesSalvar.removeAll(pedido.getItensPedido());
 		pedidosAntesSalvar.stream().forEach(p->{itemPedidoService.delete(p.getId());});
-				
 	}
 
-	private BigDecimal getValor(Set<ItemPedido> itensPedido) {
+	private BigDecimal calculaValorDoPedido(Set<ItemPedido> itensPedido) {
 		double valor = itensPedido.stream().map(item -> item.getPreco().multiply(item.getQuantidade())).mapToDouble(BigDecimal::doubleValue).sum();
 		return new BigDecimal(valor);
 	}
+	
+	@Override
+    public Optional<Pedido> update(Long id, Pedido pedido) {
+        log.info("atualizando Pedido  : {}", pedido);
+        return pedidoRepository.findById(id)
+        	.map(updatePedido -> {
+        		pedido.setItensPedido(pedido.getItensPedido());
+				return  save(updatePedido);
+			}
+		);
+    }
 
 	/**
 	 * Get all the pedidos.

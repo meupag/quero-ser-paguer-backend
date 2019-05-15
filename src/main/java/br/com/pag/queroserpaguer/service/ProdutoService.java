@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import br.com.pag.queroserpaguer.domain.Produto;
+import br.com.pag.queroserpaguer.domain.Produto;
 
 /**
  * Service Interface for managing {@link Produto}.
@@ -12,7 +13,7 @@ import br.com.pag.queroserpaguer.domain.Produto;
  */
 public interface ProdutoService {
 
-    /**
+	 /**
      * Save a produto.
      *
      * @param produto the entity to save.
@@ -42,4 +43,13 @@ public interface ProdutoService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * Update a produto 
+     * 
+     * @param id
+     * @param produto
+     * @return
+     */
+	Optional<Produto> update(Long id, Produto produto);
 }

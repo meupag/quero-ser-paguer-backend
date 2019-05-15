@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -38,7 +39,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "cliente")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,20 +47,23 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    @Size(max = 100,message = "O nome deve conter no máximo 100 caracteres.")
     @Column(name = "nome",nullable = false)
     private String nome;
 
-    @Size(min = 11, max = 11)
+    @Size(min = 11, max = 11, message = "o cpf deve conter 11 caracteres")
     @Column(name = "cpf", length = 11, unique = true)
     private String cpf;
 
+    @NotNull
     @Column(name = "data_nascimento")
     private ZonedDateTime dataNascimento;
     
+    
     @OneToMany(mappedBy = "cliente",fetch = FetchType.EAGER)
     @JsonIgnoreProperties("cliente")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Pedido> pedidos;
 
   

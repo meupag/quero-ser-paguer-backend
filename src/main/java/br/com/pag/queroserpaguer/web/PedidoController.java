@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -21,6 +22,7 @@ import br.com.pag.queroserpaguer.domain.Pedido;
 import br.com.pag.queroserpaguer.service.PedidoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.HttpMethod;
 
 /**
  * REST controller for managing {@link br.com.pag.domain.Pedido}.
@@ -53,31 +55,11 @@ public class PedidoController {
 		}
 		pedido =   pedidoService.save(pedido);
 
-		return ResponseEntity.created(new URI("/clientes/" +
+		return ResponseEntity.created(new URI("/pedidos/" +
 				pedido.getId())).body(pedido);
 	}
 
-	/**
-	 * Atualiza um pedido
-	 * @param  com os dados atualizados
-	 * @return Reponse OK se o  for atualizado e  
-	 * 			Not Found se o Ciente não existir.
-	 */
-	@PutMapping
-	@ApiOperation(value = "Atualiza um pedido com seus itens, o valor será recalculado a partir da soma da multiplicação da quantidade pelo valor dos itens do pedido. ")
-	public ResponseEntity<Pedido> updatePedido(@Valid @RequestBody Pedido entity)  {
-
-
-		return pedidoService.findById(entity.getId())
-				.map(pedido -> {
-					pedido.setItensPedido(entity.getItensPedido());
-					pedido = pedidoService.save(pedido);
-					return ResponseEntity.ok().body(pedido);
-				}
-						).orElse(ResponseEntity.notFound().build());
-
-	}
-
+	
 	/**
 	 * Busca todos os Pedido
 	 * @return Lista de Pedido
@@ -96,6 +78,7 @@ public class PedidoController {
 	 * @return  response Ok se encontrar o 
 	 *         ou Not Found se o Ciente não existir.
 	 */
+	@ApiOperation(value = "Busca o pedido pelo Id")
 	@GetMapping("/{id}")
 	public ResponseEntity<Pedido> findById(@PathVariable Long id) {
 		return  pedidoService.findById(id).map(pedido -> 
@@ -110,13 +93,23 @@ public class PedidoController {
 	 * @return Response Ok se o  for apagado
 	 * 		Reponse Not Found se o  não for encontrado.
 	 */
+	@ApiOperation(value = "apaga um pedido")
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deletePedido(@PathVariable Long id) {
-		return pedidoService.findById(id).map(item -> {
+	public void deletePedido(@PathVariable Long id) {
 			pedidoService.delete(id);
-			return ResponseEntity.ok().build();
-		}
-				).orElse(ResponseEntity.notFound().build());
-
+	}
+	
+	/**
+	 * Atualiza um pedido
+	 * @param pedido com os dados atualizados
+	 * @return Reponse OK se o pedido for atualizado e  
+	 * 			Not Found se o Ciente não existir.
+	 */
+	@ApiOperation(value = "Atualiza um pedido com seus itens, o valor será recalculado a partir da soma da multiplicação da quantidade pelo valor dos itens do pedido. ")
+	@PutMapping("/{id}")
+	public ResponseEntity<Pedido> updatePedido(@PathVariable Long id,@Valid @RequestBody Pedido pedido)  {
+		return pedidoService.update(id, pedido).map(pedidoAtualizado -> 
+			ResponseEntity.ok().body( pedidoAtualizado ))
+				.orElse(ResponseEntity.notFound().build()); 
 	}
 }

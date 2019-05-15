@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -43,8 +44,9 @@ public class ClienteController {
 	@ApiOperation(value = "Busca o cliente pelo Id")
 	@GetMapping("/{id}")
 	public ResponseEntity<Cliente> findById(@PathVariable Long id) {
-		return  clienteService.findById(id).map(cliente -> 
-		ResponseEntity.ok().body(cliente)).orElse(ResponseEntity.notFound().build());
+		return clienteService.findById(id).map(cliente -> 
+			ResponseEntity.ok().body(cliente))
+				.orElse(ResponseEntity.notFound().build());
 	}
 
 	/**
@@ -78,17 +80,13 @@ public class ClienteController {
 	 * 			Not Found se o Ciente não existir.
 	 */
 	@ApiOperation(value = " Atualiza um cliente")
-	@PutMapping
-	public ResponseEntity<Cliente> updateCliente(@Valid @RequestBody Cliente cliente)  {
-		return clienteService.findById(cliente.getId())
-				.map(updateCliente -> {
-					updateCliente.setCpf(cliente.getCpf());
-					updateCliente.setDataNascimento(cliente.getDataNascimento());
-					updateCliente.setNome(cliente.getNome());
-					updateCliente = clienteService.save(updateCliente);
-					return  ResponseEntity.ok().body( updateCliente ) ;
-				}
-						).orElse(ResponseEntity.notFound().build());
+	@PutMapping("/{id}")
+	public ResponseEntity<Cliente> updateCliente(@PathVariable Long id,@Valid @RequestBody Cliente cliente)  {
+		Optional<Cliente> clienteAtualizado = clienteService.update(id, cliente); 
+		if(clienteAtualizado.isPresent())
+			return ResponseEntity.ok().body( clienteAtualizado.get() );
+		else
+			return ResponseEntity.notFound().build();
 
 	}
 
@@ -112,14 +110,8 @@ public class ClienteController {
 	 */
 	@ApiOperation(value = "apaga um Cliente")
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> deleteCliente(@PathVariable Long id) {
-
-		return clienteService.findById(id)
-				.map(cliente -> {
-					clienteService.delete(cliente.getId());
-					return ResponseEntity.ok().build();
-				}
-						).orElse(ResponseEntity.notFound().build());
+	public void deleteCliente(@PathVariable Long id) {
+		clienteService.delete(id);
 	}
 
 }

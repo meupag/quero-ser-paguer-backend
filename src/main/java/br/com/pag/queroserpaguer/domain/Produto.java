@@ -42,6 +42,7 @@ public class Produto implements Serializable {
     private Long id;
 
     @NotNull
+    @Size(max = 100,message = "O nome deve conter no máximo 100 caracteres.")
     @Column(name = "nome")
     private String nome;
     

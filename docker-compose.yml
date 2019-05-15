@@ -7,7 +7,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=queroserpaguer
     ports:
-      - "336:3306"
+      - "3306:3306"
     networks: 
       - pag-network
     container_name: pag-mysql
@@ -22,7 +22,7 @@ services:
     networks: 
       - pag-network
     ports: 
-      - "1234:8080"
+      - "8080:8080"
     depends_on: 
       - pag-mysql 
 

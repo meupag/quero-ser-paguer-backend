@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.pag.queroserpaguer.domain.ItemPedido;
+import br.com.pag.queroserpaguer.domain.ItemPedido;
 import br.com.pag.queroserpaguer.repository.ItemPedidoRepository;
 import br.com.pag.queroserpaguer.service.ItemPedidoService;
 
@@ -32,7 +33,19 @@ public class ItemPedidoServiceImpl implements ItemPedidoService {
         log.info("Salvando  ItemPedido : {}", itemPedido);
         return itemPedidoRepository.save(itemPedido);
     }
-
+    
+    @Override
+    public Optional<ItemPedido> update(Long id, ItemPedido itemPedido) {
+        log.info("atualizando ItemPedido  : {}", itemPedido);
+        return itemPedidoRepository.findById(id)
+        	.map(updateItemPedido -> {
+        		itemPedido.setPreco(itemPedido.getPreco());
+				itemPedido.setQuantidade(itemPedido.getQuantidade());
+				return  itemPedidoRepository.save(updateItemPedido);
+			}
+		);
+    }
+    
     @Override
     @Transactional(readOnly = true)
     public List<ItemPedido> findAll() {
@@ -48,6 +61,7 @@ public class ItemPedidoServiceImpl implements ItemPedidoService {
         return itemPedidoRepository.findById(id);
     }
 
+   
     @Override
     public void delete(Long id) {
         log.info("deletando o ItemPedido : {}", id);

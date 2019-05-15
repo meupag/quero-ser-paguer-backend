@@ -43,4 +43,13 @@ public interface ClienteService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * Update a cliente 
+     * 
+     * @param id
+     * @param cliente
+     * @return
+     */
+	Optional<Cliente> update(Long id, Cliente cliente);
 }

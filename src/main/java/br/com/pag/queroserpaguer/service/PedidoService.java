@@ -42,4 +42,6 @@ public interface PedidoService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+	Optional<Pedido> update(Long id, Pedido pedido);
 }

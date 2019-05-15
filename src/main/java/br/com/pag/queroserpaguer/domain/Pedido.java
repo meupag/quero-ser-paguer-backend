@@ -42,7 +42,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "pedido")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;

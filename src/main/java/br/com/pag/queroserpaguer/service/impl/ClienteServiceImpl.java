@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,9 +13,6 @@ import br.com.pag.queroserpaguer.domain.Cliente;
 import br.com.pag.queroserpaguer.repository.ClienteRepository;
 import br.com.pag.queroserpaguer.service.ClienteService;
 
-/**
- * Service Implementation for managing {@link Cliente}.
- */
 @Service
 @Transactional
 public class ClienteServiceImpl implements ClienteService {
@@ -33,7 +31,20 @@ public class ClienteServiceImpl implements ClienteService {
         log.info("Salvando  Cliente : {}", cliente);
         return clienteRepository.save(cliente);
     }
-
+    
+    @Override
+    public Optional<Cliente> update(Long id, Cliente cliente) {
+        log.info("atualizando Cliente  : {}", cliente);
+        return clienteRepository.findById(id)
+        	.map(updateCliente -> {
+				updateCliente.setCpf(cliente.getCpf());
+				updateCliente.setDataNascimento(cliente.getDataNascimento());
+				updateCliente.setNome(cliente.getNome());
+				return  clienteRepository.save(updateCliente);
+			}
+		);
+    }
+    
     @Override
     @Transactional(readOnly = true)
     public List<Cliente> findAll() {

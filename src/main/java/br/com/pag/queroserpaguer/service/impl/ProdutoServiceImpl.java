@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.pag.queroserpaguer.domain.Produto;
+import br.com.pag.queroserpaguer.domain.Produto;
+import br.com.pag.queroserpaguer.repository.ProdutoRepository;
 import br.com.pag.queroserpaguer.repository.ProdutoRepository;
 import br.com.pag.queroserpaguer.service.ProdutoService;
 
@@ -27,23 +29,26 @@ public class ProdutoServiceImpl implements ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    /**
-     * Save a produto.
-     *
-     * @param produto the entity to save.
-     * @return the persisted entity.
-     */
+    
     @Override
     public Produto save(Produto produto) {
         log.info("Salvando  Produto : {}", produto);
         return produtoRepository.save(produto);
     }
-
-    /**
-     * Get all the produtos.
-     *
-     * @return the list of entities.
-     */
+    
+    @Override
+    public Optional<Produto> update(Long id, Produto produto) {
+        log.info("atualizando Produto  : {}", produto);
+        return produtoRepository.findById(id)
+        	.map(updateProduto -> {
+        		updateProduto.setNome(produto.getNome());
+				updateProduto.setPrecoSugerido(produto.getPrecoSugerido()	);
+				updateProduto.setNome(produto.getNome());
+				return  produtoRepository.save(updateProduto);
+			}
+		);
+    }
+    
     @Override
     @Transactional(readOnly = true)
     public List<Produto> findAll() {
@@ -52,12 +57,6 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
 
-    /**
-     * Get one produto by id.
-     *
-     * @param id the id of the entity.
-     * @return the entity.
-     */
     @Override
     @Transactional(readOnly = true)
     public Optional<Produto> findById(Long id) {
@@ -65,11 +64,7 @@ public class ProdutoServiceImpl implements ProdutoService {
         return produtoRepository.findById(id);
     }
 
-    /**
-     * Delete the produto by id.
-     *
-     * @param id the id of the entity.
-     */
+   
     @Override
     public void delete(Long id) {
         log.info("deletando o Produto : {}", id);

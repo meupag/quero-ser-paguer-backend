@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import br.com.pag.queroserpaguer.domain.ItemPedido;
+import br.com.pag.queroserpaguer.domain.ItemPedido;
 
 /**
  * Service Interface for managing {@link ItemPedido}.
@@ -12,7 +13,7 @@ import br.com.pag.queroserpaguer.domain.ItemPedido;
  */
 public interface ItemPedidoService {
 
-    /**
+	 /**
      * Save a itemPedido.
      *
      * @param itemPedido the entity to save.
@@ -42,6 +43,15 @@ public interface ItemPedidoService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    /**
+     * Update a itemPedido 
+     * 
+     * @param id
+     * @param itemPedido
+     * @return
+     */
+	Optional<ItemPedido> update(Long id, ItemPedido itemPedido);
     
     /**
      * retorna os itens de um Pedido.

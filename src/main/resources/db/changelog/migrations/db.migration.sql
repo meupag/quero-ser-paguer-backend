@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `item_pedido` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --changeset pag:5
-REPLACE INTO `cliente` VALUES (4,'11111111111','1986-01-01 09:24:00','João da Silva'),(4,'11111111112','1986-01-01 09:24:00','Maria da Silva');
+REPLACE INTO `cliente` VALUES (4,'11111111111','1986-01-01 09:24:00','João da Silva'),(5,'11111111112','1986-01-01 09:24:00','Maria da Silva');
 
 --changeset pag:6
 REPLACE INTO `produto` VALUES (4,'Aguá',5.50),(5,'Pão de Queijo',6.50),(6,'Refrigerante',7.50);
