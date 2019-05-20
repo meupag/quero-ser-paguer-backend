@@ -1,0 +1,41 @@
+version: '3'
+services:
+  customerservice:
+    image: customer-service
+    ports:
+      - 8080:8080
+    networks:
+      - desenv-network
+    depends_on:
+      - mongodb
+      - rabbitmq
+
+  orderservice:
+    image: order-service
+    ports:
+      - 8081:8081
+    networks:
+      - desenv-network
+    depends_on:
+      - mongodb
+      - rabbitmq
+
+
+  mongodb:
+    image: mongo:3.2
+    ports:
+      - 27017:27017
+    networks:
+      - desenv-network
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - desenv-network
+
+networks:
+  desenv-network:
+    driver: "bridge"
