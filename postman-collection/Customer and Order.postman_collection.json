@@ -1,0 +1,725 @@
+{
+	"id": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+	"name": "Customer and Order",
+	"description": "",
+	"order": [
+		"63c54ef9-f3c1-56d6-0443-0ed67e443090",
+		"1e83bdec-484b-f4ce-2ece-dfbb02a2f8b3",
+		"2c013fb9-156f-acc5-424e-5fd0372d1e66",
+		"8294c372-1de0-7418-7f10-d21da7affa0c",
+		"f48c211b-c5c0-2928-29df-5d4304fb4244",
+		"0db00bc6-1328-842f-0293-720ba529baf8",
+		"aadf10d5-5b1e-59ba-057e-25400e1e3cec",
+		"66fec746-6053-8b05-6e24-9acb24c127cb",
+		"6f9a3256-4c25-b59a-85d1-659a996400dc",
+		"2623d7ac-99ea-0845-18f3-70ce7e84f14b",
+		"d2f49724-a560-3169-25c5-354d086a2a33",
+		"82bd23d5-726c-41bb-52ca-a99844968741",
+		"248dccfa-dd01-f597-b82d-cc71fdf592e6",
+		"143ec312-ee37-37c0-eab1-ad69aa913624",
+		"b9fe25ad-e9b2-aa30-f4ab-e18a6e50cff5",
+		"f3ef0f9f-f747-dd74-9d9d-c1507d5ba281",
+		"323d26d4-97ea-092d-f7f8-3d3a68b2a18d",
+		"c3e284aa-a642-648b-5339-cf2c64712d02",
+		"23367a27-594c-35f0-f552-a27165de067d",
+		"ab95f836-68b1-93eb-5bce-36c1bd0a8cfd",
+		"7aca65ed-e066-f726-c9e2-4ecaebe55282"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1558394390033,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "0db00bc6-1328-842f-0293-720ba529baf8",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTg0NzAxOTYsInVzZXJfbmFtZSI6ImN1c3RvbWVyLXVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjdhYTY0MmRlLWIyZDMtNDJkYS1hODE5LTEyNzNmNWE3ZGUxOSIsImNsaWVudF9pZCI6ImN1c3RvbWVyLWNsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.j6hLSvBQya-pZpqfLc-aK_2E9ENDtYv_Kbh8055TqjA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTg0NzAxOTYsInVzZXJfbmFtZSI6ImN1c3RvbWVyLXVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjdhYTY0MmRlLWIyZDMtNDJkYS1hODE5LTEyNzNmNWE3ZGUxOSIsImNsaWVudF9pZCI6ImN1c3RvbWVyLWNsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.j6hLSvBQya-pZpqfLc-aK_2E9ENDtYv_Kbh8055TqjA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/customer/5ce459f03295e1113148bec6",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558469211159,
+			"name": "DELETE customer",
+			"description": "",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"responses": []
+		},
+		{
+			"id": "143ec312-ee37-37c0-eab1-ad69aa913624",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/product/5ce362b078b42f03bdb705b6",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": null,
+			"dataMode": "params",
+			"name": "GET product by id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558406050619,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "1e83bdec-484b-f4ce-2ece-dfbb02a2f8b3",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTg0NzAxOTYsInVzZXJfbmFtZSI6ImN1c3RvbWVyLXVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjdhYTY0MmRlLWIyZDMtNDJkYS1hODE5LTEyNzNmNWE3ZGUxOSIsImNsaWVudF9pZCI6ImN1c3RvbWVyLWNsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.j6hLSvBQya-pZpqfLc-aK_2E9ENDtYv_Kbh8055TqjA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTg0NzAxOTYsInVzZXJfbmFtZSI6ImN1c3RvbWVyLXVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjdhYTY0MmRlLWIyZDMtNDJkYS1hODE5LTEyNzNmNWE3ZGUxOSIsImNsaWVudF9pZCI6ImN1c3RvbWVyLWNsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.j6hLSvBQya-pZpqfLc-aK_2E9ENDtYv_Kbh8055TqjA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/customer",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558469213608,
+			"name": "POST costumer",
+			"description": "",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"John\",\n  \"document\": \"37539665092\",\n  \"birthDate\": \"1999-01-01\" \n}"
+		},
+		{
+			"id": "23367a27-594c-35f0-f552-a27165de067d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/order-item/5ce370f778b42f04193605cb",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": null,
+			"dataMode": "params",
+			"name": "GET by id order-item",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558409557064,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "248dccfa-dd01-f597-b82d-cc71fdf592e6",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/product",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": null,
+			"dataMode": "params",
+			"name": "GET product",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558405837513,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "2623d7ac-99ea-0845-18f3-70ce7e84f14b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/order/5ce33d9c4263b702b5c3b8d5",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": [],
+			"dataMode": "raw",
+			"name": "PUT order",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558396533919,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n  \"customerId\": \"5ce33d734263b7026c5fd6f9\",\n  \"value\": 1\n}"
+		},
+		{
+			"id": "2c013fb9-156f-acc5-424e-5fd0372d1e66",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTg0NzAxOTYsInVzZXJfbmFtZSI6ImN1c3RvbWVyLXVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjdhYTY0MmRlLWIyZDMtNDJkYS1hODE5LTEyNzNmNWE3ZGUxOSIsImNsaWVudF9pZCI6ImN1c3RvbWVyLWNsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.j6hLSvBQya-pZpqfLc-aK_2E9ENDtYv_Kbh8055TqjA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTg0NzAxOTYsInVzZXJfbmFtZSI6ImN1c3RvbWVyLXVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjdhYTY0MmRlLWIyZDMtNDJkYS1hODE5LTEyNzNmNWE3ZGUxOSIsImNsaWVudF9pZCI6ImN1c3RvbWVyLWNsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.j6hLSvBQya-pZpqfLc-aK_2E9ENDtYv_Kbh8055TqjA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/customer",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558469209007,
+			"name": "GET costumer",
+			"description": "",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"responses": []
+		},
+		{
+			"id": "323d26d4-97ea-092d-f7f8-3d3a68b2a18d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/order-item",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST order-item",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558409484229,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n  \"orderId\": \"5ce33db74263b702b5c3b8d6\",\n  \"productId\": \"5ce370e378b42f04193605ca\",\n  \"quantity\": 1,\n  \"price\": 1\n}"
+		},
+		{
+			"id": "63c54ef9-f3c1-56d6-0443-0ed67e443090",
+			"headers": "Authorization: Basic Y3VzdG9tZXItY2xpZW50OmN1c3RvbWVyLXNlY3JldA==\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic Y3VzdG9tZXItY2xpZW50OmN1c3RvbWVyLXNlY3JldA==",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/oauth/token",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": [
+				{
+					"key": "username",
+					"value": "customer-username",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "customer-password",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grant_type",
+					"value": "password",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "/oauth/token customer",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558462268398,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "66fec746-6053-8b05-6e24-9acb24c127cb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/order",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": null,
+			"dataMode": "params",
+			"name": "GET order",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558396507156,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "6f9a3256-4c25-b59a-85d1-659a996400dc",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/order/5ce33d9c4263b702b5c3b8d5",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": null,
+			"dataMode": "params",
+			"name": "GET order by id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558396522804,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "7aca65ed-e066-f726-c9e2-4ecaebe55282",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/order-item/5ce372b078b42f048cfb219e",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558470610730,
+			"name": "DELETE order-item",
+			"description": "",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"responses": []
+		},
+		{
+			"id": "8294c372-1de0-7418-7f10-d21da7affa0c",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTg0NzAxOTYsInVzZXJfbmFtZSI6ImN1c3RvbWVyLXVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjdhYTY0MmRlLWIyZDMtNDJkYS1hODE5LTEyNzNmNWE3ZGUxOSIsImNsaWVudF9pZCI6ImN1c3RvbWVyLWNsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.j6hLSvBQya-pZpqfLc-aK_2E9ENDtYv_Kbh8055TqjA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTg0NzAxOTYsInVzZXJfbmFtZSI6ImN1c3RvbWVyLXVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjdhYTY0MmRlLWIyZDMtNDJkYS1hODE5LTEyNzNmNWE3ZGUxOSIsImNsaWVudF9pZCI6ImN1c3RvbWVyLWNsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.j6hLSvBQya-pZpqfLc-aK_2E9ENDtYv_Kbh8055TqjA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/customer/5ce459f03295e1113148bec6",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558469207177,
+			"name": "GET customer by id",
+			"description": "",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"responses": []
+		},
+		{
+			"id": "82bd23d5-726c-41bb-52ca-a99844968741",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/product",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST product",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558405819792,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n  \"name\": \"string\",\n  \"recommendedPrice\": 1\n}"
+		},
+		{
+			"id": "aadf10d5-5b1e-59ba-057e-25400e1e3cec",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/order",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST order",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558396495061,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n  \"customerId\": \"5ce33d734263b7026c5fd6f9\",\n  \"value\": 1\n}"
+		},
+		{
+			"id": "ab95f836-68b1-93eb-5bce-36c1bd0a8cfd",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/order-item/5ce370f778b42f04193605cb",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": [],
+			"dataMode": "raw",
+			"name": "PUT order-item",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558409566222,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n  \"orderId\": \"5ce33db74263b702b5c3b8d6\",\n  \"productId\": \"5ce370e378b42f04193605ca\",\n  \"quantity\": 12,\n  \"price\": 1\n}"
+		},
+		{
+			"id": "b9fe25ad-e9b2-aa30-f4ab-e18a6e50cff5",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/product/5ce362b078b42f03bdb705b6",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": [],
+			"dataMode": "raw",
+			"name": "PUT product",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558406107976,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n  \"name\": \"Car\",\n  \"recommendedPrice\": 1000000\n}"
+		},
+		{
+			"id": "c3e284aa-a642-648b-5339-cf2c64712d02",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/order-item",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": null,
+			"dataMode": "params",
+			"name": "GET order-item",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558409503973,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "d2f49724-a560-3169-25c5-354d086a2a33",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/order/5ce33d9c4263b702b5c3b8d5",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": null,
+			"dataMode": "params",
+			"name": "DELETE order",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558396543403,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "f3ef0f9f-f747-dd74-9d9d-c1507d5ba281",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/api/product/5ce362b078b42f03bdb705b6",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"data": null,
+			"dataMode": "params",
+			"name": "DELETE product",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1558406130240,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "f48c211b-c5c0-2928-29df-5d4304fb4244",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTg0NzAxOTYsInVzZXJfbmFtZSI6ImN1c3RvbWVyLXVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjdhYTY0MmRlLWIyZDMtNDJkYS1hODE5LTEyNzNmNWE3ZGUxOSIsImNsaWVudF9pZCI6ImN1c3RvbWVyLWNsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.j6hLSvBQya-pZpqfLc-aK_2E9ENDtYv_Kbh8055TqjA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTg0NzAxOTYsInVzZXJfbmFtZSI6ImN1c3RvbWVyLXVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6IjdhYTY0MmRlLWIyZDMtNDJkYS1hODE5LTEyNzNmNWE3ZGUxOSIsImNsaWVudF9pZCI6ImN1c3RvbWVyLWNsaWVudCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.j6hLSvBQya-pZpqfLc-aK_2E9ENDtYv_Kbh8055TqjA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/customer/5ce459f03295e1113148bec6",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1558469215802,
+			"name": "PUT customer",
+			"description": "",
+			"collectionId": "5e5dc56f-a1e6-fef2-8648-a788f1e720e5",
+			"responses": [],
+			"rawModeData": "{\n        \"name\": \"John\",\n        \"document\": \"62768794015\",\n        \"birthDate\": \"2015-01-01\"\n    }"
+		}
+	]
+}
