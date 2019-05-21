@@ -27,11 +27,6 @@
 		<junit.jupiter.version>5.0.0</junit.jupiter.version>
 		<junit.vintage.version>4.12.0</junit.vintage.version>
 		<junit.platform.version>1.0.0</junit.platform.version>
-
-		<sonar.exclusions>
-            com.customer.service.handler.RestErrorExceptionHandler.java,
-            com.customer.service.CustomerServiceApplication.java
-        </sonar.exclusions>
 	</properties>
 
 	<dependencies>
