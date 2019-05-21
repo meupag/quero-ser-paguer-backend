@@ -8,7 +8,6 @@ import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import static org.springframework.util.StringUtils.isEmpty;
 

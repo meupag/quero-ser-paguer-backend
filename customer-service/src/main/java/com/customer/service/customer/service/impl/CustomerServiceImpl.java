@@ -1,11 +1,11 @@
 package com.customer.service.customer.service.impl;
 
+import com.customer.service.customer.document.Customer;
 import com.customer.service.customer.exception.CustomerAlreadyExistException;
 import com.customer.service.customer.exception.CustomerNotFoundException;
 import com.customer.service.customer.exception.CustomerPreConditionException;
-import com.customer.service.customer.service.CustomerService;
-import com.customer.service.customer.document.Customer;
 import com.customer.service.customer.repository.CustomerRepository;
+import com.customer.service.customer.service.CustomerService;
 import com.customer.service.customer.validator.DocumentValidator;
 import org.springframework.stereotype.Service;
 

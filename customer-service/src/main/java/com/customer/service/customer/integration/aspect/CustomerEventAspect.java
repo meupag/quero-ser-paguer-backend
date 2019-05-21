@@ -2,8 +2,8 @@ package com.customer.service.customer.integration.aspect;
 
 import com.customer.service.config.RabbitMQConfig;
 import com.customer.service.customer.document.Customer;
-import com.customer.service.customer.integration.request.CustomerEventType;
 import com.customer.service.customer.integration.request.CustomerEventRequest;
+import com.customer.service.customer.integration.request.CustomerEventType;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.aspectj.lang.annotation.AfterReturning;
