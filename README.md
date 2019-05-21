@@ -51,4 +51,4 @@ docker-compose up
 ### Swaager
 - customer service https://github.com/igormgomes/quero-ser-paguer-backend/blob/master/customer-service/src/main/resources/customer-swagger.yaml
 - order service https://github.com/igormgomes/quero-ser-paguer-backend/blob/master/order-service/src/main/resources/order-swagger.yaml 
-- https://editor.swagger.io
+- Open in https://editor.swagger.io
