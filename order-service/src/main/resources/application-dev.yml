@@ -1,0 +1,21 @@
+spring:
+  data:
+    mongodb:
+      database: order
+      port: 27017
+      host: localhost
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+
+customer:
+  queue:
+    name: customer-event
+
+server:
+  port: 8081

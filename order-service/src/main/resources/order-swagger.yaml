@@ -1,0 +1,557 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Order Service
+  description: A sample API Order
+  contact:
+    name: Igor
+    email: igormgomes94@gmail.com
+host: localhost:8081
+basePath: /api
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /order:
+    post:
+      description: Creates a new Order register
+      tags:
+        - Order
+      operationId: saveOrder
+      parameters:
+        - name: order
+          in: body
+          description: Order to add
+          required: true
+          schema:
+            $ref: '#/definitions/OrderRequest'
+      responses:
+        "201":
+          description: Created register
+        "400":
+          description: Invalid parameter
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+    get:
+      description: Find orders
+      tags:
+        - Order
+      operationId: findAllOrders
+      responses:
+        "200":
+          description: Order response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OrderResponse'
+        "404":
+          description: Customers not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+  /order/{id}:
+    get:
+      description: Find order
+      tags:
+        - Order
+      operationId: findOrderById
+      parameters:
+        - name: id
+          in: path
+          description: ID of order to fetch
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Order response
+          schema:
+            $ref: '#/definitions/OrderResponse'
+        "404":
+          description: Orders not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+    put:
+      description: Update order
+      tags:
+        - Order
+      operationId: updateOrderById
+      parameters:
+        - name: id
+          in: path
+          description: ID of order to fetch
+          required: true
+          type: string
+        - name: order
+          in: body
+          description: Order to add
+          required: true
+          schema:
+            $ref: '#/definitions/OrderRequest'
+      responses:
+        "204":
+          description: Order response
+        "412":
+          description: Order not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+    delete:
+      description: Delete order
+      tags:
+        - Order
+      operationId: deleteOrderById
+      parameters:
+        - name: id
+          in: path
+          description: ID of order to fetch
+          required: true
+          type: string
+      responses:
+        "204":
+          description: Order response
+        "412":
+          description: Order not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+  /product:
+    post:
+      description: Creates a new Product register
+      tags:
+        - Product
+      operationId: saveProduct
+      parameters:
+        - name: product
+          in: body
+          description: Order to add
+          required: true
+          schema:
+            $ref: '#/definitions/ProductRequest'
+      responses:
+        "201":
+          description: Created register
+        "400":
+          description: Invalid parameter
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+    get:
+      description: Find products
+      tags:
+        - Product
+      operationId: findAllProducts
+      responses:
+        "200":
+          description: Product response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductResponse'
+        "404":
+          description: Products not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+  /product/{id}:
+    get:
+      description: Find order
+      tags:
+        - Product
+      operationId: findProductById
+      parameters:
+        - name: id
+          in: path
+          description: ID of product to fetch
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Order response
+          schema:
+            $ref: '#/definitions/ProductResponse'
+        "404":
+          description: Products not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+    put:
+      description: Update product
+      tags:
+        - Product
+      operationId: updateProductById
+      parameters:
+        - name: id
+          in: path
+          description: ID of product to fetch
+          required: true
+          type: string
+        - name: product
+          in: body
+          description: Product to add
+          required: true
+          schema:
+            $ref: '#/definitions/ProductRequest'
+      responses:
+        "204":
+          description: Product response
+        "412":
+          description: Product not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+    delete:
+      tags:
+        - Product
+      description: Delete product
+      operationId: deleteProductById
+      parameters:
+        - name: id
+          in: path
+          description: ID of product to fetch
+          required: true
+          type: string
+      responses:
+        "204":
+          description: Product response
+        "412":
+          description: Product not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+  /order-item:
+    post:
+      description: Creates a new Order item register
+      tags:
+        - Order Item
+      operationId: saveOrderItem
+      parameters:
+        - name: order
+          in: body
+          description: Order item to add
+          required: true
+          schema:
+            $ref: '#/definitions/OrderItemRequest'
+      responses:
+        "201":
+          description: Created register
+        "400":
+          description: Invalid parameter
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+    get:
+      description: Find order items
+      tags:
+        - Order Item
+      operationId: findAllOrderItems
+      responses:
+        "200":
+          description: Order item response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OrderItemResponse'
+        "404":
+          description: Order items not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+  /order-item/{id}:
+    get:
+      description: Find order item
+      tags:
+        - Order Item
+      operationId: findOrderItemById
+      parameters:
+        - name: id
+          in: path
+          description: ID of order item to fetch
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Order item response
+          schema:
+            $ref: '#/definitions/OrderItemResponse'
+        "404":
+          description: Order item not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+    put:
+      description: Update order item
+      tags:
+        - Order Item
+      operationId: updateOrderItemById
+      parameters:
+        - name: id
+          in: path
+          description: ID of order item to fetch
+          required: true
+          type: string
+        - name: order
+          in: body
+          description: Order to add
+          required: true
+          schema:
+            $ref: '#/definitions/OrderItemRequest'
+      responses:
+        "204":
+          description: Order item response
+        "412":
+          description: Order item not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+    delete:
+      description: Delete order item
+      tags:
+        - Order Item
+      operationId: deleteOrderItemById
+      parameters:
+        - name: id
+          in: path
+          description: ID of order item to fetch
+          required: true
+          type: string
+      responses:
+        "204":
+          description: Order item response
+        "412":
+          description: Order item not found
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorMessage'
+
+
+definitions:
+  OrderRequest:
+    required:
+      - customerId
+      - value
+    properties:
+      customerId:
+        type: string
+        example: 5ce16d6de0cb44053231aa1e
+        minLength: 1
+      value:
+        type: number
+        example: 1
+        minimum: 1
+  OrderResponse:
+    required:
+      - id
+      - customerId
+      - value
+    properties:
+      id:
+        type: string
+        example: 5ce16d6de0cb44053231aa1e
+        minLength: 1
+      customerId:
+        type: string
+        example: 5ce16d6de0cb44053231aa1e
+        minLength: 1
+      value:
+        type: number
+        example: 1
+        minimum: 1
+  ProductRequest:
+    required:
+      - name
+      - recommendedPrice
+    properties:
+      name:
+        type: string
+        minLength: 1
+      recommendedPrice:
+        type: number
+        example: 1
+        minimum: 1
+  ProductResponse:
+    required:
+      - id
+      - name
+      - recommendedPrice
+    properties:
+      id:
+        type: string
+        example: 5ce16d6de0cb44053231aa1e
+      name:
+        type: string
+        minLength: 1
+      recommendedPrice:
+        type: number
+        example: 1
+        minimum: 1
+  OrderItemRequest:
+    required:
+      - orderId
+      - productId
+      - quantity
+      - price
+    properties:
+      orderId:
+        type: string
+        example: 5ce16d6de0cb44053231aa1e
+        minLength: 1
+      productId:
+        type: string
+        example: 5ce16d6de0cb44053231aa1e
+        minLength: 1
+      quantity:
+        type: integer
+        example: 1
+        minimum: 1
+      price:
+        type: number
+        example: 1
+        minimum: 1
+  OrderItemResponse:
+    required:
+      - id
+      - orderId
+      - productId
+      - quantity
+      - price
+    properties:
+      id:
+        type: string
+        example: 5ce16d6de0cb44053231aa1e
+        minLength: 1
+      orderId:
+        type: string
+        example: 5ce16d6de0cb44053231aa1e
+        minLength: 1
+      productId:
+        type: string
+        example: 5ce16d6de0cb44053231aa1e
+        minLength: 1
+      quantity:
+        type: integer
+        example: 1
+        minimum: 1
+      price:
+        type: number
+        example: 1
+        minimum: 1
+
+
+  ErrorMessage:
+    required:
+      - errors
+    properties:
+      errors:
+        type: array
+        items:
+          type: string
