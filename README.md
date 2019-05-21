@@ -38,6 +38,8 @@ data is being saved using [Mongodb](https://www.mongodb.com),
 the tests were developed using version 5 of  [JUnit](http://junit.org/junit5/) 
 and documentation for use of api's was used [Swagger](https://swagger.io/).
 
+![](desenho.png)
+
 ### Running application with docker
 ```
 In the customer-service and order-service directory execute
@@ -47,7 +49,6 @@ mvn clean package docker:build
 In quero-ser-paguer-backend directory execute
 docker-compose up
 ```
-
 ### Swaager
 - customer service https://github.com/igormgomes/quero-ser-paguer-backend/blob/master/customer-service/src/main/resources/customer-swagger.yaml
 - order service https://github.com/igormgomes/quero-ser-paguer-backend/blob/master/order-service/src/main/resources/order-swagger.yaml 
