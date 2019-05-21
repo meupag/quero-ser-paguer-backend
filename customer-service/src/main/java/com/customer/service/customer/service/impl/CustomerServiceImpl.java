@@ -7,6 +7,8 @@ import com.customer.service.customer.exception.CustomerPreConditionException;
 import com.customer.service.customer.repository.CustomerRepository;
 import com.customer.service.customer.service.CustomerService;
 import com.customer.service.customer.validator.DocumentValidator;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +26,7 @@ class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @CacheEvict(value = "list-customer", allEntries = true)
     public Customer save(Customer customer) {
         this.documentValidator.validate(customer.getDocument());
 
@@ -35,21 +38,24 @@ class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Cacheable(value = "list-customer")
     public List<Customer> findAll() {
-        List<Customer> customersDocument = this.customerRepository.findAll();
-        if(customersDocument.isEmpty()){
+        List<Customer> customers = this.customerRepository.findAll();
+        if(customers.isEmpty()){
             throw new CustomerNotFoundException();
         }
-        return customersDocument;
+        return customers;
     }
 
     @Override
+    @Cacheable(value = "list-customer")
     public Customer findById(String id) {
         Optional<Customer> customerOptional = this.customerRepository.findById(id);
         return customerOptional.orElseThrow(CustomerNotFoundException::new);
     }
 
     @Override
+    @CacheEvict(value = "list-customer", allEntries = true)
     public Customer updateById(String id, Customer customer) {
         this.documentValidator.validate(customer.getDocument());
         Optional<Customer> customerOptional = this.customerRepository.findById(id);
@@ -67,6 +73,7 @@ class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @CacheEvict(value = "list-customer", allEntries = true)
     public void deleteById(String id) {
         Optional<Customer> customerOptional = this.customerRepository.findById(id);
         if(!customerOptional.isPresent()){
