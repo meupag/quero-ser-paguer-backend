@@ -1,13 +1,11 @@
 package com.order.service.orderitem.service.impl;
 
-import com.order.service.order.document.Order;
 import com.order.service.order.service.OrderService;
 import com.order.service.orderitem.document.OrderItem;
 import com.order.service.orderitem.exception.OrderItemNotFoundException;
 import com.order.service.orderitem.exception.OrderItemPreConditionException;
 import com.order.service.orderitem.repository.OrderItemRepository;
 import com.order.service.orderitem.service.OrderItemService;
-import com.order.service.product.document.Product;
 import com.order.service.product.service.ProductService;
 import org.springframework.stereotype.Service;
 

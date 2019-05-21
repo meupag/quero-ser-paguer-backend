@@ -1,8 +1,8 @@
 package com.order.service.customer.receiver;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.order.service.customer.event.CustomerEventChain;
 import com.order.service.customer.receiver.request.CustomerEventRequest;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;

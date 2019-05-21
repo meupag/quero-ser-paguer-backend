@@ -1,9 +1,9 @@
 package com.order.service.customer.service.impl;
 
-import com.order.service.customer.exception.CustomerPreConditionException;
-import com.order.service.customer.service.CustomerService;
 import com.order.service.customer.document.Customer;
+import com.order.service.customer.exception.CustomerPreConditionException;
 import com.order.service.customer.repository.CustomerRepository;
+import com.order.service.customer.service.CustomerService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

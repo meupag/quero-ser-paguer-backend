@@ -1,6 +1,5 @@
 package com.order.service.customer;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.order.service.customer.document.Customer;
 import com.order.service.customer.event.CustomerEventChain;

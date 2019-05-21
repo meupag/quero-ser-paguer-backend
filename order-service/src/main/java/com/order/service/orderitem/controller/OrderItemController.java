@@ -3,11 +3,13 @@ package com.order.service.orderitem.controller;
 import com.order.service.orderitem.document.OrderItem;
 import com.order.service.orderitem.service.OrderItemService;
 import com.swagger.customer.service.api.OrderItemApi;
-import com.swagger.customer.service.model.*;
+import com.swagger.customer.service.model.OrderItemRequest;
+import com.swagger.customer.service.model.OrderItemResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

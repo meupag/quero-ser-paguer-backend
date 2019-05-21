@@ -1,7 +1,7 @@
 package com.order.service.product.controller;
 
-import com.order.service.product.service.ProductService;
 import com.order.service.product.document.Product;
+import com.order.service.product.service.ProductService;
 import com.swagger.customer.service.api.ProductApi;
 import com.swagger.customer.service.model.ProductRequest;
 import com.swagger.customer.service.model.ProductResponse;

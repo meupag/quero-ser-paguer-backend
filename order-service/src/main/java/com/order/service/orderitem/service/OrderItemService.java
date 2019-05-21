@@ -1,7 +1,6 @@
 package com.order.service.orderitem.service;
 
 import com.order.service.orderitem.document.OrderItem;
-import com.order.service.product.document.Product;
 
 import java.util.List;
 

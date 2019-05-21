@@ -1,13 +1,9 @@
 package com.order.service.orderitem.controller;
 
-import com.order.service.orderitem.controller.OrderItemController;
 import com.order.service.orderitem.document.OrderItem;
 import com.order.service.orderitem.service.OrderItemService;
-import com.order.service.product.document.Product;
 import com.swagger.customer.service.model.OrderItemRequest;
 import com.swagger.customer.service.model.OrderItemResponse;
-import com.swagger.customer.service.model.ProductRequest;
-import com.swagger.customer.service.model.ProductResponse;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
