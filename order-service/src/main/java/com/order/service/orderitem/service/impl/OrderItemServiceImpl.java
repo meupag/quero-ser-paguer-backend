@@ -7,6 +7,8 @@ import com.order.service.orderitem.exception.OrderItemPreConditionException;
 import com.order.service.orderitem.repository.OrderItemRepository;
 import com.order.service.orderitem.service.OrderItemService;
 import com.order.service.product.service.ProductService;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +29,7 @@ class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
+    @CacheEvict(value = "list-order-item", allEntries = true)
     public OrderItem save(OrderItem orderItem) {
         this.productService.valid(orderItem.getProductId());
         this.orderService.valid(orderItem.getOrderId());
@@ -34,6 +37,7 @@ class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
+    @Cacheable(value = "list-order-item")
     public List<OrderItem> findAll() {
         List<OrderItem> orderItems = this.orderItemRepository.findAll();
         if(orderItems.isEmpty()){
@@ -43,12 +47,14 @@ class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
+    @Cacheable(value = "list-order-item")
     public OrderItem findById(String id) {
         Optional<OrderItem> orderItemOptional = this.orderItemRepository.findById(id);
         return orderItemOptional.orElseThrow(() -> new OrderItemNotFoundException(id));
     }
 
     @Override
+    @CacheEvict(value = "list-order-item", allEntries = true)
     public OrderItem updateById(String id, OrderItem orderItem) {
         Optional<OrderItem> orderItemOptional = this.orderItemRepository.findById(id);
         if(!orderItemOptional.isPresent()){
@@ -61,6 +67,7 @@ class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
+    @CacheEvict(value = "list-order-item", allEntries = true)
     public void deleteById(String id) {
         Optional<OrderItem> orderItemOptional = this.orderItemRepository.findById(id);
         if(!orderItemOptional.isPresent()){

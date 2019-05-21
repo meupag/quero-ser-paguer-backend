@@ -6,6 +6,8 @@ import com.order.service.order.exception.OrderNotFoundException;
 import com.order.service.order.exception.OrderPreConditionException;
 import com.order.service.order.repository.OrderRepository;
 import com.order.service.order.service.OrderService;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,12 +25,14 @@ class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @CacheEvict(value = "list-order", allEntries = true)
     public Order save(Order order) {
         this.customerService.valid(order.getCustomerId());
         return this.orderRepository.save(order);
     }
 
     @Override
+    @Cacheable(value = "list-order")
     public List<Order> findAll() {
         List<Order> orders = this.orderRepository.findAll();
         if(orders.isEmpty()){
@@ -38,12 +42,14 @@ class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Cacheable(value = "list-order")
     public Order findById(String id) {
         Optional<Order> orderOptional = this.orderRepository.findById(id);
         return orderOptional.orElseThrow(() -> new OrderNotFoundException(id));
     }
 
     @Override
+    @CacheEvict(value = "list-order", allEntries = true)
     public Order updateById(String id, Order order) {
         this.customerService.valid(order.getCustomerId());
 
@@ -56,6 +62,7 @@ class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @CacheEvict(value = "list-order", allEntries = true)
     public void deleteById(String id) {
         Optional<Order> orderOptional = this.orderRepository.findById(id);
         this.orderRepository.delete(orderOptional.orElseThrow(() -> new OrderPreConditionException(id)));
