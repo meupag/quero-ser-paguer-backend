@@ -1,0 +1,52 @@
+Configuration:
+  status: INFO
+  name: Default
+
+  Properties:
+    Property:
+      - name: log-path
+        value: ${env:LOG_FILE_PATH:-logs}
+      - name: app-name
+        value: pag-order
+
+  Appenders:
+    Console:
+      name: Console_Appender
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} [${app-name},%X{traceId},%X{spanId}] %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx"
+    RollingFile:
+      name: RollingFile_Appender
+      ThresholdFilter:
+        level: error
+        onMatch: deny
+        onMismatch: accept
+      fileName: ${log-path}/application.log
+      filePattern: ${log-path}/archive/application-%d{yyyy-MM-dd-HH-mm-ss}.log.gz
+      PatternLayout:
+        Pattern: "%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} [${app-name},%X{traceId},%X{spanId}] %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx"
+      Policies:
+        TimeBasedTriggeringPolicy:
+          interval: 86400
+          modulate: true
+        SizeBasedTriggeringPolicy:
+          size: 100MB
+      DefaultRollOverStrategy:
+        Delete:
+          testMode: false
+          IfAccumulatedFileCount:
+            exceeds: 10
+          basePath: ${log-path}/archive/
+          maxDepth: 1
+        max: 10
+  loggers:
+    Root:
+      level: info
+      AppenderRef:
+        ref: Console_Appender
+    logger:
+      - name: br.com.pag.service.order
+        level: info
+        additivity: false
+        AppenderRef:
+          ref: RollingFile_Appender

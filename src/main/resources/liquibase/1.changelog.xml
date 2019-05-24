@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="201905172100" author="marcos">
+        <createTable tableName="cliente">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cpf" type="char(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_nascimento" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="cliente"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="201905172105" author="marcos">
+        <createTable tableName="pedido">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="id_cliente" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="pedido"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="201905172110" author="marcos">
+        <createTable tableName="produto">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="preco_sugerido" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="produto"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="201905172115" author="marcos">
+        <createTable tableName="item_pedido">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="id_pedido" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_produto" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantidade" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="preco" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="item_pedido"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="201905172119" author="marcos">
+        <addAutoIncrement
+                columnDataType="int"
+                columnName="id"
+                incrementBy="1"
+                startWith="1"
+                tableName="cliente"/>
+    </changeSet>
+    <changeSet id="201905172120" author="marcos">
+        <addAutoIncrement
+                columnDataType="int"
+                columnName="id"
+                incrementBy="1"
+                startWith="1"
+                tableName="produto"/>
+    </changeSet>
+    <changeSet id="201905192140" author="marcos">
+        <addAutoIncrement
+                columnDataType="int"
+                columnName="id"
+                incrementBy="1"
+                startWith="1"
+                tableName="pedido"/>
+    </changeSet>
+    <changeSet id="201905192141" author="marcos">
+        <addAutoIncrement
+                columnDataType="int"
+                columnName="id"
+                incrementBy="1"
+                startWith="1"
+                tableName="item_pedido"/>
+    </changeSet>
+    <changeSet id="201905172121" author="marcos">
+        <addForeignKeyConstraint
+                baseColumnNames="id_cliente" baseTableName="pedido" constraintName="FK_PEDIDO_CLIENTE"
+                referencedColumnNames="id" referencedTableName="cliente"/>
+    </changeSet>
+    <changeSet id="201905172142" author="marcos">
+        <addForeignKeyConstraint
+                baseColumnNames="id_pedido" baseTableName="item_pedido" constraintName="FK_ITEMPEDIDO_PEDIDO"
+                referencedColumnNames="id" referencedTableName="pedido"/>
+        <addForeignKeyConstraint
+                baseColumnNames="id_produto" baseTableName="item_pedido" constraintName="FK_ITEMPEDIDO_PRODUTO"
+                referencedColumnNames="id" referencedTableName="produto"/>
+    </changeSet>
+</databaseChangeLog>
