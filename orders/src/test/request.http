@@ -1,0 +1,75 @@
+//CLIENTES
+GET http://localhost:8080/orders/clientes/a
+content-type: application/json
+Authorization: Basic test pass
+
+###
+
+POST http://localhost:8080/orders/clientes HTTP/1.1
+content-type: application/json
+Authorization: Basic test pass
+
+{
+    "nome":"Teste",
+    "cpf":"42345678989",
+    "dataNascimento":"01/01/2001"
+}
+
+###
+
+PUT http://localhost:8080/orders/clientes/14 HTTP/1.1
+content-type: application/json
+Authorization: Basic test pass
+
+{
+    "nome":"Cliente 99",
+    "cpf":"89991678912",
+    "dataNascimento":"2019-02-04"
+}
+
+###
+
+DELETE http://localhost:8080/orders/clientes/55
+content-type: application/json
+Authorization: Basic test pass
+###
+
+//PEDIDOS
+GET http://localhost:8080/orders/pedidos/14
+content-type: application/json
+
+###
+
+POST http://localhost:8080/orders/pedidos HTTP/1.1
+content-type: application/json
+
+{
+    "idCliente": "14",
+    "valor": "1124.55"
+}
+
+###
+
+PUT http://localhost:8080/orders/pedidos/14 HTTP/1.1
+content-type: application/json
+Authorization: Basic test pass
+
+{
+    "idCliente": "14",
+    "valor": "14.55"
+}
+
+###
+
+DELETE http://localhost:8080/orders/pedidos/9
+content-type: application/json
+
+###
+POST http://localhost:8080/orders/produtos HTTP/1.1
+content-type: application/json
+Authorization: Basic test pass
+
+{
+    "nome": "Produto 20",
+    "precoSugerido": "62.95"
+}
