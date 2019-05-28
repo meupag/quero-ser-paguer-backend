@@ -6,498 +6,513 @@
 	},
 	"item": [
 		{
-			"name": "GET Clients",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/pag-order/clients",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"clients"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Clients",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"nome\": \"Marcos R Oliveira\",\n\t\"cpf\": \"68285914020\",\n\t\"dataNascimento\": \"1971-11-16\"\n}"
+			"name": "Clients",
+			"item": [
+				{
+					"name": "GET Clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/pag-order/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"clients"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"clients"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
+				{
+					"name": "POST Clients",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Marcos R Oliveira\",\n\t\"cpf\": \"68285914020\",\n\t\"dataNascimento\": \"1971-11-16\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Clients/1",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9090/pag-order/clients/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"clients",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Clients?lang=pt_BR",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"clients"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PUT Clients?lang=pt-BR",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\": 23,\n\t\"nome\": \"MRO\",\n\t\"cpf\": \"68285914020\",\n\t\"dataNascimento\": \"1980-01-01\"\n}"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"clients"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
+				{
+					"name": "GET Clients/1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9090/pag-order/clients/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"clients",
+								"1"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Products?lang=pt-BR",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"nome\": \"Product 2\",\n\t\"precoSugerido\": 52.47\n}"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:9090/pag-order/products?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"products"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
+				{
+					"name": "GET Clients?lang=pt_BR",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PUT Products?lang=pt-BR",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\": 8,\n\t\"nome\": \"Novo produto 8\",\n\t\"precoSugerido\": 122.47\n}"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:9090/pag-order/products?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"products"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
+				{
+					"name": "PUT Clients?lang=pt-BR",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 23,\n\t\"nome\": \"MRO\",\n\t\"cpf\": \"68285914020\",\n\t\"dataNascimento\": \"1980-01-01\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
 						}
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "GET Products?lang=pt-BR",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9090/pag-order/products?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"products"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
+			"name": "Products",
+			"item": [
+				{
+					"name": "POST Products?lang=pt-BR",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Product 2\",\n\t\"precoSugerido\": 52.47\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/pag-order/products?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"products"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Products/100",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9090/pag-order/products/100",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"products",
-						"100"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Orders?lang=pt-BR",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"idCliente\": 1,\n\t\"itens\": [\n\t\t{\n\t\t\t\"idProduto\": 1,\n\t\t\t\"quantidade\": 2,\n\t\t\t\"preco\": 100.0\n\t\t},\n\t\t{\n\t\t\t\"idProduto\": 2,\n\t\t\t\"quantidade\": 5,\n\t\t\t\"preco\": 10.0\n\t\t}\n\t]\n}"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:9090/pag-order/orders?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"orders"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
+				{
+					"name": "PUT Products?lang=pt-BR",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 8,\n\t\"nome\": \"Novo produto 8\",\n\t\"precoSugerido\": 122.47\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/pag-order/products?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"products"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Orders?lang=pt-BR",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9090/pag-order/orders?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"orders"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Orders/2?lang=pt-BR",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9090/pag-order/orders/19?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"orders",
-						"19"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PUT Orders?lang=pt-BR",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\": 19,\n\t\"itens\": [\n\t\t{\n\t\t\t\"id\": 13,\n\t\t\t\"quantidade\": 10,\n\t\t\t\"preco\": 1000.0\n\t\t},\n\t\t{\n\t\t\t\"id\": 14,\n\t\t\t\"quantidade\": 3,\n\t\t\t\"preco\": 20.0\n\t\t}\n\t]\n}"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:9090/pag-order/orders?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"orders"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
+				{
+					"name": "GET Products?lang=pt-BR",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/pag-order/products?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"products"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "GET Products/100",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9090/pag-order/products/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"products",
+								"100"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "DELETE Orders/4?lang=pt-BR",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9090/pag-order/orders/19?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"orders",
-						"19"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
+			"name": "Orders",
+			"item": [
+				{
+					"name": "POST Orders?lang=pt-BR",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idCliente\": 1,\n\t\"itens\": [\n\t\t{\n\t\t\t\"idProduto\": 1,\n\t\t\t\"quantidade\": 2,\n\t\t\t\"preco\": 100.0\n\t\t},\n\t\t{\n\t\t\t\"idProduto\": 2,\n\t\t\t\"quantidade\": 5,\n\t\t\t\"preco\": 10.0\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/pag-order/orders?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE Orders/17/OrderItems/1?lang=pt-BR",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9090/pag-order/orders/2/orderItems/1?lang=pt_BR",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"pag-order",
-						"orders",
-						"2",
-						"orderItems",
-						"1"
-					],
-					"query": [
-						{
-							"key": "lang",
-							"value": "pt_BR"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Orders?lang=pt-BR",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9090/pag-order/orders?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "GET Orders/2?lang=pt-BR",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9090/pag-order/orders/19?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"orders",
+								"19"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Orders?lang=pt-BR",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 19,\n\t\"itens\": [\n\t\t{\n\t\t\t\"id\": 13,\n\t\t\t\"quantidade\": 10,\n\t\t\t\"preco\": 1000.0\n\t\t},\n\t\t{\n\t\t\t\"id\": 14,\n\t\t\t\"quantidade\": 3,\n\t\t\t\"preco\": 20.0\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9090/pag-order/orders?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Orders/4?lang=pt-BR",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9090/pag-order/orders/19?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"orders",
+								"19"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Orders/17/OrderItems/1?lang=pt-BR",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9090/pag-order/orders/2/orderItems/1?lang=pt_BR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"orders",
+								"2",
+								"orderItems",
+								"1"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "pt_BR"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
