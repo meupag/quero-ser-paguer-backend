@@ -1,6 +1,7 @@
 package br.com.pag.service.order.controller;
 
 import br.com.pag.service.order.controller.model.ProductCreateRequest;
+import br.com.pag.service.order.controller.model.ProductListResponse;
 import br.com.pag.service.order.controller.model.ProductResponse;
 import br.com.pag.service.order.controller.model.ProductUpdateRequest;
 import br.com.pag.service.order.exception.handler.ErrorResponse;
@@ -9,11 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.validation.Valid;
-import java.util.List;
 
 @Api(value="pagorders", description="Operations for Pag! Orders Products")
 public interface IProductController {
@@ -48,7 +44,7 @@ public interface IProductController {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 400, message = "Bad request", response = ErrorResponse.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorResponse.class) })
-    ResponseEntity<List<ProductResponse>> findAll();
+    ResponseEntity<ProductListResponse> findAll();
 
     @ApiOperation(
         value = "Finds a Pag! Product by id",
