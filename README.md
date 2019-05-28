@@ -17,7 +17,7 @@ This API is responsible for maintaining clients's orders of Pag! products.
 
 API's base URL http://localhost:9090/pag-order
 
-## Starting the service
+## Service setup
 
 * Cd into project's folder
 * Start the MySQL service
@@ -37,6 +37,8 @@ where **pagorder_db_1** is the docker container name
 * Create the **order** database
 
 ```mysql> CREATE DATABASE `order`;```
+
+* Exit the MySQL session
 
 * Apply the database migration
 

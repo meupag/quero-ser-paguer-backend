@@ -1,6 +1,7 @@
 package br.com.pag.service.order.controller;
 
 import br.com.pag.service.order.controller.model.ClientCreateRequest;
+import br.com.pag.service.order.controller.model.ClientListResponse;
 import br.com.pag.service.order.controller.model.ClientResponse;
 import br.com.pag.service.order.controller.model.ClientUpdateRequest;
 import br.com.pag.service.order.exception.handler.ErrorResponse;
@@ -9,8 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.ResponseEntity;
-
-import java.util.List;
 
 @Api(value="pagorders", description="Operations for Pag! Orders Clients")
 public interface IClientController {
@@ -45,7 +44,7 @@ public interface IClientController {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 400, message = "Bad request", response = ErrorResponse.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorResponse.class) })
-    ResponseEntity<List<ClientResponse>> findAll();
+    ResponseEntity<ClientListResponse> findAll();
 
     @ApiOperation(
         value = "Finds a Pag! Client by id",
