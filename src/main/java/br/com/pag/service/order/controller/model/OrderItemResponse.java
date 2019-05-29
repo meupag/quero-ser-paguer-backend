@@ -1,14 +1,17 @@
 package br.com.pag.service.order.controller.model;
 
 import br.com.pag.service.order.model.ItemPedido;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.springframework.hateoas.ResourceSupport;
 
 import java.math.BigDecimal;
 
 @Data
-public class OrderItemResponse {
+public class OrderItemResponse extends ResourceSupport {
 
-    private Long id;
+    @JsonProperty("id")
+    private Long orderItemId;
 
     private Long idPedido;
 
@@ -20,7 +23,7 @@ public class OrderItemResponse {
 
     public static OrderItemResponse fromModel(ItemPedido orderItem) {
         return new OrderItemResponse()
-            .setId(orderItem.getId())
+            .setOrderItemId(orderItem.getId())
             .setIdPedido(orderItem.getIdPedido())
             .setIdProduto(orderItem.getIdProduto())
             .setQuantidade(orderItem.getQuantidade())

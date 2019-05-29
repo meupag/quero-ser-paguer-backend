@@ -14,6 +14,7 @@ This API is responsible for maintaining clients's orders of Pag! products.
 * Log instrumented to show distributed tracing
 * Log rotation configured to rotate daily
 * Swagger2 API documentation
+* HATEOAS implementation
 
 API's base URL http://localhost:9090/pag-order
 

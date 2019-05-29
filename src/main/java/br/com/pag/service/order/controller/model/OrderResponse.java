@@ -1,16 +1,19 @@
 package br.com.pag.service.order.controller.model;
 
 import br.com.pag.service.order.model.Pedido;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.springframework.hateoas.ResourceSupport;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
-public class OrderResponse {
+public class OrderResponse extends ResourceSupport {
 
-    private Long id;
+    @JsonProperty("id")
+    private Long idOrder;
 
     private Long idCliente;
 
@@ -20,7 +23,7 @@ public class OrderResponse {
 
     public static OrderResponse fromModel(final Pedido order) {
         return new OrderResponse()
-            .setId(order.getId())
+            .setIdOrder(order.getId())
             .setIdCliente(order.getIdCliente())
             .setValor(order.getValor())
             .setItens(order.getItensPedido().stream()
