@@ -33,7 +33,7 @@ where **pagorder_db_1** is the docker container name
 
 * Start the MySQL client
 
-```root@6032f081a4cb:/# mysql -uroot -ppassword```
+```# mysql -uroot -ppassword```
 
 * Create the **order** database
 
