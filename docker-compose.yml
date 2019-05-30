@@ -12,7 +12,6 @@ services:
       # Password for root access
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
-      # <Port exposed> : < MySQL Port running inside container>
       - '33306:3306'
     expose:
       # Opens port 3306 on the container
@@ -20,7 +19,22 @@ services:
       # Where our data will be persisted
     volumes:
       - mysql_data:/var/lib/mysql
-# Names our volume
+    networks:
+      - net-backend
+  order-service:
+    image: mroger/pag-order:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - '9090:9090'
+    expose:
+      - '9090'
+    depends_on:
+      - db
+    networks:
+      - net-backend
 volumes:
     mysql_data:
         driver: local
+
+networks:
+  net-backend:

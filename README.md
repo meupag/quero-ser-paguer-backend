@@ -6,7 +6,8 @@ This API is responsible for maintaining clients's orders of Pag! products.
 
 * Configured actuators
 * MySQL driver configuration
-* Docker compose script for MySQL service image
+* Dockerfile
+* Docker compose script for MySQL and Application service images
 * Liquibase for database migration
 * Use of clean code and good OO principles
 * i18n message bundles for API response messages
@@ -18,12 +19,16 @@ This API is responsible for maintaining clients's orders of Pag! products.
 
 API's base URL http://localhost:9090/pag-order
 
-## Service setup
+## Building docker image
+
+`$ docker build -t mroger/pag-order:0.0.1-SNAPSHOT .`
+
+## Pag! Order Database Setup
 
 * Cd into project's folder
-* Start the MySQL service
+* Start the MySQL db service
 
-`$ docker-compose up`
+`$ docker-compose up db`
 
 * Connect to the MySQL service and create the **order** database
 
@@ -45,9 +50,13 @@ where **pagorder_db_1** is the docker container name
 
 `$ mvn liquibase:update`
 
-* Start the application
+* Stop the MySQL db service
 
-`$ mvn clean spring-boot:run`
+`$ docker-compose down`
+
+* Start the services
+
+`$ docker-compose up`
 
 * Verify that the application is UP accessing this URL in the browser
 

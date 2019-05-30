@@ -1,19 +1,15 @@
 package br.com.pag.service.order.controller;
 
-import br.com.pag.service.order.controller.model.ClientResponse;
 import br.com.pag.service.order.controller.model.OrderCreateRequest;
 import br.com.pag.service.order.controller.model.OrderItemResponse;
 import br.com.pag.service.order.controller.model.OrderResponse;
 import br.com.pag.service.order.controller.model.OrderUpdateRequest;
-import br.com.pag.service.order.controller.model.ProductResponse;
 import br.com.pag.service.order.exception.OrderNotFoundByIdException;
 import br.com.pag.service.order.exception.OrdersNotFoundException;
-import br.com.pag.service.order.model.Cliente;
 import br.com.pag.service.order.model.ItemPedido;
+import br.com.pag.service.order.model.Pair;
 import br.com.pag.service.order.model.Pedido;
-import br.com.pag.service.order.model.Produto;
 import br.com.pag.service.order.service.OrderService;
-import javafx.util.Pair;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
