@@ -24,6 +24,8 @@ services:
   order-service:
     image: mroger/pag-order:0.0.1-SNAPSHOT
     restart: always
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mysql://db:33306/order?useSSL=false&serverTimezone=America/Sao_Paulo'
     ports:
       - '9090:9090'
     expose:
