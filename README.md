@@ -74,6 +74,10 @@ with the result: `{"status":"UP"}`
 
 * Postman collection on folder `postman`
 
+* Docker image on [Docker Hub](https://cloud.docker.com/repository/docker/mroger/pag-order/general):
+
+![](docker_image.png)
+
 ## Logs
 
 * The application logs are generated in folder `logs` and the archived logs are in folder `logs/archive`
