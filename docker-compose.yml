@@ -14,7 +14,7 @@ services:
       - mysql_data:/var/lib/mysql
   order-service:
     container_name: pag-order-service
-    image: mroger/pag-order:0.0.1-SNAPSHOT
+    image: mroger/pag-order:latest
     restart: always
     environment:
       SPRING_DATASOURCE_URL: 'jdbc:mysql://mysql:3306/order?useSSL=false&serverTimezone=America/Sao_Paulo'

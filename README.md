@@ -21,14 +21,16 @@ API's base URL http://localhost:9090/pag-order
 
 ## Building docker image
 
-`$ docker build -t mroger/pag-order:0.0.1-SNAPSHOT .`
+* Cd into project's folder and execute
+
+`$ docker build -t mroger/pag-order:latest .`
 
 ## Pag! Order Database Setup
 
 * Cd into project's folder
 * Start the MySQL db service
 
-`$ docker-compose up db`
+`$ docker-compose up mysql`
 
 * Connect to the MySQL service and create the **order** database
 
