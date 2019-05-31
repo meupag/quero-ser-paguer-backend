@@ -32,9 +32,9 @@ API's base URL http://localhost:9090/pag-order
 
 * Connect to the MySQL service and create the **order** database
 
-```$ docker exec -it pagorder_db_1 bash```
+```$ docker exec -it  pag-db bash```
 
-where **pagorder_db_1** is the docker container name
+where **pag-db** is the docker container name
 
 * Start the MySQL client
 
@@ -44,7 +44,7 @@ where **pagorder_db_1** is the docker container name
 
 ```mysql> CREATE DATABASE `order`;```
 
-* Exit the MySQL session
+* Exit the MySQL and shell sessions
 
 * Apply the database migration
 
