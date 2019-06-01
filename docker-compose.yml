@@ -12,6 +12,7 @@ services:
       - '33306:3306'
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./mysql/scripts/create_database.sql:/docker-entrypoint-initdb.d/init.sql:ro
   order-service:
     container_name: pag-order-service
     image: mroger/pag-order:latest
@@ -21,7 +22,8 @@ services:
     ports:
       - '9090:9090'
     depends_on:
-      - mysql
+      - 'mysql'
+    command: ["/wait-for-it.sh", "-t", "45", "mysql:3306", "--", "java","-cp","app:app/lib/*","br.com.pag.service.order.OrderApplication"]
 volumes:
     mysql_data:
         driver: local

@@ -25,40 +25,16 @@ API's base URL http://localhost:9090/pag-order
 
 `$ docker build -t mroger/pag-order:latest .`
 
-## Pag! Order Database Setup
+## Starting Pag! Order Service and Database
 
 * Cd into project's folder
-* Start the MySQL db service
+* Start the services
 
-`$ docker-compose up mysql`
-
-* Connect to the MySQL service and create the **order** database
-
-```$ docker exec -it  pag-db bash```
-
-where **pag-db** is the docker container name
-
-* Start the MySQL client
-
-```# mysql -uroot -ppassword```
-
-* Create the **order** database
-
-```mysql> CREATE DATABASE `order`;```
-
-* Exit the MySQL and shell sessions
+`$ docker-compose up -d`
 
 * Apply the database migration
 
 `$ mvn liquibase:update`
-
-* Stop the MySQL db service
-
-`$ docker-compose down`
-
-* Start the services
-
-`$ docker-compose up`
 
 * Verify that the application is UP accessing this URL in the browser
 
