@@ -6,7 +6,7 @@ This API is responsible for maintaining clients's orders of Pag! products.
 
 * Configured actuators
 * MySQL driver configuration
-* Dockerfile
+* Multi-stage Dockerfile
 * Docker compose script for MySQL and Application service images
 * Liquibase for database migration
 * Use of clean code and good OO principles
