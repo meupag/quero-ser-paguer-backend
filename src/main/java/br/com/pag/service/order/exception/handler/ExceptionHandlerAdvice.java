@@ -1,9 +1,11 @@
 package br.com.pag.service.order.exception.handler;
 
+import br.com.pag.service.order.exception.ClientNotFoundByIdConstraintException;
 import br.com.pag.service.order.exception.ClientNotFoundByIdException;
 import br.com.pag.service.order.exception.ClientsNotFoundException;
 import br.com.pag.service.order.exception.OrderItemNotFoundByIdException;
 import br.com.pag.service.order.exception.OrderNotFoundByIdException;
+import br.com.pag.service.order.exception.ProductNotFoundByIdConstraintException;
 import br.com.pag.service.order.exception.ProductNotFoundByIdException;
 import br.com.pag.service.order.exception.ProductsNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +81,11 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
         return createErrorResponseEntity(HttpStatus.OK, ZERO_RESULTS, null, ex.getMessage(), locale, ex.getId());
     }
 
+    @ExceptionHandler(ClientNotFoundByIdConstraintException.class)
+    public final ResponseEntity<Object> clientNotFoundByIdConstraint(final ClientNotFoundByIdConstraintException ex, Locale locale) {
+        return createErrorResponseEntity(HttpStatus.CONFLICT, ZERO_RESULTS, null, ex.getMessage(), locale, ex.getId());
+    }
+
     @ExceptionHandler(ClientsNotFoundException.class)
     public final ResponseEntity<Object> clientNotFound(final ClientsNotFoundException ex, Locale locale) {
         return createErrorResponseEntity(HttpStatus.OK, ZERO_RESULTS, null, ex.getMessage(), locale);
@@ -87,6 +94,11 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ProductNotFoundByIdException.class)
     public final ResponseEntity<Object> productNotFoundById(final ProductNotFoundByIdException ex, Locale locale) {
         return createErrorResponseEntity(HttpStatus.OK, ZERO_RESULTS, null, ex.getMessage(), locale, ex.getId());
+    }
+
+    @ExceptionHandler(ProductNotFoundByIdConstraintException.class)
+    public final ResponseEntity<Object> productNotFoundByIdConstraint(final ProductNotFoundByIdConstraintException ex, Locale locale) {
+        return createErrorResponseEntity(HttpStatus.CONFLICT, ZERO_RESULTS, null, ex.getMessage(), locale, ex.getId());
     }
 
     @ExceptionHandler(ProductsNotFoundException.class)
