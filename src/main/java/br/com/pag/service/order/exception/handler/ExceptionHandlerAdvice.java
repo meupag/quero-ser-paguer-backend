@@ -113,7 +113,7 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(OrderItemNotFoundByIdException.class)
     public final ResponseEntity<Object> orderItemNotFound(final OrderItemNotFoundByIdException ex, Locale locale) {
-        return createErrorResponseEntity(HttpStatus.OK, ZERO_RESULTS, null, ex.getMessage(), locale, ex.getId());
+        return createErrorResponseEntity(HttpStatus.OK, ZERO_RESULTS, null, ex.getMessage(), locale, ex.getId(), ex.getOrderId());
     }
 
     private ErrorResponse createErrorResponse(String status, String message) {
