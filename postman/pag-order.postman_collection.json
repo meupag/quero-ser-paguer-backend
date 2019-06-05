@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d416fa71-f4e7-42cf-88b4-51f16eb6db8c",
+		"_postman_id": "9596cfe5-1709-425e-bf0b-a38dbacf20fb",
 		"name": "pag-order",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -13,6 +13,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/clients",
 							"protocol": "http",
@@ -42,7 +46,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nome\": \"Marcos R Oliveira\",\n\t\"cpf\": \"68285914020\",\n\t\"dataNascimento\": \"1971-11-16\"\n}"
+							"raw": "{\n\t\"nome\": \"Marcos R Oliveira\",\n\t\"cpf\": \"68285914020\",\n\t\"dataNascimento\": \"1985-01-01\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
@@ -77,6 +81,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/clients/1",
 							"protocol": "http",
@@ -105,6 +113,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
 							"protocol": "http",
@@ -140,7 +152,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"id\": 23,\n\t\"nome\": \"MRO\",\n\t\"cpf\": \"68285914020\",\n\t\"dataNascimento\": \"1980-01-01\"\n}"
+							"raw": "{\n\t\"id\": 23,\n\t\"nome\": \"MRO\",\n\t\"cpf\": \"68285914020\",\n\t\"dataNascimento\": \"1985-01-01\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
@@ -247,6 +259,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/products?lang=pt_BR",
 							"protocol": "http",
@@ -280,6 +296,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/products/100",
 							"protocol": "http",
@@ -350,6 +370,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/orders?lang=pt_BR",
 							"protocol": "http",
@@ -383,6 +407,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/orders/19?lang=pt_BR",
 							"protocol": "http",
@@ -454,6 +482,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/orders/19?lang=pt_BR",
 							"protocol": "http",
@@ -488,6 +520,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/orders/2/orderItems/1?lang=pt_BR",
 							"protocol": "http",
