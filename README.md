@@ -53,7 +53,7 @@ with the result: `{"status":"UP"}`
 
 `# tail -f logs/application.log`
 
-## API documetation
+## API documentation
 
 [Pag! Order API](http://localhost:9090/pag-order/swagger-ui.html)
 
