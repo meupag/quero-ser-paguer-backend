@@ -17,6 +17,11 @@ This API is responsible for maintaining clients's orders of Pag! products.
 * Swagger2 API documentation
 * HATEOAS implementation
 
+## TODO
+
+* Paginação
+* Ordenação
+
 API's base URL http://localhost:9090/pag-order
 
 ## Building docker image
@@ -41,6 +46,12 @@ API's base URL http://localhost:9090/pag-order
 [API Health actuator](http://localhost:9090/pag-order/actuator/health)
 
 with the result: `{"status":"UP"}`
+
+* To see the application log
+
+`$ docker exec -it pag-order-service bash`
+
+`# tail -f logs/application.log`
 
 ## API documetation
 

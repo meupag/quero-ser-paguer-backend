@@ -8,6 +8,8 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cloud.sleuth.annotation.NewSpan;
+import org.springframework.cloud.sleuth.annotation.SpanTag;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -23,6 +25,7 @@ public class ProductService {
 
     @CacheEvict(value ="products", allEntries = true)
     @Transactional
+    @NewSpan
     public Produto create(Produto product) {
         return repository.save(product);
     }
@@ -30,6 +33,7 @@ public class ProductService {
     @Transactional
     @CachePut(value="product", key = "#product.id")
     @CacheEvict(value ="products", allEntries = true)
+    @NewSpan
     public Produto update(Produto product) {
         return repository.findById(product.getId())
             .map(c -> {
@@ -41,12 +45,14 @@ public class ProductService {
     }
 
     @Cacheable("products")
+    @NewSpan
     public List<Produto> findAll() {
         return repository.findAll();
     }
 
     @Cacheable(value ="product", key = "#productId", unless="#result == null")
-    public Optional<Produto> findById(Long productId) {
+    @NewSpan
+    public Optional<Produto> findById(@SpanTag("productId") final Long productId) {
         return repository.findById(productId);
     }
 }

@@ -8,6 +8,8 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cloud.sleuth.annotation.NewSpan;
+import org.springframework.cloud.sleuth.annotation.SpanTag;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -23,16 +25,19 @@ public class ClientService {
 
     @CacheEvict(value ="clients", allEntries = true)
     @Transactional
+    @NewSpan
     public Cliente create(final Cliente client) {
         return repository.save(client);
     }
 
     @Cacheable(value ="client", key = "#clientId", unless="#result == null")
-    public Optional<Cliente> findById(final Long clientId) {
+    @NewSpan
+    public Optional<Cliente> findById(@SpanTag("clientId") final Long clientId) {
         return repository.findById(clientId);
     }
 
     @Cacheable("clients")
+    @NewSpan
     public List<Cliente> findAll() {
         return repository.findAll();
     }
@@ -40,6 +45,7 @@ public class ClientService {
     @Transactional
     @CachePut(value="client", key = "#client.id")
     @CacheEvict(value ="clients", allEntries = true)
+    @NewSpan
     public Cliente update(final Cliente client) {
         return repository.findById(client.getId())
             .map(c -> {

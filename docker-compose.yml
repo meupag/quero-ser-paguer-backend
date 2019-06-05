@@ -3,7 +3,7 @@ services:
   mysql:
     container_name: pag-db
     image: mysql:5.7
-    restart: always
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: 'order'
       MYSQL_ROOT_PASSWORD: 'password'
@@ -16,14 +16,25 @@ services:
   order-service:
     container_name: pag-order-service
     image: mroger/pag-order:latest
-    restart: always
+    restart: unless-stopped
     environment:
-      SPRING_DATASOURCE_URL: 'jdbc:mysql://mysql:3306/order?useSSL=false&serverTimezone=America/Sao_Paulo'
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/order?useSSL=false&serverTimezone=America/Sao_Paulo
+      - SPRING_ZIPKIN_BASE_URL=http://zipkin:9411/
+      - SPRING_SLEUTH_SAMPLER_PROBABILITY=1
     ports:
       - '9090:9090'
     depends_on:
       - 'mysql'
     command: ["/wait-for-it.sh", "-t", "45", "mysql:3306", "--", "java","-cp","app:app/lib/*","br.com.pag.service.order.OrderApplication"]
+  zipkin:
+      image: openzipkin/zipkin
+      container_name: zipkin
+      environment:
+        - STORAGE_TYPE=mem
+        - JAVA_OPTS=-Dlogging.level.zipkin=DEBUG
+      ports:
+        - 9411:9411
+      restart: unless-stopped
 volumes:
     mysql_data:
         driver: local
