@@ -1,14 +1,11 @@
 package br.com.pag.service.order.service;
 
 import br.com.pag.service.order.exception.ClientNotFoundByIdConstraintException;
-import br.com.pag.service.order.exception.ClientNotFoundByIdException;
 import br.com.pag.service.order.exception.OrderItemNotFoundByIdException;
 import br.com.pag.service.order.exception.OrderNotFoundByIdException;
 import br.com.pag.service.order.exception.ProductNotFoundByIdConstraintException;
-import br.com.pag.service.order.exception.ProductNotFoundByIdException;
 import br.com.pag.service.order.model.ItemPedido;
 import br.com.pag.service.order.model.Pedido;
-import br.com.pag.service.order.model.Produto;
 import br.com.pag.service.order.repository.ClientRepository;
 import br.com.pag.service.order.repository.OrderItemRepository;
 import br.com.pag.service.order.repository.OrderRepository;

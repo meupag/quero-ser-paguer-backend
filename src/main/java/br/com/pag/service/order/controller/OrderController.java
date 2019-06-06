@@ -14,6 +14,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,7 @@ public class OrderController implements IOrderController {
     private OrderService orderService;
 
     @Override
+    @PreAuthorize("hasRole('order_write')")
     @PostMapping(produces = "application/hal+json", consumes = "application/json")
     public ResponseEntity<OrderResponse> create(@RequestBody @Valid final OrderCreateRequest request) {
         log.info("Creating a new order");
@@ -56,6 +58,7 @@ public class OrderController implements IOrderController {
     }
 
     @Override
+    @PreAuthorize("hasRole('order_write')")
     @PutMapping(produces = "application/hal+json", consumes = "application/json")
     public ResponseEntity<OrderResponse> update(@RequestBody @Valid final OrderUpdateRequest request) {
         log.info("Updating order with id [{}]", request.getId());
@@ -73,6 +76,7 @@ public class OrderController implements IOrderController {
     }
 
     @Override
+    @PreAuthorize("hasRole('order_delete')")
     @DeleteMapping("/{orderId}")
     public ResponseEntity<OrderResponse> delete(@PathVariable final Long orderId) {
         log.info("Removing order with id [{}]", orderId);
@@ -85,6 +89,7 @@ public class OrderController implements IOrderController {
     }
 
     @Override
+    @PreAuthorize("hasRole('order_delete')")
     @DeleteMapping("/{orderId}/orderItems/{orderItemId}")
     public ResponseEntity<OrderItemResponse> deleteItem(@PathVariable final Long orderId, @PathVariable final Long orderItemId) {
         log.info("Removing order item no. [{}] for order [{}]", orderItemId, orderId);
@@ -97,6 +102,7 @@ public class OrderController implements IOrderController {
     }
 
     @Override
+    @PreAuthorize("hasRole('order_read') or hasRole('order_write') or hasRole('order_delete')")
     @GetMapping(produces = "application/hal+json")
     public ResponseEntity<List<OrderResponse>> findAll() {
         log.info("Searching all orders");
@@ -122,6 +128,7 @@ public class OrderController implements IOrderController {
     }
 
     @Override
+    @PreAuthorize("hasRole('order_read') or hasRole('order_write') or hasRole('order_delete')")
     @GetMapping(value = "/{orderId}", produces = "application/hal+json")
     public ResponseEntity<OrderResponse> findById(@PathVariable final Long orderId) {
         log.info("Searching order [{}]", orderId);

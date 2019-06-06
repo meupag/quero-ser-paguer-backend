@@ -16,6 +16,7 @@ This API is responsible for maintaining clients's orders of Pag! products.
 * Log rotation configured to rotate daily
 * Swagger2 API documentation
 * HATEOAS implementation
+* OAuth2 authorization
 
 ## TODO
 
@@ -64,6 +65,15 @@ with the result: `{"status":"UP"}`
 * Docker image on [Docker Hub](https://cloud.docker.com/repository/docker/mroger/pag-order/general):
 
 ![](docker_image.png)
+
+## OAuth2 users and its roles
+
+|User|Password|Roles|
+|----|--------|-----|
+|john|123|client_read, product_read, order_read|
+|tom|111|client_read, product_read, order_read, product_write, order_write|
+|fred|222|client_read, product_read, order_read, client_write|
+|admin|789|client_read, product_read, order_read, client_write, product_write, order_write, order_delete|
 
 ## Logs
 

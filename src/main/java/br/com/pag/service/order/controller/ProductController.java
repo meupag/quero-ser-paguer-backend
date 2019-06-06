@@ -12,6 +12,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,7 @@ public class ProductController implements IProductController {
     private ProductService productService;
 
     @Override
+    @PreAuthorize("hasRole('product_write')")
     @PostMapping(produces = "application/hal+json", consumes = "application/json")
     public ResponseEntity<ProductResponse> create(@RequestBody @Valid final ProductCreateRequest request) {
         Produto product = request.toModel();
@@ -48,6 +50,7 @@ public class ProductController implements IProductController {
     }
 
     @Override
+    @PreAuthorize("hasRole('product_write')")
     @PutMapping(produces = "application/hal+json", consumes = "application/json")
     public ResponseEntity<ProductResponse> update(@RequestBody @Valid ProductUpdateRequest request) {
         Produto product = request.toModel();
@@ -60,6 +63,7 @@ public class ProductController implements IProductController {
     }
 
     @Override
+    @PreAuthorize("hasRole('product_read') or hasRole('product_write')")
     @GetMapping(produces = "application/hal+json")
     public ResponseEntity<ProductListResponse> findAll() {
         final List<Produto> products = productService.findAll();
@@ -80,6 +84,7 @@ public class ProductController implements IProductController {
     }
 
     @Override
+    @PreAuthorize("hasRole('product_read') or hasRole('product_write')")
     @GetMapping(value = "/{productId}", produces = "application/hal+json")
     public ResponseEntity<ProductResponse> findById(@PathVariable final Long productId) {
         return productService.findById(productId)

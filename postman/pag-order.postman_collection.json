@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9596cfe5-1709-425e-bf0b-a38dbacf20fb",
+		"_postman_id": "8d0e8ab2-139e-4e7f-904d-a04f406a1a6e",
 		"name": "pag-order",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,11 +12,13 @@
 					"name": "GET Clients",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:9090/pag-order/clients",
 							"protocol": "http",
@@ -41,6 +43,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
 								"type": "text"
 							}
 						],
@@ -79,12 +86,13 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
+								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/clients/1",
 							"protocol": "http",
@@ -111,12 +119,13 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
+								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
 							"protocol": "http",
@@ -148,6 +157,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -155,7 +169,7 @@
 							"raw": "{\n\t\"id\": 23,\n\t\"nome\": \"MRO\",\n\t\"cpf\": \"68285914020\",\n\t\"dataNascimento\": \"1985-01-01\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:9090/pag-order/clients?lang=pt_BR",
+							"raw": "http://localhost:9090/pag-order/clients",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -164,12 +178,6 @@
 							"path": [
 								"pag-order",
 								"clients"
-							],
-							"query": [
-								{
-									"key": "lang",
-									"value": "pt_BR"
-								}
 							]
 						}
 					},
@@ -189,6 +197,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
 								"type": "text"
 							}
 						],
@@ -227,6 +240,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -258,11 +276,13 @@
 					"name": "GET Products?lang=pt-BR",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:9090/pag-order/products?lang=pt_BR",
 							"protocol": "http",
@@ -294,12 +314,13 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
+								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/products/100",
 							"protocol": "http",
@@ -330,6 +351,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
 								"type": "text"
 							}
 						],
@@ -368,12 +394,13 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
+								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/orders?lang=pt_BR",
 							"protocol": "http",
@@ -405,12 +432,13 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
+								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:9090/pag-order/orders/19?lang=pt_BR",
 							"protocol": "http",
@@ -442,6 +470,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
 								"type": "text"
 							}
 						],
@@ -479,6 +512,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
 								"type": "text"
 							}
 						],
@@ -518,6 +556,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer bbb6c75d-71bb-4b80-9e45-a277d46c8d48",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -543,6 +586,74 @@
 									"key": "lang",
 									"value": "pt_BR"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Security",
+			"item": [
+				{
+					"name": "Get Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pag-order-client-secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "pag-order-client-id",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9090/pag-order/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pag-order",
+								"oauth",
+								"token"
 							]
 						}
 					},

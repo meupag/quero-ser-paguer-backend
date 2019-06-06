@@ -12,6 +12,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,7 @@ public class ClientController implements IClientController {
     private ClientService clientService;
 
     @Override
+    @PreAuthorize("hasRole('client_write')")
     @PostMapping(produces = "application/hal+json", consumes = "application/json")
     public ResponseEntity<ClientResponse> create(@RequestBody @Valid final ClientCreateRequest request) {
         log.info("Creating a new Client");
@@ -50,6 +52,7 @@ public class ClientController implements IClientController {
     }
 
     @Override
+    @PreAuthorize("hasRole('client_write')")
     @PutMapping(produces = "application/hal+json", consumes = "application/json")
     public ResponseEntity<ClientResponse> update(@RequestBody @Valid ClientUpdateRequest request) {
         log.info("Updating Client [{}]", request.getId());
@@ -64,6 +67,7 @@ public class ClientController implements IClientController {
     }
 
     @Override
+    @PreAuthorize("hasRole('client_read') or hasRole('client_write')")
     @GetMapping(produces = "application/hal+json")
     public ResponseEntity<ClientListResponse> findAll() {
         log.info("Returning all clients");
@@ -89,6 +93,7 @@ public class ClientController implements IClientController {
     }
 
     @Override
+    @PreAuthorize("hasRole('client_read') or hasRole('client_write')")
     @GetMapping(value = "/{clientId}", produces = "application/hal+json")
     public ResponseEntity<ClientResponse> findById(@PathVariable final Long clientId) {
         log.info("Returning client with id [{}]", clientId);
