@@ -22,6 +22,7 @@ This API is responsible for maintaining clients's orders of Pag! products.
 
 * Paginação
 * Ordenação
+* Use database for authorization
 
 API's base URL http://localhost:9090/pag-order
 
