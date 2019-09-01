@@ -9,13 +9,18 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.12.3",
+    "pg": "^7.12.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.18.0",
     "swagger-express-mw": "^0.1.0",
     "swagger-ui-express": "^4.0.7",
+    "uuid": "^3.3.3",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "should": "^7.1.0",
-    "supertest": "^1.0.0"
+    "supertest": "^1.0.0",
+    "pg": "^7.12.1"
   },
   "scripts": {
     "start": "node app.js",
