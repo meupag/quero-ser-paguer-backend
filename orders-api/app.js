@@ -13,6 +13,19 @@ var config = {
   appRoot: __dirname // required config
 };
 
+function errorHandler(err, req, res, next) {
+  const {results} = err;
+
+  const errorList = results.errors.map(item => {
+   return {
+     message: item.message,
+     fields: item.path,
+     type: item.code
+   }
+  });
+  res.status(403).json(errorList);
+}
+
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 SwaggerExpress.create(config, function(err, swaggerExpress) {
@@ -21,6 +34,7 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
 
   var port = process.env.PORT || 10010;
   app.listen(port);
+  app.use(errorHandler);
 
   if (swaggerExpress.runner.swagger.paths['/hello']) {
     console.log('try this:\ncurl http://127.0.0.1:' + port + '/hello?name=Scott');
