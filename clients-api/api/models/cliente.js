@@ -2,10 +2,14 @@ module.exports = (sequelize, DataTypes) => {
   const Cliente = sequelize.define('cliente', {
     id: {
       type: DataTypes.UUID,
-      allowNull: false,
+      allowNull: true,
       primaryKey: true
     },
     nome: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    email: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -13,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    dataNascimento: {
+    data_nascimento: {
       type: DataTypes.STRING,
       allowNull: false,
       field: 'data_nascimento'

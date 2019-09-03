@@ -13,17 +13,27 @@
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.18.0",
     "swagger-express-mw": "^0.1.0",
+    "swagger-tools": "^0.10.4",
     "swagger-ui-express": "^4.0.7",
     "uuid": "^3.3.3",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "pg": "^7.12.1",
     "should": "^7.1.0",
-    "supertest": "^1.0.0",
-    "pg": "^7.12.1"
+    "supertest": "^1.0.0"
   },
   "scripts": {
     "start": "node app.js",
     "test": "swagger project test"
+  },
+  "resolutions": {
+    "swagger-tools": "0.10.3"
   }
 }
