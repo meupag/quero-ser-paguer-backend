@@ -72,6 +72,7 @@ definitions:
           Possivéis tipos de erro:
               `REQUEST_INVALID_FORMAT` - Há um paramêtro com erro na requisição 
               `BUSINESS_VALIDATION` - A requisição não passou em alguma regra de negócio
+              `UNHANDLED_REQUEST_ERROR` - Erro interno de servidor
   Cliente:
     description: Dados de um cliente 
     required:
