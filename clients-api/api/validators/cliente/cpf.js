@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = isValid;
 
 function isValid(payload) {

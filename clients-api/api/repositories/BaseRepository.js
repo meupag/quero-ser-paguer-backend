@@ -1,17 +1,8 @@
 
-class BaseRepository{
-    constructor(model){
-        this.model = model;
-    }
-    read(fiter){
-        
-    }
-    update(){
-
-    }
-    delete(){
-
-    }
+class BaseRepository {
+  constructor(model) {
+    this.model = model;
+  }
 }
 
 module.exports = BaseRepository;

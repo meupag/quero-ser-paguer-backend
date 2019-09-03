@@ -3,29 +3,29 @@ module.exports = (sequelize, DataTypes) => {
     id: {
       type: DataTypes.UUID,
       allowNull: true,
-      primaryKey: true
+      primaryKey: true,
     },
     nome: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     cpf: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     data_nascimento: {
       type: DataTypes.STRING,
       allowNull: false,
-      field: 'data_nascimento'
+      field: 'data_nascimento',
     },
   }, {
-      schema: 'clientes',
-      tableName: 'cliente'
-    });
+    schema: 'clientes',
+    tableName: 'cliente',
+  });
 
   return Cliente;
-}
+};

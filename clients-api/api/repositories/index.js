@@ -1,5 +1,5 @@
-const ClientRepository = require("./ClientesRepository");
+const ClientRepository = require('./ClientesRepository');
 
 module.exports = {
-    ClientRepository 
-}
+  ClientRepository,
+};

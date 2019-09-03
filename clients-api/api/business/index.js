@@ -1,5 +1,5 @@
-const clientBusiness = require("../business/clientBusiness");
+const clientBusiness = require('./ClientBusiness');
 
 module.exports = {
-    ClientBusiness: clientBusiness
-}
+  ClientBusiness: clientBusiness,
+};

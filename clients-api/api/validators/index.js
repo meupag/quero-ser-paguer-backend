@@ -1,4 +1,5 @@
-const cpf = require("./cliente/cpf");
+const cpf = require('./cliente/CPF');
+
 module.exports = {
-    CPFValidator: cpf
-}
+  CPFValidator: cpf,
+};

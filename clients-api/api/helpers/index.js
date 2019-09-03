@@ -1,6 +1,7 @@
-const runValidators = require('./runValidators');
-const serverErrorHandler = require('./serverErrorHandler');
+const runValidators = require('./RunValidators');
+const serverErrorHandler = require('./ServerErrorHandler');
+
 module.exports = {
-    ValidatorsRun: runValidators,
-    ServerErrorHandler: serverErrorHandler
-}
+  ValidatorsRun: runValidators,
+  ServerErrorHandler: serverErrorHandler,
+};
