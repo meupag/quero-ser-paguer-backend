@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Cliente = sequelize.define('cliente', {
+  const Cliente = sequelize.define('Cliente', {
     id: {
       type: DataTypes.UUID,
       allowNull: true,
@@ -16,6 +16,15 @@ module.exports = (sequelize, DataTypes) => {
     cpf: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      field: 'phone_number',
     },
     data_nascimento: {
       type: DataTypes.STRING,

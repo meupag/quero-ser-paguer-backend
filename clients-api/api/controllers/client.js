@@ -1,11 +1,11 @@
-const { CPFValidator } = require('./../validators');
+const { CPFValidator, PhoneValidator, CognitoUserExists } = require('./../validators');
 const { ValidatorsRun } = require('./../helpers');
 const { ClientBusiness } = require('./../business');
 const { ServerErrorHandler } = require('./../helpers');
 
 function createClient(req, res) {
   const payload = req.swagger.params.cliente.value;
-  const validators = [CPFValidator];
+  const validators = [CPFValidator, PhoneValidator, CognitoUserExists];
   const errosRequest = ValidatorsRun(payload, validators);
 
   if (errosRequest.length > 0) {

@@ -44,7 +44,7 @@ paths:
         "200":
           description: Created
           schema:
-             $ref: "#/definitions/ClientePostResponse"
+             $ref: "#/definitions/Cliente"
         "400":
           description: Bad request
           schema:
@@ -78,7 +78,6 @@ definitions:
     required:
       - cpf
       - email
-      - password
     properties:
       nome:
         type: string
@@ -88,7 +87,6 @@ definitions:
         description:  CPF do cliente 
       data_nascimento:
         type: string
-        format: date
         description:  Data de nascimento do cliente
       email:
         type: string
@@ -97,6 +95,12 @@ definitions:
       password:
         type: string
         description: Senha do usuário que será criado no cognito 
+      username:
+        type: string
+        description: Username que será criado no cognito
+      phoneNumber:
+        type: string
+        description: Numero de telefone do cliente
   ClientePostResponse:
     properties:
       id:

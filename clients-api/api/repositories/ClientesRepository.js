@@ -1,10 +1,10 @@
 const uuidv4 = require('uuid/v4');
 const BaseRepository = require('./BaseRepository');
-const { cliente } = require('./../models');
+const { Cliente } = require('./../models');
 
 class ClienteRepository extends BaseRepository {
   constructor() {
-    super(cliente);
+    super(Cliente);
   }
 
   findOrCreate(data) {
@@ -14,7 +14,7 @@ class ClienteRepository extends BaseRepository {
         ...data,
       };
       return this.model.findOrCreate(
-        { where: { email: dataInsert.email }, defaults: { ...dataInsert } },
+        { where: { cpf: dataInsert.cpf }, defaults: { ...dataInsert } },
       );
     }
     return null;
