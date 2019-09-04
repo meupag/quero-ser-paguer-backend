@@ -8,7 +8,9 @@
   "license": "",
   "main": "app.js",
   "dependencies": {
+    "amazon-cognito-identity-js": "^3.0.15",
     "express": "^4.12.3",
+    "node-fetch": "^2.6.0",
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.18.0",
