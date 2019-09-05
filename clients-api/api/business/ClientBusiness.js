@@ -34,4 +34,10 @@ async function createClient(clientData) {
 
 module.exports = {
   CreateClient: createClient,
+  //GetClientById
+  //DeleteClient - Admin
+  //GetClients 
+  //GetSelfClient
+  //UpdateClient
+  
 };
