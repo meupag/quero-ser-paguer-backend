@@ -7,14 +7,14 @@ class ClienteRepository extends BaseRepository {
     super(Cliente);
   }
 
-  findOrCreate(data) {
+  findOrCreate(data, transaction) {
     if (data.email) {
       const dataInsert = {
         id: uuidv4(),
         ...data,
       };
       return this.model.findOrCreate(
-        { where: { cpf: dataInsert.cpf }, defaults: { ...dataInsert } },
+        { where: { cpf: dataInsert.cpf }, defaults: { ...dataInsert }, transaction },
       );
     }
     return null;

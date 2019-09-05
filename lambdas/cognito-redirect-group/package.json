@@ -1,0 +1,7 @@
+{
+  "name": "cognito-redirect-group",
+  "version": "2.0.0",
+  "description": "Aós a confirmação redireciona o usuário para o grupo selecionado",
+  "main": "index.js",
+  "license": "Apache-2.0"
+}

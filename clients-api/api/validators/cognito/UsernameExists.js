@@ -5,8 +5,8 @@ function validacaoCognito(username) {
 }
 
 async function isValid(payload) {
-  if (await validacaoCognito(payload.username)) { return { message: 'Nome de usuário existente', isValid: false, field: 'Telefone' }; }
-  return { message: 'Ok', isValid: true, field: 'cpf' };
+  if (await validacaoCognito(payload.username)) { return { message: 'Username em uso', isValid: false, field: 'Username' }; }
+  return { message: 'Ok', isValid: true, field: 'username' };
 }
 
 module.exports = isValid;

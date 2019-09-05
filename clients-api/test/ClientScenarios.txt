@@ -1,0 +1,5 @@
+Deve rejeitar uma requisição com um CPF inválido 
+Deve rejeitar uma requisição com um telefone inválido 
+Deve rejeitar uma senha com menos de 6 digitos 
+Deve rejeitar uma requisição com um usuário já existente 
+Deve rejeitar uma requisição com um CPF já existente na Base 

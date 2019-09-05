@@ -6,18 +6,19 @@ const { ServerErrorHandler } = require('./../helpers');
 function createClient(req, res) {
   const payload = req.swagger.params.cliente.value;
   const validators = [CPFValidator, PhoneValidator, CognitoUserExists];
-  const errosRequest = ValidatorsRun(payload, validators);
-
-  if (errosRequest.length > 0) {
-    res.status(403).json(errosRequest);
-  } else {
-    ClientBusiness.CreateClient(payload).then((response) => {
-      res.status(200);
-      res.json(response);
-    }).catch((err) => {
-      ServerErrorHandler(res, err);
+  ValidatorsRun(payload, validators)
+    .then((errosRequest) => {
+      if (errosRequest.length === 0) {
+        ClientBusiness.CreateClient(payload).then((response) => {
+          res.status(200);
+          res.json(response);
+        }).catch((err) => {
+          ServerErrorHandler(res, err);
+        });
+      } else {
+        res.status(403).json(errosRequest);
+      }
     });
-  }
 }
 
 

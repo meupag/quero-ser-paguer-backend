@@ -2,3 +2,5 @@ DATABASE_USERNAME=<username>
 DATABASE_PASSWORD=<password>
 DATABASE_HOST=<host>
 DEBUG=true
+COGNITO_USER_POOL_ID=<CognitoPoolId>
+COGNITO_CLIENT_ID=<CognitoPoolId>
