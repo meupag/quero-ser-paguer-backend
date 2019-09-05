@@ -16,14 +16,16 @@ const config = {
 function errorHandler(err, req, res, next) {
   const { results } = err;
   if (!results || results === undefined) {
-    ServerErrorHandler(err);
+    ServerErrorHandler(res,err);
+  }else{
+    const errorList = results.errors.map((item) => ({
+      message: item.message,
+      fields: item.path,
+      type: item.code,
+    }));
+    res.status(403).json(errorList);
   }
-  const errorList = results.errors.map((item) => ({
-    message: item.message,
-    fields: item.path,
-    type: item.code,
-  }));
-  res.status(403).json(errorList);
+  
 }
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

@@ -18,7 +18,7 @@ function createClient(req, res) {
       } else {
         res.status(403).json(errosRequest);
       }
-    });
+    }).catch((err) => ServerErrorHandler(res, err));
 }
 
 

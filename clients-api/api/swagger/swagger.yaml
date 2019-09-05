@@ -14,6 +14,8 @@ schemes:
 tags:
   - name: "Cliente"
     description: "Requisições relacionadas a clientes"
+  - name: "Autenticação"
+    description: "Requisições relacionadas a autenticação"
     # externalDocs:
     # description: "Leia mais"
     # url: ""
@@ -50,7 +52,33 @@ paths:
           schema:
            type: array
            items:
-             $ref: "#/definitions/ErrorResponse"                        
+             $ref: "#/definitions/ErrorResponse"
+  /login:
+      # binds a127 app logic to a route
+    x-swagger-router-controller: auth
+    post:
+      description: Autentica um usuário
+        # used as the method name of the controller
+      operationId: login
+      tags:
+          - "Autenticação" 
+      parameters:
+          - in: body
+            name: auth
+            description: Dados de login e senha do usuário
+            schema:
+              $ref: "#/definitions/Login"                                               
+      responses:
+          "200":
+            description: Logged
+            schema:
+              $ref: "#/definitions/LoginToken"
+          "400":
+            description: Bad request
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/ErrorResponse"                            
   /swagger:
     x-swagger-pipe: swagger_raw
 
@@ -94,10 +122,14 @@ definitions:
         format: email
       password:
         type: string
-        description: Senha do usuário que será criado no cognito 
+        description: Senha do usuário que será criado no cognito
+        minLength: 6
+        maxLength: 20
       username:
         type: string
         description: Username que será criado no cognito
+        minLength: 6
+        maxLength: 20
       phoneNumber:
         type: string
         description: Numero de telefone do cliente
@@ -106,3 +138,18 @@ definitions:
       id:
         type: string
         description: Id do cliente criado
+  Login:
+    properties:
+      username:
+        type: string
+        description: Username do usuário que efetuará o login
+      password:
+        type: string
+        description: Senha do usuário
+        minLength: 6
+        maxLength: 20
+  LoginToken:
+    properties:
+      token:
+        type: string
+        description: Token do usuário autenticado
