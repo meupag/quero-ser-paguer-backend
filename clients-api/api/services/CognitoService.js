@@ -48,10 +48,33 @@ async function userExists(username) {
   });
 }
 
+async function signIn({ username, password }) {
+  return new Promise((resolve, reject) => {
+    const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+    const authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
+      Username: username,
+      Password: password,
+    });
+    const userData = {
+      Username: username,
+      Pool: userPool,
+    };
+    const cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    cognitoUser.authenticateUser(authenticationDetails, {
+      onSuccess(token) {
+        resolve(token);
+      },
+      onFailure(err) {
+        reject(err.code);
+      },
+    });
+  });
+}
 function signUp(clientData) {
   return register(clientData);
 }
 module.exports = {
   signUp,
   userExists,
+  signIn,
 };

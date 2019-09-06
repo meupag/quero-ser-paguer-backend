@@ -19,6 +19,10 @@ class ClienteRepository extends BaseRepository {
     }
     return null;
   }
+
+  getClientById(id, transaction) {
+    return this.model.findOne({ where: { id }, transaction });
+  }
 }
 
 module.exports = ClienteRepository;

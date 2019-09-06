@@ -21,7 +21,23 @@ function createClient(req, res) {
     }).catch((err) => ServerErrorHandler(res, err));
 }
 
+function getClientById(req, res) {
+  const id = req.swagger.params.uuid.value;
+  ClientBusiness.GetClientById(id)
+    .then((client) => {
+      if (client) {
+        res.status(200);
+        res.json(client);
+      } else {
+        res.status(204);
+        res.json({});
+      }
+    })
+    .catch((err) => ServerErrorHandler(res, err));
+}
+
 
 module.exports = {
   createClient,
+  getClientById,
 };

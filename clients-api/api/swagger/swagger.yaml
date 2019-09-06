@@ -53,6 +53,40 @@ paths:
            type: array
            items:
              $ref: "#/definitions/ErrorResponse"
+  /client/{uuid}:
+    get:
+      x-swagger-router-controller: client
+      description: Cria um novo usuario/cliente na base
+      # used as the method name of the controller
+      operationId: getClientById
+      tags:
+        - "Cliente" 
+      parameters:
+        - in: path
+          name: uuid   # Note the name is the same as in the path
+          required: true
+          type: string
+          format: uuid
+          description: The user ID                                            
+      responses:
+          "200":
+            description: Cliente 
+            schema:
+              $ref: "#/definitions/Cliente"
+          "204":
+            description: Cliente não encontrado 
+          "400":
+            description: Bad request
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/ErrorResponse"
+          "500":
+            description: Internal error
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/ErrorResponse"
   /login:
       # binds a127 app logic to a route
     x-swagger-router-controller: auth
@@ -149,7 +183,129 @@ definitions:
         minLength: 6
         maxLength: 20
   LoginToken:
-    properties:
-      token:
-        type: string
-        description: Token do usuário autenticado
+    required: 
+    - "idToken"
+    - "refreshToken"
+    - "accessToken"
+    - "clockDrift"
+    properties: 
+      idToken: 
+        required: 
+          - "jwtToken"
+          - "payload"
+        properties: 
+          jwtToken: 
+            type: "string"
+          payload: 
+            required: 
+              - "sub"
+              - "cognito:groups"
+              - "email_verified"
+              - "iss"
+              - "phone_number_verified"
+              - "cognito:username"
+              - "aud"
+              - "event_id"
+              - "token_use"
+              - "auth_time"
+              - "phone_number"
+              - "exp"
+              - "iat"
+              - "email"
+            properties: 
+              sub: 
+                type: "string"
+              cognito:groups: 
+                type: "array"
+                items: 
+                  type: "string"
+              email_verified: 
+                type: "boolean"
+              iss: 
+                type: "string"
+              phone_number_verified: 
+                type: "boolean"
+              cognito:username: 
+                type: "string"
+              aud: 
+                type: "string"
+              event_id: 
+                type: "string"
+              token_use: 
+                type: "string"
+              auth_time: 
+                type: "number"
+              phone_number: 
+                type: "string"
+              exp: 
+                type: "number"
+              iat: 
+                type: "number"
+              email: 
+                type: "string"
+            type: "object"
+        type: "object"
+      refreshToken: 
+        required: 
+          - "token"
+        properties: 
+          token: 
+            type: "string"
+        type: "object"
+      accessToken: 
+        required: 
+          - "jwtToken"
+          - "payload"
+        properties: 
+          jwtToken: 
+            type: "string"
+          payload: 
+            required: 
+              - "sub"
+              - "device_key"
+              - "cognito:groups"
+              - "iss"
+              - "client_id"
+              - "event_id"
+              - "token_use"
+              - "scope"
+              - "auth_time"
+              - "exp"
+              - "iat"
+              - "jti"
+              - "username"
+            properties: 
+              sub: 
+                type: "string"
+              device_key: 
+                type: "string"
+              cognito:groups: 
+                type: "array"
+                items: 
+                  type: "string"
+              iss: 
+                type: "string"
+              client_id: 
+                type: "string"
+              event_id: 
+                type: "string"
+              token_use: 
+                type: "string"
+              scope: 
+                type: "string"
+              auth_time: 
+                type: "number"
+              exp: 
+                type: "number"
+              iat: 
+                type: "number"
+              jti: 
+                type: "string"
+              username: 
+                type: "string"
+            type: "object"
+        type: "object"
+      clockDrift: 
+        type: "number"
+
+

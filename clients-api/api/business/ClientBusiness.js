@@ -32,12 +32,19 @@ async function createClient(clientData) {
   }
 }
 
+async function getClientById(id) {
+  const clientRepository = new ClientRepository();
+  const client = await clientRepository.getClientById(id);
+  return client;
+}
+
 module.exports = {
   CreateClient: createClient,
-  //GetClientById
-  //DeleteClient - Admin
-  //GetClients 
-  //GetSelfClient
-  //UpdateClient
-  
+  GetClientById: getClientById,
+
+  // DeleteClient - Admin
+  // GetClients
+  // GetSelfClient
+  // UpdateClient
+
 };
