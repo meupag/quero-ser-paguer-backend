@@ -110,9 +110,8 @@ paths:
           "200":
             description: Cliente 
             schema:
-              type: array
-              items:
-                $ref: "#/definitions/ResponseListClient"
+              $ref: "#/definitions/ResponseListClient"
+               
           "204":
             description: Cliente não encontrado 
           "400":
