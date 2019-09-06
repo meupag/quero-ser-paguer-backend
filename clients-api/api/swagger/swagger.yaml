@@ -67,7 +67,7 @@ paths:
           required: true
           type: string
           format: uuid
-          description: The user ID                                            
+          description: Identificador universal unico do usuário                                                 
       responses:
           "200":
             description: Cliente 
@@ -87,6 +87,46 @@ paths:
               type: array
               items:
                 $ref: "#/definitions/ErrorResponse"
+  /clients:
+    get:
+      x-swagger-router-controller: client
+      description: Busca uma lista de usuários na base
+      # used as the method name of the controller
+      operationId: listClients
+      tags:
+        - "Cliente" 
+      parameters:
+        - in: query
+          name: limit   # Note the name is the same as in the path
+          required: true
+          type: integer
+          description: Limite de resultados
+        - in: query
+          name: offset   # Note the name is the same as in the path
+          required: true
+          type: integer
+          description: Página                                       
+      responses:
+          "200":
+            description: Cliente 
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/ResponseListClient"
+          "204":
+            description: Cliente não encontrado 
+          "400":
+            description: Bad request
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/ErrorResponse"
+          "500":
+            description: Internal error
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/ErrorResponse"                
   /login:
       # binds a127 app logic to a route
     x-swagger-router-controller: auth
@@ -172,6 +212,18 @@ definitions:
       id:
         type: string
         description: Id do cliente criado
+  ResponseListClient:
+    required:
+      - total 
+      - list
+    properties:
+      total:
+        type: integer
+      list:
+        type: array
+        items:
+          $ref: "#/definitions/Cliente"      
+  
   Login:
     properties:
       username:

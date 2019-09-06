@@ -38,10 +38,20 @@ async function getClientById(id) {
   return client;
 }
 
+async function listClients({ limit, offset }) {
+  const clientRepository = new ClientRepository();
+  const clientList = await clientRepository.listClients({ limit, offset });
+  const totalClients = await clientRepository.countClients();
+
+  return {
+    total: totalClients,
+    list: clientList,
+  };
+}
 module.exports = {
   CreateClient: createClient,
   GetClientById: getClientById,
-
+  ListClients: listClients,
   // DeleteClient - Admin
   // GetClients
   // GetSelfClient

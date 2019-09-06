@@ -36,8 +36,21 @@ function getClientById(req, res) {
     .catch((err) => ServerErrorHandler(res, err));
 }
 
+function listClients(req, res) {
+  const limit = req.swagger.params.limit.value;
+  const offset = req.swagger.params.offset.value;
+
+  ClientBusiness.ListClients({ limit, offset })
+    .then((result) => {
+      res.status(200);
+      res.json(result);
+    })
+    .catch((err) => ServerErrorHandler(res, err));
+}
+
 
 module.exports = {
   createClient,
   getClientById,
+  listClients,
 };
