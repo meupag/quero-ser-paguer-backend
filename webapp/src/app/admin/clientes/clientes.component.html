@@ -15,17 +15,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Cliente 001</td>
-              <td>00000000001</td>
-              <td>11/11/2011</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Cliente 002</td>
-              <td>00000000002</td>
-              <td>22/02/2012</td>
+            <tr *ngFor="let c of clientes">
+              <th scope="row">{{ c.id }}</th>
+              <td>{{ c.nome }}</td>
+              <td>{{ c.cpf }}</td>
+              <td>{{ c.data_nascimento }}</td>
             </tr>
           </tbody>
         </table>

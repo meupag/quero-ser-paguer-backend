@@ -32,4 +32,7 @@ export class AuthService {
       .then(() => this.loggedIn = false)
   }
 
+  currentSession(): any{
+    return Auth.currentSession();
+  }
 }

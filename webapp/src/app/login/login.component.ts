@@ -20,8 +20,16 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.subscription = auth.authState.subscribe((event: string) => {
 
-      if (event === AuthService.SIGN_IN)
-        this.router.navigate(['admin'])
+      if (event === AuthService.SIGN_IN){
+        console.log('login comp')
+
+        auth.currentSession().then((data) => { 
+
+          console.log(data)
+          localStorage.setItem('inf', JSON.stringify(data));
+          this.router.navigate(['admin']);
+        })
+      }
     });
 
   }

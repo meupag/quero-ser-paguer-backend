@@ -5,17 +5,32 @@ import { AdminComponent } from './admin.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ProdutosComponent } from './produtos/produtos.component';
+import { ClienteResolver } from '../services/cliente.resolve';
 
 const routes: Routes = [
     {
         path: '',
         component: AdminComponent,
         children: [
-            { path: '', redirectTo: 'clientes', pathMatch: 'prefix' },
-            { path: 'clientes', component: ClientesComponent },
-            { path: 'produtos', component: ProdutosComponent },
-            { path: 'pedidos', component: PedidosComponent }
-        ]
+            { 
+                path: '', 
+                redirectTo: 'clientes',
+                pathMatch: 'prefix'
+            },
+            { 
+                path: 'clientes',
+                component: ClientesComponent,
+                resolve: { clientes: ClienteResolver }
+            },
+            { 
+                path: 'produtos',
+                component: ProdutosComponent
+            },
+            { 
+                path: 'pedidos',
+                component: PedidosComponent
+             }
+        ],
     }
 ];
 

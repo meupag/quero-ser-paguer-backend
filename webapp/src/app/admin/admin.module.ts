@@ -8,6 +8,7 @@ import { AdminRoutingModule } from './admin.routing.module';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
+import { ClienteResolver } from '../services/cliente.resolve';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
     ClientesComponent,
     ProdutosComponent,
     PedidosComponent
-  ]
+  ],
+  providers: [ClienteResolver]
 })
 export class AdminModule { }
