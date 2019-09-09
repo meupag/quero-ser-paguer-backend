@@ -6,6 +6,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { ClienteResolver } from '../services/cliente.resolve';
+import { ProdutoResolver } from '../services/produto.resolve';
 
 const routes: Routes = [
     {
@@ -24,7 +25,8 @@ const routes: Routes = [
             },
             { 
                 path: 'produtos',
-                component: ProdutosComponent
+                component: ProdutosComponent,
+                resolve: { produtos: ProdutoResolver }
             },
             { 
                 path: 'pedidos',

@@ -5,7 +5,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
+export class ProdutoService {
   apiURL: string = 'https://9l9m6v7rg5.execute-api.us-east-1.amazonaws.com/prod';
 
   constructor(
@@ -13,7 +13,7 @@ export class ClienteService {
     private authService: AuthService,
   ) { }
 
-  getListaClientes() {
+  getListaProdutos() {
 
    return this.authService
       .currentSession()
@@ -27,7 +27,7 @@ export class ClienteService {
             'Content-Type': 'application/json'
           })
         };
-        return this.httpClient.get(`${this.apiURL}/clientes`, { headers: httpOptions.headers })
+        return this.httpClient.get(`${this.apiURL}/produtos`, { headers: httpOptions.headers })
           .toPromise()
           .then((data: any) => {
             return new Promise((resolve, reject) => resolve(data));
@@ -35,7 +35,7 @@ export class ClienteService {
       });
   }
 
-  cadastrarCliente(cliente): any {
+  cadastrarProduto(produto): any {
 
     return this.authService
       .currentSession()
@@ -50,7 +50,7 @@ export class ClienteService {
           })
         };
 
-        return this.httpClient.post(`${this.apiURL}/clientes`, cliente, { headers: httpOptions.headers })
+        return this.httpClient.post(`${this.apiURL}/produtos`, produto, { headers: httpOptions.headers })
           .toPromise()
           .then((data: any) => {
             return new Promise((resolve, reject) => resolve(data));

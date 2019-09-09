@@ -1,28 +1,59 @@
 <div class="container-fluid">
-    <br />
-    <div class="card mt-2">
-      <div class="card-header">
-        <h4>Clientes</h4>
-      </div>
-      <div class="card-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nome</th>
-              <th scope="col">CPF</th>
-              <th scope="col">Data de Nascimento</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let c of clientes">
-              <th scope="row">{{ c.id }}</th>
-              <td>{{ c.nome }}</td>
-              <td>{{ c.cpf }}</td>
-              <td>{{ c.data_nascimento }}</td>
-            </tr>
-          </tbody>
-        </table>
+  <br />
+  <div class="card mt-2">
+    <div class="card-header">
+      <div class="row px-0">
+        <h4 class="mr-auto mt-2 ml-2">Clientes</h4>
+        <button type="button" class="btn btn-primary ml-auto" (click)="addCliente()">Adicionar</button>
       </div>
     </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Data de Nascimento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of clientes">
+            <th scope="row">{{ c.id }}</th>
+            <td>{{ c.nome }}</td>
+            <td>{{ c.cpf }}</td>
+            <td>{{ c.data_nascimento }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+</div>
+
+<ng-template #modal>
+  <div class="modal-header bg-light border-bottom-0">
+    <h5 class="modal-title"><b>Cadastrar Cliente</b></h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="fecharModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form>
+  <div class="modal-body py-0 bg-light">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" #nome>
+      </div>
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input type="tel" class="form-control" id="cpf" #cpf>
+      </div>
+      <div class="form-group">
+        <label for="data">Data de Nascimento</label>
+        <input type="date" class="form-control" id="data" #data>
+      </div>
+    </div>
+    <div class="modal-footer bg-light border-top-0 pb-2">
+      <button type="button" class="btn btn-success" (click)="salvarCliente(nome.value, cpf.value, data.value)">Salvar</button>
+    </div>
+  </form>
+</ng-template>

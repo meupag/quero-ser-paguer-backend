@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { AdminComponent } from './admin.component';
@@ -9,11 +10,13 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { ClienteResolver } from '../services/cliente.resolve';
+import { ProdutoResolver } from '../services/produto.resolve';
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
+    ModalModule.forRoot(),
     BsDropdownModule.forRoot()
   ],
   declarations: [
@@ -22,6 +25,6 @@ import { ClienteResolver } from '../services/cliente.resolve';
     ProdutosComponent,
     PedidosComponent
   ],
-  providers: [ClienteResolver]
+  providers: [ClienteResolver, ProdutoResolver]
 })
 export class AdminModule { }
