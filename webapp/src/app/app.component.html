@@ -1,9 +1,9 @@
 <div class="d-flex align-items-center justify-content-center" style="height:100vh;" *ngIf="loading">
-        <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
     </div>
-    
-    <div *ngIf="!loading">
-        <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="!loading">
+    <router-outlet></router-outlet>
 </div>

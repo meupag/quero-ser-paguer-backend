@@ -11,6 +11,7 @@ import { ProdutosComponent } from './produtos/produtos.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { ClienteResolver } from '../services/cliente.resolve';
 import { ProdutoResolver } from '../services/produto.resolve';
+import { PedidoResolver } from '../services/pedido.resolve';
 
 @NgModule({
   imports: [
@@ -25,6 +26,6 @@ import { ProdutoResolver } from '../services/produto.resolve';
     ProdutosComponent,
     PedidosComponent
   ],
-  providers: [ClienteResolver, ProdutoResolver]
+  providers: [ClienteResolver, ProdutoResolver, PedidoResolver]
 })
 export class AdminModule { }

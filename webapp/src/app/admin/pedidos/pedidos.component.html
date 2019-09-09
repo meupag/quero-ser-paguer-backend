@@ -2,40 +2,94 @@
   <br />
   <div class="card mt-2">
     <div class="card-header">
-      <h4>Pedidos</h4>
+      <div class="row px-0">
+        <h4 class="mr-auto mt-2 ml-2">Pedidos</h4>
+        <button type="button" class="btn btn-primary ml-auto" (click)="addPedido()">Adicionar</button>
+      </div>
     </div>
     <div class="card-body">
       <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">ID Cliente</th>
+            <th scope="col">Valor</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+          <tr *ngFor="let p of pedidos">
+            <th scope="row">{{ p.id }}</th>
+            <td>{{ p.id_cliente }}</td>
+            <td>{{ p.valor }}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-
 </div>
+
+<ng-template #modal>
+  <div class="modal-header bg-light border-bottom-0">
+    <h5 class="modal-title"><b>Cadastrar Pedido</b></h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="fecharModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form>
+    <div class="modal-body py-0 bg-light">
+      <div class="form-group">
+        <label for="cliente">Cliente</label>
+        <select class="form-control" id="cliente" #cliente>
+          <option *ngFor="let c of clientes" value={{c.id}}> {{c.nome}} </option>
+        </select>
+      </div>
+      <fieldset class="form-group">
+        <legend>Itens</legend>
+        <div class="form-group">
+          <label for="produto">Produto</label>
+          <select class="form-control" id="produto" #produto>
+            <option *ngFor="let p of produtos" value={{p.id}}> {{p.nome}} </option>
+          </select>
+        </div>
+        <!-- Quantidade -->
+        <label class="mb-0" for="quantidade">Quantidade</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend" (click)="rmItem()">
+            <span class="input-group-text bg-dark border border-dark text-white" id="basic-addon1"><i
+                class="fas fa-minus"></i></span>
+          </div>
+          <input type="text" class="form-control form-control-lg text-center bg-white" id="quantidade"
+            aria-describedby="basic-addon1" value="{{ quantidade }}" disabled>
+          <div class="input-group-append" (click)="addItem()">
+            <span class="input-group-text bg-dark border border-dark text-white" id="basic-addon2"><i
+                class="fas fa-plus"></i></span>
+          </div>
+        </div>
+        <div class="row px-0 pb-2">
+          <button type="button" class="btn btn-success  ml-auto mr-3" (click)="addItemPedido(produto.value)">Adicionar Item</button>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead class="text-center border-top-0">
+              <tr>
+                <th><small><b>Item</b></small></th>
+                <th><small><b>Qtd.</b></small></th>
+                <th><small><b>Valor</b></small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of itens">
+                <td><small>{{ i.id_produto }}</small></td>
+                <td class="text-center"><small>{{ i.quantidade }}</small></td>
+                <td class="text-right"><small>{{ i.total }}</small></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </fieldset>
+    </div>
+    <div class="modal-footer bg-light border-top-0 pb-2">
+      <button type="button" class="btn btn-success" (click)="salvarPedido(cliente.value)">Finalizar</button>
+    </div>
+  </form>
+</ng-template>
