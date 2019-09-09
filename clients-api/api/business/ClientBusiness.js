@@ -48,13 +48,28 @@ async function listClients({ limit, offset }) {
     list: clientList,
   };
 }
+
+async function deleteClient({ idClient }) {
+  const clienteRepository = new ClientRepository();
+  try {
+    const client = await clienteRepository.getClientById(idClient);
+    if (client) {
+      const { username } = client;
+      if (username) {
+        await CognitoService.deleteUser(client);
+      }
+      clienteRepository.deleteClient(client.id);
+    }
+  } catch (error) {
+    return false;
+  }
+
+  return true;
+}
 module.exports = {
   CreateClient: createClient,
   GetClientById: getClientById,
   ListClients: listClients,
-  // DeleteClient - Admin
-  // GetClients
-  // GetSelfClient
-  // UpdateClient
+  DeleteClient: deleteClient,
 
 };

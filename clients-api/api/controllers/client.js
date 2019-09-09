@@ -48,9 +48,19 @@ function listClients(req, res) {
     .catch((err) => ServerErrorHandler(res, err));
 }
 
+function deleteClient(req, res) {
+  const id = req.swagger.params.uuid.value;
+  ClientBusiness.DeleteClient({ idClient: id })
+    .then(() => {
+      res.status(201);
+      res.send();
+    })
+    .catch((err) => ServerErrorHandler(res, err));
+}
 
 module.exports = {
   createClient,
   getClientById,
   listClients,
+  deleteClient,
 };

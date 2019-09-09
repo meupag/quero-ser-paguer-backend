@@ -87,6 +87,35 @@ paths:
               type: array
               items:
                 $ref: "#/definitions/ErrorResponse"
+    delete:
+      x-swagger-router-controller: client
+      description: Deleta um usuário da base e do Cognito
+      # used as the method name of the controller
+      operationId: deleteClient
+      tags:
+        - "Cliente" 
+      parameters:
+        - in: path
+          name: uuid   # Note the name is the same as in the path
+          required: true
+          type: string
+          format: uuid
+          description: Identificador universal unico do usuário                                                 
+      responses:
+          "201":
+            description: Cliente excluído com sucesso
+          "400":
+            description: Bad request
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/ErrorResponse"
+          "500":
+            description: Internal error
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/ErrorResponse"      
   /clients:
     get:
       x-swagger-router-controller: client
@@ -169,11 +198,13 @@ definitions:
         enum:
           - REQUEST_INVALID_FORMAT
           - BUSINESS_VALIDATION
+          - REQUEST_ERROR
         description: >
           Possivéis tipos de erro:
               `REQUEST_INVALID_FORMAT` - Há um paramêtro com erro na requisição 
               `BUSINESS_VALIDATION` - A requisição não passou em alguma regra de negócio
               `UNHANDLED_REQUEST_ERROR` - Erro interno de servidor
+              `REQUEST_ERROR` - Erro de requisição
   Cliente:
     description: Dados de um cliente 
     required:

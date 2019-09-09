@@ -1,10 +1,10 @@
 const uuidv4 = require('uuid/v4');
-const BaseRepository = require('./BaseRepository');
-const { Cliente } = require('./../models');
+const { Cliente, sequelize } = require('./../models');
 
-class ClienteRepository extends BaseRepository {
+class ClienteRepository {
   constructor() {
-    super(Cliente);
+    this.model = Cliente;
+    this.sequelize = sequelize;
   }
 
   findOrCreate(data, transaction) {
@@ -30,6 +30,10 @@ class ClienteRepository extends BaseRepository {
 
   countClients() {
     return this.model.count();
+  }
+
+  deleteClient(idCliente) {
+    return this.sequelize.query(`select delete_cliente('${idCliente}')`);
   }
 }
 
