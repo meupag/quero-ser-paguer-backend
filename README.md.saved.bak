@@ -134,3 +134,10 @@ Resposta:
     }
 ]
 ```
+
+
+> **Execução do docker em prod**
+
+```bash
+ docker run -d --rm -e SPRING_PROFILES_ACTIVE=prod -p 80:8080 965946547559.dkr.ecr.us-east-2.amazonaws.com/pag-web-api:latest
+ ``` 
