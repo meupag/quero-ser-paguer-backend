@@ -19,7 +19,7 @@ export class ProdutoService {
       .currentSession()
       .then((data) => {
 
-        let token = data['accessToken'].jwtToken;
+        let token = data['idToken'].jwtToken;
 
         const httpOptions = {
           headers: new HttpHeaders({
@@ -41,7 +41,7 @@ export class ProdutoService {
       .currentSession()
       .then((data) => {
 
-        let token = data['accessToken'].jwtToken;
+        let token = data['idToken'].jwtToken;
 
         const httpOptions = {
           headers: new HttpHeaders({
