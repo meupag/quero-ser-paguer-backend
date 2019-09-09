@@ -35,6 +35,19 @@ class ClienteRepository {
   deleteClient(idCliente) {
     return this.sequelize.query(`select delete_cliente('${idCliente}')`);
   }
+
+  updateClient(id, cliente) {
+    const clientToUpdate = {};
+    if (cliente.nome) clientToUpdate.nome = cliente.nome;
+    if (cliente.phoneNumber) clientToUpdate.phoneNumber = cliente.phoneNumber;
+    if (cliente.email) clientToUpdate.email = cliente.email;
+    return this.model.update(
+      { ...clientToUpdate },
+      {
+        where: { id }
+      }
+    )
+  }
 }
 
 module.exports = ClienteRepository;

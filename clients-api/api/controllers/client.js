@@ -58,9 +58,28 @@ function deleteClient(req, res) {
     .catch((err) => ServerErrorHandler(res, err));
 }
 
+function updateClient(req, res) {
+  const clientid = req.swagger.params.uuid.value;
+  const payload = req.swagger.params.client.value;
+  const validators = [PhoneValidator];
+  ValidatorsRun(payload, validators)
+    .then((errosRequest) => {
+      if (errosRequest.length === 0) {
+        ClientBusiness.UpdateClient(clientid, payload).then((response) => {
+          res.status(200);
+          res.send();
+        }).catch((err) => {
+          ServerErrorHandler(res, err);
+        });
+      } else {
+        res.status(403).json(errosRequest);
+      }
+    }).catch((err) => ServerErrorHandler(res, err));
+}
 module.exports = {
   createClient,
   getClientById,
   listClients,
   deleteClient,
+  updateClient
 };

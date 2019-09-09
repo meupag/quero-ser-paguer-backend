@@ -115,7 +115,41 @@ paths:
             schema:
               type: array
               items:
-                $ref: "#/definitions/ErrorResponse"      
+                $ref: "#/definitions/ErrorResponse"
+    patch:
+      x-swagger-router-controller: client
+      description: Realiza um update de um usuário
+      # used as the method name of the controller
+      operationId: updateClient
+      tags:
+        - "Cliente" 
+      parameters:
+        - in: path
+          name: uuid   # Note the name is the same as in the path
+          required: true
+          type: string
+          format: uuid
+          description: Identificador universal unico do usuário
+        - in: body
+          name: client
+          description: Dados do usuário que será alterado
+          schema:
+            $ref: "#/definitions/ClienteUpdate"                                                        
+      responses:
+          "201":
+            description: Cliente alterado com sucesso
+          "400":
+            description: Bad request
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/ErrorResponse"
+          "500":
+            description: Internal error
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/ErrorResponse"                      
   /clients:
     get:
       x-swagger-router-controller: client
@@ -237,6 +271,22 @@ definitions:
       phoneNumber:
         type: string
         description: Numero de telefone do cliente
+  ClienteUpdate:
+    description: Dados de um cliente que será alterado
+    properties:
+      nome:
+        type: string
+        description: Nome do cliente que será criado
+      data_nascimento:
+        type: string
+        description:  Data de nascimento do cliente
+      email:
+        type: string
+        description: Email do cliente que será usado para login no cognito
+        format: email
+      phoneNumber:
+        type: string
+        description: Numero de telefone do cliente        
   ClientePostResponse:
     properties:
       id:

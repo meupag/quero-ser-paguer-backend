@@ -66,10 +66,22 @@ async function deleteClient({ idClient }) {
 
   return true;
 }
+
+async function updateClient(idClient, data) {
+  const clienteRepository = new ClientRepository();
+
+  const client = await clienteRepository.getClientById(idClient);
+  if (client) {
+    //await CognitoService.updateUser(client.username, client);
+    await clienteRepository.updateClient(idClient, data);
+  }
+
+  return true;
+}
 module.exports = {
   CreateClient: createClient,
   GetClientById: getClientById,
   ListClients: listClients,
   DeleteClient: deleteClient,
-
+  UpdateClient: updateClient
 };

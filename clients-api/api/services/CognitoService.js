@@ -93,6 +93,24 @@ function deleteUser({ username }) {
   });
 }
 
+function updateUser(username, client){
+  return new Promise((resolve, reject)=>{
+    var params = {
+      UserAttributes: [],
+      UserPoolId: poolData.UserPoolId, 
+      Username: username
+    };
+
+    if(client.email) params.UserAttributes.push({Name: 'email', Value: client.email})
+    if(client.phoneNumber) params.UserAttributes.push({Name: 'phone_number', Value: client.phoneNumber})
+
+    cognitoidentityserviceprovider.adminUpdateUserAttributes(params, function(err, data) {
+      if (err) reject(err); 
+      else resolve(data);
+    });
+  });
+}
+
 function signUp(clientData) {
   return register(clientData);
 }
@@ -102,4 +120,5 @@ module.exports = {
   userExists,
   signIn,
   deleteUser,
+  updateUser
 };

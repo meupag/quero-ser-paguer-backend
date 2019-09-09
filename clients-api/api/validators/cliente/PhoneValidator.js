@@ -9,8 +9,8 @@ function validacaoPhoneNumber(telephone) {
 
 
 function isValid(payload) {
-  if (!validacaoPhoneNumber(payload.phoneNumber)) { return { message: 'Telefone inválido', isValid: false, field: 'Telefone' }; }
-  return { message: 'Ok', isValid: true, field: 'cpf' };
+  if (payload.phoneNumber && !validacaoPhoneNumber(payload.phoneNumber)) { return { message: 'Telefone inválido', isValid: false, field: 'Telefone' }; }
+  return { message: 'Ok', isValid: true, field: 'phoneNumber' };
 }
 
 module.exports = isValid;
