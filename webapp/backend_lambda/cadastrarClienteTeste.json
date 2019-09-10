@@ -1,0 +1,19 @@
+{
+    "path": "/clientes",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Authorization": "eyJraWQiOiJLTzRVMWZs",
+        "content-type": "application/json; charset=UTF-8"
+    },
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "requestContext": {
+        "authorizer": {
+            "claims": {
+                "cognito:username": "the_username"
+            }
+        }
+    },
+    "body": "{\"id\":\"8\",\"nome\":\"CLIENTE TST\",\"cpf\":\"00012312311\",\"data\":\"17/03/2010\"}"
+}

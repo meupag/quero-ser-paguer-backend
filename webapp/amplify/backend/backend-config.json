@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"webappe4fcde34": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}
