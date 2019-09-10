@@ -1,11 +1,10 @@
 package com.ordersapi.orders.Domain.Entities;
 
-import java.util.List;
 import java.util.UUID;
 
-public class Pedido {
+public class Produto {
     public UUID Id;
     public UUID ClienteId;
-    public double Valor;
-    public List<PedidoItem> PedidoItens;
+    public String Nome;
+    public double PrecoSugerido;
 }
