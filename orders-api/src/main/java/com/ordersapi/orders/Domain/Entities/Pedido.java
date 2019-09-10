@@ -8,4 +8,5 @@ public class Pedido {
     public UUID ClienteId;
     public double Valor;
     public List<PedidoItem> PedidoItens;
+
 }
