@@ -34,3 +34,5 @@ node_modules
 config/runtime.yaml
 
 .env
+
+envConfig.bat

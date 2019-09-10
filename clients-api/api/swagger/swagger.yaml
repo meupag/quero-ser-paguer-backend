@@ -136,7 +136,7 @@ paths:
           schema:
             $ref: "#/definitions/ClienteUpdate"                                                        
       responses:
-          "201":
+          "200":
             description: Cliente alterado com sucesso
           "400":
             description: Bad request

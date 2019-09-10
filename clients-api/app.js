@@ -16,8 +16,8 @@ const config = {
 function errorHandler(err, req, res, next) {
   const { results } = err;
   if (!results || results === undefined) {
-    ServerErrorHandler(res,err);
-  }else{
+    ServerErrorHandler(res, err);
+  } else {
     const errorList = results.errors.map((item) => ({
       message: item.message,
       fields: item.path,
@@ -25,7 +25,6 @@ function errorHandler(err, req, res, next) {
     }));
     res.status(403).json(errorList);
   }
-  
 }
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -37,8 +36,4 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
   const port = process.env.PORT || 10010;
   app.listen(port);
   app.use(errorHandler);
-
-  if (swaggerExpress.runner.swagger.paths['/hello']) {
-    console.log(`try this:\ncurl http://127.0.0.1:${port}/hello?name=Scott`);
-  }
 });

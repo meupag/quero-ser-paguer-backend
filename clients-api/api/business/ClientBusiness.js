@@ -58,7 +58,7 @@ async function deleteClient({ idClient }) {
       if (username) {
         await CognitoService.deleteUser(client);
       }
-      clienteRepository.deleteClient(client.id);
+      await clienteRepository.deleteClient(client.id);
     }
   } catch (error) {
     return false;
@@ -72,7 +72,7 @@ async function updateClient(idClient, data) {
 
   const client = await clienteRepository.getClientById(idClient);
   if (client) {
-    //await CognitoService.updateUser(client.username, client);
+    await CognitoService.updateUser(client.username, client);
     await clienteRepository.updateClient(idClient, data);
   }
 
@@ -83,5 +83,5 @@ module.exports = {
   GetClientById: getClientById,
   ListClients: listClients,
   DeleteClient: deleteClient,
-  UpdateClient: updateClient
+  UpdateClient: updateClient,
 };

@@ -52,7 +52,7 @@ function deleteClient(req, res) {
   const id = req.swagger.params.uuid.value;
   ClientBusiness.DeleteClient({ idClient: id })
     .then(() => {
-      res.status(201);
+      res.status(200);
       res.send();
     })
     .catch((err) => ServerErrorHandler(res, err));
@@ -81,5 +81,5 @@ module.exports = {
   getClientById,
   listClients,
   deleteClient,
-  updateClient
+  updateClient,
 };

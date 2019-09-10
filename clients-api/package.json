@@ -34,7 +34,8 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "swagger project test"
+    "test": "envConfig.bat && swagger project test",
+    "env-windows": "envConfig.bat"
   },
   "resolutions": {
     "swagger-tools": "0.10.3"
