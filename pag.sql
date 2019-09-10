@@ -1,4 +1,5 @@
 
+create database pag;
 
 CREATE TABLE public.cliente (
     id bigint NOT NULL,
