@@ -1,0 +1,66 @@
+<nav id="navbar-top" class="navbar navbar-dark bg-dark position-fixed pl-2">
+  <div class="container-fluid px-0">
+    <span id="brand-title" class="m-auto ml-sm-3 text-white">Pedidos Pag!</span>
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <div dropdown>
+          <a class="nav-link d-flex" id="dropdownMenuButton" dropdownToggle>
+              <i class="fa fa-bars" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right bg-light position-absolute" aria-labelledby="dropdownMenuButton"
+            *dropdownMenu>
+            <a class="dropdown-item" (click)="clickLogout();" [routerLink]="['']">
+              <span>Sair</span>
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+<div id="wrapper" class="container-fluid px-0">
+
+  <nav id="sidebar" class="bg-light position-fixed">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link px-2 text-dark" [routerLink]="['pedidos']">
+          <i class="fa fa-fw fa-shopping-cart"></i>
+          <span class="align-middle link-label px-1" *ngIf="collapsed">Pedidos</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link px-2 text-dark" [routerLink]="['produtos']">
+            <i class="fa fa-fw fa-shopping-bag"></i>
+          <span class="align-middle link-label px-1" *ngIf="collapsed">Produtos</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link px-2 text-dark" [routerLink]="['clientes']">
+          <i class="fa fa-fw fa-users"></i>
+          <span class="align-middle link-label px-1" *ngIf="collapsed">Clientes</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+ <!--     <li class="nav-item">
+        <a class="nav-link px-2 text-dark" (click)="clickLogout();">
+          
+          <span class="align-middle link-label px-1" *ngIf="collapsed">Sair</span>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li> -->
+    </ul>
+
+    <ul id="btn-sidebar-collapse" class="nav position-absolute bg-dark w-100" (click)="toggleCollapsed()">
+      <li class="nav-item py-2" id="sidebarCollapse">
+        <i id="toggle-icon" class="fa text-muted" [ngClass]="collapsed ? 'fa-angle-left' : 'fa-angle-right'"></i>
+      </li>
+    </ul>
+  </nav>
+  <main class="uncollapsed" [ngClass]="{collapsed: collapsed}">
+    <router-outlet></router-outlet>
+  </main>
+</div>

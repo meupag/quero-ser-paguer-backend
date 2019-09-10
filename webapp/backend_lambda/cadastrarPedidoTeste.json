@@ -1,0 +1,19 @@
+{
+    "path": "/pedidos",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Authorization": "eyJraWQiOiJLTzRVMWZs",
+        "content-type": "application/json; charset=UTF-8"
+    },
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "requestContext": {
+        "authorizer": {
+            "claims": {
+                "cognito:username": "the_username"
+            }
+        }
+    },
+    "body": "{\"id_pedido\":\"8\",\"id_cliente\":\"8\",\"itens\":[{\"id_produto\":\"1\",\"quantidade\":\"2\",\"total\":\"12.3\"}]}"
+}

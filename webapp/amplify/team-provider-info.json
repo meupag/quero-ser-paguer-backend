@@ -1,0 +1,19 @@
+{
+    "appenv": {
+        "awscloudformation": {
+            "AuthRoleName": "webapp-appenv-20190908005550-authRole",
+            "UnauthRoleArn": "arn:aws:iam::482511871902:role/webapp-appenv-20190908005550-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::482511871902:role/webapp-appenv-20190908005550-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "webapp-appenv-20190908005550-deployment",
+            "UnauthRoleName": "webapp-appenv-20190908005550-unauthRole",
+            "StackName": "webapp-appenv-20190908005550",
+            "StackId": "arn:aws:cloudformation:us-east-1:482511871902:stack/webapp-appenv-20190908005550/8d9b4100-d1ec-11e9-8d7e-0e7f598ae3ee"
+        },
+        "categories": {
+            "auth": {
+                "webappe4fcde34": {}
+            }
+        }
+    }
+}
