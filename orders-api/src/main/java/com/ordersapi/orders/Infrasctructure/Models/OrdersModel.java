@@ -18,35 +18,41 @@ public class OrdersModel extends Pedido {
         super();
     }
 
+
+    @Override
+    @Column(name = "id_cliente", nullable = false)
+    public UUID getClienteId() {
+        return this.ClienteId;
+    }
+
+    @Override
+    public void setClienteId(UUID clienteId) {
+        this.ClienteId = clienteId;
+    }
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
+    @Override
     @Column(name = "id", nullable = false)
     public UUID getId() {
         return Id;
     }
 
+    @Override
     public void setId(UUID id) {
         this.Id = id;
     }
 
-    @Column(name = "id_cliente", nullable = false)
-    public UUID getClientId(){
-        return ClienteId;
-    }
-
-    public void setClientId(UUID clientID){
-        this.ClienteId = clientID;
-    }
-
+    @Override
     @Column(name = "valor", nullable = true)
-    public double getValor(){
+    public Double getValor(){
         return Valor;
     }
 
+    @Override
     public void setValor(Double valor){
         this.Valor = valor;
     }
