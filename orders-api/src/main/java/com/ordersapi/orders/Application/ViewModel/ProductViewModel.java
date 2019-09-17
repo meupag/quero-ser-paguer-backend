@@ -5,7 +5,12 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-public class OrdersViewModel {
+public class ProductViewModel {
     @NotNull
-    public UUID clienteId;
+    public String nome;
+
+    @Min(1)
+    @Max(10000)
+    @NotNull
+    public double precoSugerido;
 }
