@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "14627643-5121-4c59-bce9-004652e29609",
+		"name": "Desafio ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Criar um cliente",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ab70fe1e-da53-4bc4-abff-235031e3b883",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"string\",\r\n  \"cpf\": \"string\",\r\n  \"data_nascimento\": \"string\",\r\n  \"email\": \"user@example.com\",\r\n  \"password\": \"string\",\r\n  \"username\": \"string\",\r\n  \"phoneNumber\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bw4bh5dy1f.execute-api.us-east-1.amazonaws.com/dev/client",
+							"protocol": "https",
+							"host": [
+								"bw4bh5dy1f",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar um cliente",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bw4bh5dy1f.execute-api.us-east-1.amazonaws.com/dev/client",
+							"protocol": "https",
+							"host": [
+								"bw4bh5dy1f",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar um cliente pela Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJraWQiOiJlVk9kNG1lMlNBT0paVGVDNEREU3VVcFwvOWEzemFSVm5iRUhma2xNc0JzMD0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhNTQ2YjA0NS0zMThkLTRkOTYtYWJiOS02ZTM1NjgzZWI0YTgiLCJjb2duaXRvOmdyb3VwcyI6WyJjb21tb24tY2xpZW50Il0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV90ckRsSzM3M00iLCJwaG9uZV9udW1iZXJfdmVyaWZpZWQiOmZhbHNlLCJjb2duaXRvOnVzZXJuYW1lIjoiU2VtY2FmZSIsImF1ZCI6IjZtcDhlNGttZTNkaTN0bjdiOGo2bXM0NWNoIiwiZXZlbnRfaWQiOiIzNmEwOWI1YS0yNmJhLTRmNDgtYmJiZC1hNzdiYTQzMDZkMjUiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTU2ODc4MDYyMSwicGhvbmVfbnVtYmVyIjoiKzU1MTE5NzU5MTkwNjQiLCJleHAiOjE1Njg3ODQyMjEsImlhdCI6MTU2ODc4MDYyMSwiZW1haWwiOiJndXRvY2E3N0BnbWFpbC5jb20ifQ.bCPIbNhSdo6Dmv8jf6JtO_h4-t3Z568V0lvLHUMvPWQxNWKBWrdSeA-D-pVM9sSmSHWOhUkho41dKs6yKAXG5a8eKi91rNcEaLe7Qa5tPuwlSXnDjDhPtDqZvih3mFhPNC3TcB302t415gN5S0RWhEvSCgqeT02VAU0r-t2Fa6qFXYEr4u5ZFL5wb1i2T-NdpwrHhkDiKKobKzUgRSvVk5fa-pVmbHUXm7Lb-rHu2IRZUdNDg_E7s3Iswx4MoH-6az3L7r33UEVpaYCJ80sdFPR3_le01sKyxS0ssgY5wHTdSjr3KI6yCoFw_nc5dEFbim_xs4Nzf8I79Qa4R7wiEQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://bw4bh5dy1f.execute-api.us-east-1.amazonaws.com/dev/client/bfe24e3c-1838-4204-99f0-10d5da8b1af8",
+							"protocol": "https",
+							"host": [
+								"bw4bh5dy1f",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"client",
+								"bfe24e3c-1838-4204-99f0-10d5da8b1af8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relatorio de clientes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJraWQiOiJlVk9kNG1lMlNBT0paVGVDNEREU3VVcFwvOWEzemFSVm5iRUhma2xNc0JzMD0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhNTQ2YjA0NS0zMThkLTRkOTYtYWJiOS02ZTM1NjgzZWI0YTgiLCJjb2duaXRvOmdyb3VwcyI6WyJjb21tb24tY2xpZW50Il0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV90ckRsSzM3M00iLCJwaG9uZV9udW1iZXJfdmVyaWZpZWQiOmZhbHNlLCJjb2duaXRvOnVzZXJuYW1lIjoiU2VtY2FmZSIsImF1ZCI6IjZtcDhlNGttZTNkaTN0bjdiOGo2bXM0NWNoIiwiZXZlbnRfaWQiOiIzNmEwOWI1YS0yNmJhLTRmNDgtYmJiZC1hNzdiYTQzMDZkMjUiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTU2ODc4MDYyMSwicGhvbmVfbnVtYmVyIjoiKzU1MTE5NzU5MTkwNjQiLCJleHAiOjE1Njg3ODQyMjEsImlhdCI6MTU2ODc4MDYyMSwiZW1haWwiOiJndXRvY2E3N0BnbWFpbC5jb20ifQ.bCPIbNhSdo6Dmv8jf6JtO_h4-t3Z568V0lvLHUMvPWQxNWKBWrdSeA-D-pVM9sSmSHWOhUkho41dKs6yKAXG5a8eKi91rNcEaLe7Qa5tPuwlSXnDjDhPtDqZvih3mFhPNC3TcB302t415gN5S0RWhEvSCgqeT02VAU0r-t2Fa6qFXYEr4u5ZFL5wb1i2T-NdpwrHhkDiKKobKzUgRSvVk5fa-pVmbHUXm7Lb-rHu2IRZUdNDg_E7s3Iswx4MoH-6az3L7r33UEVpaYCJ80sdFPR3_le01sKyxS0ssgY5wHTdSjr3KI6yCoFw_nc5dEFbim_xs4Nzf8I79Qa4R7wiEQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "clients-api.us-east-1.elasticbeanstalk.com/clients?limit=10&offset=0",
+							"host": [
+								"clients-api",
+								"us-east-1",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"clients"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Efetuar Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"Semcafe\",\n\t\"password\":\"Gutoca@77\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bw4bh5dy1f.execute-api.us-east-1.amazonaws.com/dev/login",
+							"protocol": "https",
+							"host": [
+								"bw4bh5dy1f",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta um cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJraWQiOiJlVk9kNG1lMlNBT0paVGVDNEREU3VVcFwvOWEzemFSVm5iRUhma2xNc0JzMD0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhNTQ2YjA0NS0zMThkLTRkOTYtYWJiOS02ZTM1NjgzZWI0YTgiLCJjb2duaXRvOmdyb3VwcyI6WyJjb21tb24tY2xpZW50Il0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV90ckRsSzM3M00iLCJwaG9uZV9udW1iZXJfdmVyaWZpZWQiOmZhbHNlLCJjb2duaXRvOnVzZXJuYW1lIjoiU2VtY2FmZSIsImF1ZCI6IjZtcDhlNGttZTNkaTN0bjdiOGo2bXM0NWNoIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE1Njg3ODE0MjUsInBob25lX251bWJlciI6Iis1NTExOTc1OTE5MDY0IiwiZXhwIjoxNTY4Nzg1MDI1LCJpYXQiOjE1Njg3ODE0MjUsImVtYWlsIjoiZ3V0b2NhNzdAZ21haWwuY29tIn0.mGrKMw66oNbSPWpJEoBF3xoPU5u2xeWfG0NDVWpE0RU5fPuvKSn01rslYklIV7EmJ_7Hv-p21USyrU2T8LIuSVXnRe1_HpSPGBpYKglflRjkVp837_RAY1Q3B6oZGggTDClcIQi6p4JqdMo-ewoO9rwdUuHs-m4wA1iggy382pNAt4PoiTmnCO6DkHMUvkbm_tXhSb531VkWjdRZPQINHnLxcdM1ci-SDth3JONMs64Irkoak3eD1SLc8PGQIiNbs4KC8fAsV1xrrJapqVG8wuVojjU7FS4BWVrzlJDYC4tAhcfFXJFVK1W9beVIdRtPv4zkaQNaK7ONJI2FeRJUTw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "clients-api.us-east-1.elasticbeanstalk.com/client/d01f5993-ff4d-4b72-b478-25ccb187db35",
+							"host": [
+								"clients-api",
+								"us-east-1",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"client",
+								"d01f5993-ff4d-4b72-b478-25ccb187db35"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Criar Produto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Caneca\",\n\t\"precoSugerido\":59.80\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "OrdersPag-env.xxhbrk22hu.us-east-1.elasticbeanstalk.com/api/product",
+							"host": [
+								"OrdersPag-env",
+								"xxhbrk22hu",
+								"us-east-1",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar  Produtos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "OrdersPag-env.xxhbrk22hu.us-east-1.elasticbeanstalk.com/api/product",
+							"host": [
+								"OrdersPag-env",
+								"xxhbrk22hu",
+								"us-east-1",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar pelo Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "OrdersPag-env.xxhbrk22hu.us-east-1.elasticbeanstalk.com/api/product/840a02bd-bbc2-4e05-95c0-f9940dae232c",
+							"host": [
+								"OrdersPag-env",
+								"xxhbrk22hu",
+								"us-east-1",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"api",
+								"product",
+								"840a02bd-bbc2-4e05-95c0-f9940dae232c"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Criar pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"clienteId\": \"bfe24e3c-1838-4204-99f0-10d5da8b1af8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "OrdersPag-env.xxhbrk22hu.us-east-1.elasticbeanstalk.com/api/orders",
+							"host": [
+								"OrdersPag-env",
+								"xxhbrk22hu",
+								"us-east-1",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relatorio de pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "OrdersPag-env.xxhbrk22hu.us-east-1.elasticbeanstalk.com/api/orders",
+							"host": [
+								"OrdersPag-env",
+								"xxhbrk22hu",
+								"us-east-1",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar pedidos pelo Id do cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "OrdersPag-env.xxhbrk22hu.us-east-1.elasticbeanstalk.com/api/orders/cliente/d01f5993-ff4d-4b72-b478-25ccb187db35",
+							"host": [
+								"OrdersPag-env",
+								"xxhbrk22hu",
+								"us-east-1",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"cliente",
+								"d01f5993-ff4d-4b72-b478-25ccb187db35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar item ao pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"produtoId\":\"840a02bd-bbc2-4e05-95c0-f9940dae232c\",\n\t\"quantidade\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "OrdersPag-env.xxhbrk22hu.us-east-1.elasticbeanstalk.com/api/orders/item/a47e8471-4dbe-470d-92f2-f22f7ddd4283",
+							"host": [
+								"OrdersPag-env",
+								"xxhbrk22hu",
+								"us-east-1",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"item",
+								"a47e8471-4dbe-470d-92f2-f22f7ddd4283"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove um item do pedido ",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "OrdersPag-env.xxhbrk22hu.us-east-1.elasticbeanstalk.com/api/orders/item/remove/db4b9f90-2f4d-4c43-b755-994110ed6623",
+							"host": [
+								"OrdersPag-env",
+								"xxhbrk22hu",
+								"us-east-1",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"item",
+								"remove",
+								"db4b9f90-2f4d-4c43-b755-994110ed6623"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

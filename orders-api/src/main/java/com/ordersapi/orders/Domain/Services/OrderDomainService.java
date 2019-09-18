@@ -8,7 +8,6 @@ import com.ordersapi.orders.Domain.Repositories.IClientService;
 import com.ordersapi.orders.Domain.Repositories.IOrderItemRepository;
 import com.ordersapi.orders.Domain.Repositories.IOrderRepository;
 import com.ordersapi.orders.Domain.Repositories.IProductRepository;
-import com.ordersapi.orders.Infrasctructure.Models.ProductModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,8 +82,20 @@ public class OrderDomainService {
         }else {
             throw new Exception("Item do pedido não existe na base ");
         }
-
     };
+
+    public List<Pedido> getOrdersByClienteId(UUID ClienteId){
+        List<Pedido> listOrdersFromDataBase =  _repository.findByClienteId(ClienteId);
+        List<Pedido> listOrders = new ArrayList<Pedido>();
+        for(Pedido pedido : listOrdersFromDataBase){
+            List<PedidoItem> itemList = _orderItemRepository.findByPedidoId(pedido.getId());
+            pedido.setValor(calculaValorDoPedido(itemList));
+            pedido.setPedidoItens(itemList);
+            listOrders.add(pedido);
+        }
+        return listOrders;
+    };
+
     private double  calculaValorDoPedido(List<PedidoItem> pedidoItems){
         return pedidoItems.stream().mapToDouble(x -> x.getPreco()).sum();
     };

@@ -45,6 +45,11 @@ public class OrdersController {
         return orderDomainService.listOrders();
     }
 
+    @GetMapping("/orders/cliente/{ClienteId}")
+    public List<Pedido> getAllOrders(@PathVariable(value = "ClienteId") UUID ClienteId) {
+        return orderDomainService.getOrdersByClienteId(ClienteId);
+    }
+
     @GetMapping("/orders/{id}")
     public Pedido getORdersById(@PathVariable(value = "id") UUID id) {
         return orderDomainService.getById(id);
