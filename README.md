@@ -3,7 +3,7 @@
 
 O desafio foi enxergado como uma solução escalar, por tanto, foram criados serviços diferentes usando tecnologias diferentes, visando entregar serviços menos suscetíveis a erros e de fácil manutenção nas suas regras e integrações.
 
-Foi criado os seguintes serviços: 
+Foram criados os seguintes serviços: 
 
  - [Orders-api](https://github.com/gcamargosilva/quero-ser-paguer-backend/tree/feature/orders-api/orders-api) - Para manipulação do pedido e produtos 
  - [Client-Api](https://github.com/gcamargosilva/quero-ser-paguer-backend/tree/feature/orders-api/clients-api) - Para manipulação de clientes e usuários
