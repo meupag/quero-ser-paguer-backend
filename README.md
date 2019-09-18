@@ -26,6 +26,10 @@ Além disso são utilizados recursos da AWS tais como
  - Cognito 
  - Elastic Beanstalk (Com docker para a API de cliente)
 
+## Testes
+Caso queira efetuar testes locais e debug solicite-me o .env do Node.
+
+Ou você pode importar o Desafio.postman_collection para o Postman e efetuar as requisições direto nos ambientes
  
 
  
