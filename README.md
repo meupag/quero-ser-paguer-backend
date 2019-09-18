@@ -1,7 +1,7 @@
 
 # Visão Geral 
 
-O desafio foi enxergado como uma solução escalável, por tanto, foram criados serviços diferentes usando tecnologias diferentes, visando entregar serviços menos suscetíveis a erros e de fácil manutenção nas suas regras e integrações.
+O desafio foi enxergado como uma solução escalável, portanto, foram criados serviços diferentes usando tecnologias diferentes, visando entregar serviços menos suscetíveis a erros e de fácil manutenção nas suas regras e integrações.
 
 Foram criados os seguintes serviços: 
 
