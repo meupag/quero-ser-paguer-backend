@@ -8,6 +8,8 @@ Exemplos de requisições são apresentados no arquivo: "Store - Postman.postman
 
 Testes untários e de integração estão disponíveis em "test.java.com.store".
 
+Executar como Docker: "docker-compose up"
+
 ## Domain 
 
 Customer, Order, OrderItem, Product.
