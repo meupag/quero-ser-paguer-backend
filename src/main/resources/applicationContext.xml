@@ -1,0 +1,39 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="customer" class="com.store.domain.Customer">
+        <property name="id" value="1"/>
+        <property name="name" value="name"/>
+        <property name="cpf" value="11111111111"/>
+        <property name="birthDate">
+            <bean class="java.time.LocalDate" factory-method="parse">
+                <constructor-arg value="2003-10-25"/>
+            </bean>
+        </property>
+        <property name="accountStatus" value="ACTIVE"/>
+    </bean>
+
+    <bean id="order" class="com.store.domain.Order">
+        <property name="id" value="1"/>
+        <property name="value" value="1.20"/>
+        <property name="customer" ref="customer"/>
+    </bean>
+
+    <bean id="product" class="com.store.domain.Product">
+        <property name="id" value="1"/>
+        <property name="name" value="name"/>
+        <property name="productStatus" value="ACTIVE"/>
+        <property name="suggestedPrice" value="1.20"/>
+    </bean>
+
+    <bean id="orderItem" class="com.store.domain.OrderItem">
+        <property name="id" value="1"/>
+        <property name="amount" value="5.0"/>
+        <property name="price" value="1.20"/>
+        <property name="order" ref="order"/>
+        <property name="product" ref="product"/>
+    </bean>
+
+</beans>
