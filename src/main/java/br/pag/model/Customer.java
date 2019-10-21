@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,10 +35,10 @@ public class Customer extends AbstractEntity {
     @ApiModelProperty(notes = "Nome do Cliente")
     private String name;
 
-    @Size(max = 65, message = "{bean.custormer.socialSecurityNumber.maxSize}")
     @Column(name = "CPF")
     @NotEmpty(message = "{bean.custormer.socialSecurityNumber.NotEmpty}")
     @ApiModelProperty(notes = "CPF do Cliente")
+    @Pattern(regexp = "[\\d]{11}", message = "{bean.custormer.socialSecurityNumber.onlyNumber}")
     private String socialSecurityNumber;
 
     @Column(name = "DATA_NASCIMENTO")
