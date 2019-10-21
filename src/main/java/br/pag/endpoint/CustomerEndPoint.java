@@ -4,6 +4,10 @@ import br.pag.error.ResponseException;
 import br.pag.message.Translator;
 import br.pag.model.Customer;
 import br.pag.repository.CustomerRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import java.util.List;
 import java.util.Objects;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("clientes")
+@Api(tags = "Customer-End-Point")
 public class CustomerEndPoint {
 
     private final CustomerRepository customerDAO;
@@ -41,9 +46,8 @@ public class CustomerEndPoint {
      * @return lista de clientes
      */
     @GetMapping
+    @ApiOperation(value = "Busca todos os Clientes cadastrados no sistema", response = List.class, produces = "application/json")
     public ResponseEntity<?> listAll(Pageable pageable) {
-        String test = Translator.toLocale("error.notFound", 1);
-        System.out.println(test);
         return new ResponseEntity<>(customerDAO.findAll(pageable), HttpStatus.OK);
     }
 
@@ -54,7 +58,9 @@ public class CustomerEndPoint {
      * @return cliente encontrado
      */
     @GetMapping(path = "/{id}")
-    public ResponseEntity<?> getCustomerById(@PathVariable("id") long id) {
+    @ApiOperation(value = "Busca um cliente a partir do seu ID", response = Customer.class, produces = "application/json")
+    public ResponseEntity<?> getCustomerById(
+            @ApiParam(value = "ID do Cliente que está sendo consultado no banco de dados", required = true) @PathVariable("id") Long id) {
         //verifica a existencia do cliente
         verifyIfCustomerExists(id);
         return new ResponseEntity<>(customerDAO.findById(id), HttpStatus.OK);
@@ -67,12 +73,14 @@ public class CustomerEndPoint {
      * @return status de sucesso ou falha ao deletar
      */
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") long id) {
+    @ApiOperation(value = "Deleta um Cliente no banco de dados a partir do seu ID", produces = "application/json")
+    public ResponseEntity<?> delete(
+            @ApiParam(value = "ID do Cliente que está sendo deletado no banco de dados", required = true) @PathVariable("id") Long id) {
 
         //verifica a existencia do cliente
         verifyIfCustomerExists(id);
         customerDAO.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     /**
@@ -82,11 +90,9 @@ public class CustomerEndPoint {
      * @return cliente cadastrado
      */
     @PostMapping
-    public ResponseEntity<?> save(@Valid @RequestBody Customer newCustomer) {
-        //verifica se o objeto é nulo
-        if (Objects.isNull(newCustomer)) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+    @ApiOperation(value = "Cadastra um Cliente no banco de dados", response = Customer.class, produces = "application/json")
+    public ResponseEntity<?> save(
+            @ApiParam(value = "Objeto Customer(Cliente) que será cadastrado no banco de dados", required = true) @Valid @RequestBody Customer newCustomer) {
         //não é possivel cadastrar um cliente que já possui ID
         if (newCustomer.getId() != null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -102,23 +108,26 @@ public class CustomerEndPoint {
      * @return sucesso ou falha
      */
     @PutMapping
-    public ResponseEntity<?> update(@Valid @RequestBody Customer updatedCustomer) {
-        //verifica se o objeto é nulo
-        if (Objects.isNull(updatedCustomer)) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+    @ApiOperation(value = "Atualiza um Cliente no banco de dados", response = Customer.class, produces = "application/json")
+    public ResponseEntity<?> update(
+            @ApiParam(value = "Objeto Customer(Cliente) que será atualizado no banco de dados", required = true) @Valid @RequestBody Customer updatedCustomer) {
         Long idCustomer = updatedCustomer.getId();
         if (idCustomer != null) {//se possui ID
             //verifica a existencia do cliente
             verifyIfCustomerExists(idCustomer);
-            customerDAO.save(updatedCustomer);
-            return new ResponseEntity<>(HttpStatus.OK);
+            updatedCustomer = customerDAO.save(updatedCustomer);
+            return new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    /**
+     * Verifica se um Cliente existe.
+     *
+     * @param id id do cliente
+     */
     private void verifyIfCustomerExists(Long id) {
-        if (!customerDAO.findById(id).isPresent()) {
+        if (Objects.isNull(id) || Objects.isNull(customerDAO.findById(id).orElse(null))) {
             throw new ResponseException(Translator.toLocale("error.notFound", id));
         }
     }

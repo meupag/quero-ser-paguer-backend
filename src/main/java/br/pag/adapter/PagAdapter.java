@@ -54,9 +54,7 @@ public class PagAdapter extends AcceptHeaderLocaleResolver implements WebMvcConf
 
     @Override
     public LocalValidatorFactoryBean getValidator() {
-        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
-        bean.setValidationMessageSource(messageSource());
-        return bean;
+        return new LocalValidatorFactoryBean();
     }
 
     //----------------------------------------------------
