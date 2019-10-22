@@ -24,6 +24,7 @@ public class SwaggerConfig {
                 .paths(PathSelectors.regex("/.*"))
                 .build()
                 .apiInfo(metaInfo()).tags(new Tag("Customer-End-Point", "Endpoint REST dos Clientes"),
+                new Tag("ItemOrder-End-Point", "Endpoint REST dos Pedido-Itens"),
                 new Tag("Order-End-Point", "Endpoint REST dos Pedidos"),
                 new Tag("Product-End-Point", "Endpoint REST dos Produtos"));
     }

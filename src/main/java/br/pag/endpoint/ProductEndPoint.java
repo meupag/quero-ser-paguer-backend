@@ -94,8 +94,8 @@ public class ProductEndPoint {
     public ResponseEntity<?> save(
             @ApiParam(value = "Objeto Product(Produto) que será cadastrado no banco de dados", required = true) @Valid @RequestBody Product newProduct) {
         //não é possivel cadastrar um produto que já possui ID
-        if (newProduct.getId() != null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (Objects.nonNull(newProduct.getId())) {
+            throw new ResponseException(Translator.toLocale("Product.Save.Id.NotNull"));
         }
         newProduct = productDAO.save(newProduct);
         return new ResponseEntity<>(newProduct, HttpStatus.OK);
@@ -104,32 +104,36 @@ public class ProductEndPoint {
     /**
      * Atualiza um produto.
      *
-     * @param updatedProduct produto a ser atualizado
+     * @param product produto a ser atualizado
      * @return sucesso ou falha
      */
     @PutMapping
     @ApiOperation(value = "Atualiza um Produto no banco de dados", response = Product.class, produces = "application/json")
     public ResponseEntity<?> update(
-            @ApiParam(value = "Objeto Product(Produto) que será atualizado no banco de dados", required = true) @Valid @RequestBody Product updatedProduct) {
+            @ApiParam(value = "Objeto Product(Produto) que será atualizado no banco de dados", required = true) @Valid @RequestBody Product product) {
         //verifica se o objeto é nulo
-        Long idProduct = updatedProduct.getId();
-        if (idProduct != null) {//se possui ID
-            //verifica a existencia do produto
-            verifyIfProductExists(idProduct);
-            updatedProduct = productDAO.save(updatedProduct);
-            return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+        Long idProduct = product.getId();
+        if (Objects.isNull(idProduct)) {//se não possui ID
+            throw new ResponseException(Translator.toLocale("Customer.Update.Id.IsNull"));
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        //verifica a existencia do produto
+        verifyIfProductExists(idProduct);
+        return productDAO.findById(idProduct)
+                .map(updatedProduct -> {
+                    updatedProduct.setName(product.getName());
+                    updatedProduct.setSuggestedPrice(product.getSuggestedPrice());
+                    return new ResponseEntity<>(productDAO.save(updatedProduct), HttpStatus.OK);
+                }).orElseThrow(() -> new ResponseException(Translator.toLocale("Product.Id.NotFound")));
     }
 
     /**
-     * Verifica se um Cliente existe.
+     * Verifica se um Produto existe.
      *
      * @param id id do produto
      */
     private void verifyIfProductExists(Long id) {
         if (Objects.isNull(id) || Objects.isNull(productDAO.findById(id).orElse(null))) {
-            throw new ResponseException(Translator.toLocale("error.notFound", id));
+            throw new ResponseException(Translator.toLocale("Product.Id.NotFound", id));
         }
     }
 }

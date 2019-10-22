@@ -31,7 +31,7 @@ public class ItemOrder extends AbstractEntity {
 
     @Column(name = "PRECO")
     @NotNull(message = "{bean.itemOrder.price.NotNull}")
-    @JsonIgnore
+    @ApiModelProperty(notes = "Preço")
     private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

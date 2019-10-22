@@ -94,8 +94,8 @@ public class CustomerEndPoint {
     public ResponseEntity<?> save(
             @ApiParam(value = "Objeto Customer(Cliente) que será cadastrado no banco de dados", required = true) @Valid @RequestBody Customer newCustomer) {
         //não é possivel cadastrar um cliente que já possui ID
-        if (newCustomer.getId() != null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (Objects.nonNull(newCustomer.getId())) {
+            throw new ResponseException(Translator.toLocale("Customer.Save.Id.NotNull"));
         }
         newCustomer = customerDAO.save(newCustomer);
         return new ResponseEntity<>(newCustomer, HttpStatus.OK);
@@ -104,21 +104,26 @@ public class CustomerEndPoint {
     /**
      * Atualiza um cliente.
      *
-     * @param updatedCustomer cliente a ser atualizado
+     * @param customer cliente a ser atualizado
      * @return sucesso ou falha
      */
     @PutMapping
     @ApiOperation(value = "Atualiza um Cliente no banco de dados", response = Customer.class, produces = "application/json")
     public ResponseEntity<?> update(
-            @ApiParam(value = "Objeto Customer(Cliente) que será atualizado no banco de dados", required = true) @Valid @RequestBody Customer updatedCustomer) {
-        Long idCustomer = updatedCustomer.getId();
-        if (idCustomer != null) {//se possui ID
-            //verifica a existencia do cliente
-            verifyIfCustomerExists(idCustomer);
-            updatedCustomer = customerDAO.save(updatedCustomer);
-            return new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
+            @ApiParam(value = "Objeto Customer(Cliente) que será atualizado no banco de dados", required = true) @Valid @RequestBody Customer customer) {
+        Long idCustomer = customer.getId();
+        if (Objects.isNull(idCustomer)) {//se não possui ID
+            throw new ResponseException(Translator.toLocale("Product.Update.Id.IsNull"));
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        //verifica a existencia do cliente
+        verifyIfCustomerExists(idCustomer);
+        return customerDAO.findById(idCustomer)
+                .map(updatedCustomer -> {
+                    updatedCustomer.setBirthDate(customer.getBirthDate());
+                    updatedCustomer.setName(customer.getName());
+                    updatedCustomer.setSocialSecurityNumber(customer.getSocialSecurityNumber());
+                    return new ResponseEntity<>(customerDAO.save(updatedCustomer), HttpStatus.OK);
+                }).orElseThrow(() -> new ResponseException(Translator.toLocale("Customer.Id.NotFound")));
     }
 
     /**
@@ -128,7 +133,7 @@ public class CustomerEndPoint {
      */
     private void verifyIfCustomerExists(Long id) {
         if (Objects.isNull(id) || Objects.isNull(customerDAO.findById(id).orElse(null))) {
-            throw new ResponseException(Translator.toLocale("error.notFound", id));
+            throw new ResponseException(Translator.toLocale("Customer.Id.NotFound", id));
         }
     }
 }
