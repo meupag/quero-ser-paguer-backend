@@ -86,19 +86,25 @@ public class CustomerEndPoint {
     /**
      * Cadastra um cliente no banco de dados.
      *
-     * @param newCustomer cliente a ser cadastrado
+     * @param customer cliente a ser cadastrado
      * @return cliente cadastrado
      */
     @PostMapping
     @ApiOperation(value = "Cadastra um Cliente no banco de dados", response = Customer.class, produces = "application/json")
     public ResponseEntity<?> save(
-            @ApiParam(value = "Objeto Customer(Cliente) que será cadastrado no banco de dados", required = true) @Valid @RequestBody Customer newCustomer) {
+            @ApiParam(value = "Objeto Customer(Cliente) que será cadastrado no banco de dados", required = true) @Valid @RequestBody Customer customer) {
         //não é possivel cadastrar um cliente que já possui ID
-        if (Objects.nonNull(newCustomer.getId())) {
+        if (Objects.nonNull(customer.getId())) {
             throw new ResponseException(Translator.toLocale("Customer.Save.Id.NotNull"));
         }
-        newCustomer = customerDAO.save(newCustomer);
-        return new ResponseEntity<>(newCustomer, HttpStatus.OK);
+        //verifica se o CPF já esta cadastrado/associado a outro cliente no banco de dados
+        String socialSecurityNumber = customer.getSocialSecurityNumber();
+        Customer customerSocialSecurityAlreadyExists = customerDAO.findBySocialSecurityNumber(socialSecurityNumber).orElse(null);
+        if (Objects.nonNull(customerSocialSecurityAlreadyExists)) {
+            throw new ResponseException(Translator.toLocale("Customer.Save.SocialSecurity.AlreadyExists", socialSecurityNumber));
+        }
+        customer = customerDAO.save(customer);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
     /**
@@ -117,6 +123,12 @@ public class CustomerEndPoint {
         }
         //verifica a existencia do cliente
         verifyIfCustomerExists(idCustomer);
+        //verifica se o CPF já esta cadastrado/associado a outro cliente no banco de dados
+        String socialSecurityNumber = customer.getSocialSecurityNumber();
+        Customer customerSocialSecurityAlreadyExists = customerDAO.findBySocialSecurityNumber(socialSecurityNumber).orElse(null);
+        if (Objects.nonNull(customerSocialSecurityAlreadyExists)) {
+            throw new ResponseException(Translator.toLocale("Customer.Save.SocialSecurity.AlreadyExists", socialSecurityNumber));
+        }
         return customerDAO.findById(idCustomer)
                 .map(updatedCustomer -> {
                     updatedCustomer.setBirthDate(customer.getBirthDate());
