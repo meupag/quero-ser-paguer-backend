@@ -1,7 +1,7 @@
 package br.pag.repository;
 
 import br.pag.model.Customer;
-import java.util.List;
+import java.util.Optional;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -10,5 +10,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
 
-    List<Customer> findByName(String name);
+    Optional<Customer> findBySocialSecurityNumber(String socialSecurityNumber);
 }
