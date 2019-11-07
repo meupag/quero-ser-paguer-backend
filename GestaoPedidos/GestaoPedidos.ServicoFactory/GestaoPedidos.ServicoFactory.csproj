@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GestaoPedidos.Dominios\GestaoPedidos.Dominios.csproj" />
+    <ProjectReference Include="..\GestaoPedidos.Infraestrutura\GestaoPedidos.Infraestrutura.csproj" />
+    <ProjectReference Include="..\GestaoPedidos.RepositorioFactory\GestaoPedidos.RepositorioFactory.csproj" />
+    <ProjectReference Include="..\GestaoPedidos.Servico\GestaoPedidos.Servico.csproj" />
+  </ItemGroup>
+
+</Project>
