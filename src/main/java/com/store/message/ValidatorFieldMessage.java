@@ -9,4 +9,6 @@ public class ValidatorFieldMessage {
 
     public static final String CpfInvalid = "CPF precisa conter 11 números.";
 
+    public static final String InvalidInput = "Entrada inválida.";
+
 }

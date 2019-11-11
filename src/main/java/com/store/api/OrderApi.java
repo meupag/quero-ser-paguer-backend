@@ -3,6 +3,7 @@ package com.store.api;
 import com.store.domain.Customer;
 import com.store.domain.Order;
 import com.store.message.ExceptionMessage;
+import com.store.message.ValidatorFieldMessage;
 import com.store.resource.OrderResource;
 import io.swagger.annotations.*;
 import org.springframework.data.domain.Pageable;
@@ -22,56 +23,54 @@ import java.math.BigDecimal;
 @ExposesResourceFor(Order.class)
 public interface OrderApi {
 
-    @ApiOperation(value = "Add a new order", nickname = "addOrder", authorizations = {@Authorization(value = "bearerAuth")}, tags = {"order",})
+    @ApiOperation(value = "Add a new order", nickname = "addOrder", tags = {"order",})
     @ApiResponses(value = {
-            @ApiResponse(code = 401, message = "Access token is missing or invalid"),
-            @ApiResponse(code = 405, message = "Invalid input")
+            @ApiResponse(code = 405, message = ValidatorFieldMessage.InvalidInput),
+            @ApiResponse(code = 404, message = ExceptionMessage.CustomerNotFound)
     })
     @PostMapping(
             consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    ResponseEntity<OrderResource> addOrder(@ApiParam(value = "Customer id of the order", required = true) @Valid @PathVariable Integer customerId,
+    ResponseEntity<OrderResource> addOrder(@ApiParam(value = "Customer id of the order", example = "1", required = true) @Valid @PathVariable Integer customerId,
                                            @ApiParam(value = "Order that will be added", required = true) @Valid @RequestBody Order order);
 
     @ApiOperation(value = "Get order by id", nickname = "getOrderById", response = Order.class,
             notes = "Retrieves a order by id",
-            authorizations = {@Authorization(value = "bearerAuth")}, tags = {"order",})
+            tags = {"order",})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "successful operation", response = Order.class),
-            @ApiResponse(code = 400, message = "Invalid status value")
+            @ApiResponse(code = 404, message = ExceptionMessage.OrderNotFound)
     })
     @GetMapping(
             value = "/{orderId}",
             consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    ResponseEntity<OrderResource> getOrderById(@ApiParam(value = "Customer id") @Valid @PathVariable Integer customerId,
-                                               @ApiParam(value = "Order id") @Valid @PathVariable Integer orderId);
+    ResponseEntity<OrderResource> getOrderById(@ApiParam(value = "Customer id", example = "1") @Valid @PathVariable Integer customerId,
+                                               @ApiParam(value = "Order id", example = "1") @Valid @PathVariable Integer orderId);
 
     @ApiOperation(value = "Get orders", nickname = "getOrder", response = Order.class, responseContainer = "List",
             notes = "Retrieves a collection of users by taking into account order features. Can be done pagination (quantity of items returned) and ordering",
-            authorizations = {@Authorization(value = "bearerAuth")}, tags = {"order",})
+            tags = {"order",})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "successful operation", response = Order.class, responseContainer = "List"),
-            @ApiResponse(code = 400, message = "Invalid status value")
+            @ApiResponse(code = 404, message = ExceptionMessage.OrderNotFound)
     })
     @GetMapping(
             consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    ResponseEntity<PagedResources<Order>> getOrder(@ApiParam(value = "Customer id") @Valid @PathVariable Integer customerId,
-                                                   @ApiParam(value = "Order id") @Valid @PathVariable @RequestParam(value = "id", required = false) Integer orderId,
+    ResponseEntity<PagedResources<Order>> getOrder(@ApiParam(value = "Customer id", example = "1") @Valid @PathVariable Integer customerId,
+                                                   @ApiParam(value = "Order id", example = "1") @Valid @PathVariable @RequestParam(value = "id", required = false) Integer orderId,
                                                    @ApiParam(value = "Customer") @Valid @RequestParam(value = "customer", required = false) Customer customer,
-                                                   @ApiParam(value = "Order value") @Valid @RequestParam(value = "value", required = false) BigDecimal value,
+                                                   @ApiParam(value = "Order value", example = "1.1") @Valid @RequestParam(value = "value", required = false) BigDecimal value,
                                                    @PageableDefault Pageable pageable,
                                                    PagedResourcesAssembler assembler);
 
 
-    @ApiOperation(value = "Delete order", nickname = "deleteOrderById", authorizations = {@Authorization(value = "bearerAuth")}, tags = {"order",})
+    @ApiOperation(value = "Delete order", nickname = "deleteOrderById", tags = {"order",})
     @ApiResponses(value = {
-            @ApiResponse(code = 400, message = "Invalid order id supplied"),
-            @ApiResponse(code = 401, message = "Access token is missing or invalid"),
             @ApiResponse(code = 404, message = ExceptionMessage.OrderNotFound)
     })
     @DeleteMapping(
@@ -79,7 +78,7 @@ public interface OrderApi {
             consumes = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
-    ResponseEntity<Void> deleteOrderById(@ApiParam(value = "Customer id of the order", required = true) @Valid @PathVariable Integer customerId,
-                                         @ApiParam(value = "Order id that will be deleted", required = true) @Valid @PathVariable Integer orderId);
+    ResponseEntity<Void> deleteOrderById(@ApiParam(value = "Customer id of the order", example = "1", required = true) @Valid @PathVariable Integer customerId,
+                                         @ApiParam(value = "Order id that will be deleted", example = "1", required = true) @Valid @PathVariable Integer orderId);
 
 }

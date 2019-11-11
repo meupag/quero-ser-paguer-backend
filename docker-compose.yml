@@ -22,6 +22,7 @@ services:
     command: mvn clean spring-boot:run
     ports:
       - "8000:8000"
+      - "8081:8081"
     depends_on:
       - store-db-mysql
     environment:

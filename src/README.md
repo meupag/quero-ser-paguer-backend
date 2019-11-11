@@ -8,7 +8,13 @@ Exemplos de requisições são apresentados no arquivo: "Store - Postman.postman
 
 Testes untários e de integração estão disponíveis em "test.java.com.store".
 
+#### Informações
+
 Executar como Docker: "docker-compose up"
+
+Acessar o Swagger: http://localhost:8000/store/swagger-ui.html
+
+API Docs: http://localhost:8000/store/api-docs
 
 ## Domain 
 
