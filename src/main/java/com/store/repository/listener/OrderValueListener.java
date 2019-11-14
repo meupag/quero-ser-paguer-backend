@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.PostPersist;
+import javax.persistence.PostRemove;
 import javax.persistence.PostUpdate;
 
 @Component
@@ -18,8 +19,9 @@ public class OrderValueListener {
     }
 
     @PostPersist
+    @PostRemove
     @PostUpdate
-    private void onPostPersist(OrderItem entity) {
+    private void onPostOrderItem(OrderItem entity) {
         orderService.updateValueById(entity.getOrder().getCustomer().getId(), entity.getOrder().getId());
     }
 
