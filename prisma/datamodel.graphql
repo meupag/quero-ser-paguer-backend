@@ -1,0 +1,75 @@
+type Customer {
+  id: UUID! @id @unique
+  email: String! @unique
+  name: String!
+  password: String!
+  cpf: String! @unique
+  birthDate: DateTime!
+  orders: [Order!]
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  deleted: Boolean! @default(value: false)
+}
+
+type Manager {
+  id: UUID! @id @unique
+  email: String! @unique
+  name: String!
+  password: String!
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  deleted: Boolean! @default(value: false)
+}
+
+type Order {
+  id: UUID! @id @unique
+  subTotal: Float!
+  total: Float!
+  orderItens: [OrderItem!]
+
+  statusOrder: StatusOrder! @default(value: ANALYZING)
+  customer: Customer! @db(name: "customer_id") @relation(link: INLINE)
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  deleted: Boolean! @default(value: false)
+}
+
+type OrderItem {
+  id: UUID! @id @unique
+  quantity: Int!
+  price: Float!
+  discount: Float! @default(value: 0)
+  status: StatusOrderItem! @default(value: OK)
+
+  order: Order! @db(name: "order_id") @relation(link: INLINE)
+  product: Product! @db(name: "product_id") @relation(link: INLINE)
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  deleted: Boolean! @default(value: false)
+}
+
+type Product {
+  id: UUID! @id @unique
+  description: String!
+  suggestedPrice: Float!
+  store: Int! @default(value: 0)
+
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  deleted: Boolean! @default(value: false)
+}
+
+enum StatusOrder {
+  CANCELED
+  APPROVED
+  ANALYZING
+}
+
+enum StatusOrderItem {
+  CANCELED
+  OK
+}

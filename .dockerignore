@@ -1,0 +1,14 @@
+.git
+.dockerignore
+.eslintrc.js
+.gitignore
+.prettierrc.js
+.vscode
+README.md
+docker
+docker-compose.yml
+orders-vix-graphql-server.dockerfile
+tsconfig.json
+node_modules
+database
+src/generated

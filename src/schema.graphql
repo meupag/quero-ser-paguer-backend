@@ -1,0 +1,79 @@
+scalar UUID
+scalar DateTime
+
+type Query {
+  customers: [Customer!]
+  orders: [Order!]
+  order(id: String!): [Order!]
+  products: [Product!]
+}
+
+type Mutation {
+  signUp(email: String!, password: String!, name: String!, cpf: String!, birthDate: String!): AuthPayload!
+  login(email: String!, password: String!): AuthPayload!
+  createManager(email: String!, password: String!, name: String!): AuthPayload!
+  createProduct(description: String!, suggestedPrice: Float!, store: Int!): Product!
+  updateProduct(id: String!, description: String, suggestedPrice: Float, store: Int): Product!
+  deleteProduct(id: String!): Product!
+  createOrder(orderItens: [createInputOrderItem!]!): Order!
+  cancelOrder(id: String!): Order!
+}
+
+type Subscription {
+  newOrder: Order
+}
+
+input createInputOrderItem {
+  quantity: Int!
+  price: Float!
+  discount: Float
+  productId: UUID!
+}
+
+type AuthPayload {
+  token: String!
+}
+
+type Customer {
+  id: UUID!
+  name: String!
+  cpf: String!
+  birthDate: DateTime!
+  orders: [Order!]
+}
+
+type Order {
+  id: UUID!
+  subTotal: Float!
+  total: Float!
+  statusOrder: StatusOrder!
+  customer: Customer!
+  orderItens: [OrderItem!]
+}
+
+type OrderItem {
+  id: UUID!
+  quantity: Int!
+  price: Float!
+  discount: Float!
+  status: StatusOrderItem!
+  product: Product!
+}
+
+type Product {
+  id: UUID!
+  description: String!
+  suggestedPrice: Float!
+  store: Int!
+}
+
+enum StatusOrder {
+  CANCELED
+  APPROVED
+  ANALYZING
+}
+
+enum StatusOrderItem {
+  CANCELED
+  OK
+}
