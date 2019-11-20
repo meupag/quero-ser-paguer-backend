@@ -1,0 +1,60 @@
+version: '3.7'
+services:
+  order-vix-server:
+    restart: always
+    build:
+      dockerfile: ./orders-vix-graphql-server.dockerfile
+      context: .
+    image: orders-vix-graphql-server
+    container_name: order-vix-server
+    ports:
+      - '4000:4000'
+    depends_on:
+      - prisma
+
+  prisma:
+    container_name: orders-vix-prisma
+    image: prismagraphql/prisma:$PRISMA_VERSION
+    restart: always
+    ports:
+      - '$PRISMA_SERVER_PORT:$PRISMA_SERVER_PORT'
+    depends_on:
+      - postgres
+    environment:
+      PRISMA_CONFIG: |
+        managementApiSecret: $PRISMA_MANAGEMENT_API_SECRET
+        port: $PRISMA_SERVER_PORT
+        databases:
+          default:
+            connector: $DATABASE_CONNECTOR
+            host: $DATABASE_HOST
+            port: $DATABASE_PORT
+            user: $DATABASE_USER
+            password: $DATABASE_PASSWORD
+            database: $DATABASE_NAME
+            migrations: true # It's enable for default
+
+  postgres:
+    image: postgres:$POSTGRES_VERSION
+    container_name: orders-vix-db
+    restart: always
+    environment:
+      POSTGRES_DB: $DATABASE_NAME
+      POSTGRES_USER: $DATABASE_USER
+      POSTGRES_PASSWORD: $DATABASE_PASSWORD
+    volumes:
+      - /var/lib/postgresql/data
+
+  pgadmin:
+    image: 'dpage/pgadmin4'
+    container_name: orders-vix-pgadmin
+    depends_on:
+      - postgres
+    ports:
+      - '1234:80'
+    volumes:
+      - /var/lib/pgadmin
+      - /pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: $PGADMIN_EMAIL
+      PGADMIN_DEFAULT_PASSWORD: $PGADMIN_PASSWORD
