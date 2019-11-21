@@ -1,0 +1,30 @@
+version: '3.4'
+services:
+
+  store-db-mysql:
+    container_name: store-db-mysql
+    image: mysql/mysql-server:8.0
+    environment:
+      MYSQL_DATABASE: store-schema
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3309:3309"
+    restart: always
+
+  store-api-java:
+    container_name: store-api-java
+    build: .
+    volumes:
+      - .:/store
+      - ~/.m2:/root/.m2
+    working_dir: /store
+    command: mvn clean spring-boot:run
+    ports:
+      - "8000:8000"
+      - "8081:8081"
+    depends_on:
+      - store-db-mysql
+    environment:
+      - DB_URL=store-db-mysql:3306
+      - TZ=America/Sao_Paulo
