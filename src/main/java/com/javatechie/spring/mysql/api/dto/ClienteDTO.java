@@ -1,19 +1,13 @@
 package com.javatechie.spring.mysql.api.dto;
 
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 
-import org.springframework.validation.annotation.Validated;
+import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 
 public class ClienteDTO {
 	
@@ -21,6 +15,7 @@ public class ClienteDTO {
 	@Size(min=1, max=100, message = "Nome do cliente deve ser de 1 a 100 caracteres")
     private String nome;
 	
+	@CPF(message = "Este CPF não é válido")
 	@NotNull(message = "CPF do cliente não pode ser nulo")
 	@Size(min=11, max=11, message = "CPF deve conter 11 dígitos")
     private String cpf;

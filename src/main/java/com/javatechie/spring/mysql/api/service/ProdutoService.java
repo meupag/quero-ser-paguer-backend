@@ -1,21 +1,12 @@
 package com.javatechie.spring.mysql.api.service;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import javax.validation.ConstraintViolationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import com.javatechie.spring.mysql.api.dto.ProdutoDTO;
 import com.javatechie.spring.mysql.api.exception.ExistingObjectException;
 import com.javatechie.spring.mysql.api.exception.RecordNotFoundException;
-import com.javatechie.spring.mysql.api.model.Produto;
 import com.javatechie.spring.mysql.api.model.Produto;
 import com.javatechie.spring.mysql.api.repository.ProdutoRepository;
 

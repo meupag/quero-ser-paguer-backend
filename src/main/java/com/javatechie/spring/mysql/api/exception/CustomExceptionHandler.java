@@ -1,24 +1,16 @@
 package com.javatechie.spring.mysql.api.exception;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.validation.ConstraintViolationException;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
  
 @SuppressWarnings({"unchecked","rawtypes"})
@@ -60,7 +52,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler
         return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
     }
  
-   /*
+   
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
         List<String> details = new ArrayList<>();
@@ -68,5 +60,5 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler
         ErrorResponse error = new ErrorResponse("Server Error", details);
         return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    */
+    
 }

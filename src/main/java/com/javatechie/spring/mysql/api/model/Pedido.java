@@ -1,6 +1,5 @@
 package com.javatechie.spring.mysql.api.model;
 
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,13 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -37,7 +29,7 @@ public class Pedido {
 	@Column(name = "valor")
 	private BigDecimal valor;
 	
-	@OneToMany(mappedBy = "pedido", cascade = {CascadeType.REMOVE, CascadeType.MERGE})
+	@OneToMany(mappedBy = "pedido", cascade = {CascadeType.REMOVE, CascadeType.MERGE}, fetch = FetchType.EAGER)
 	private List<ItemPedido> itensPedido;
 	
     @ManyToOne

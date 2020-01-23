@@ -3,10 +3,8 @@ package com.javatechie.spring.mysql.api.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.javatechie.spring.mysql.api.exception.RecordNotFoundException;
 import com.javatechie.spring.mysql.api.integration.RequestPedido;
 import com.javatechie.spring.mysql.api.integration.RequestProduto;
@@ -31,9 +29,6 @@ public class PedidoService {
 	
 	@Autowired
 	private ProdutoService produtoService;
-	
-	@Autowired
-	private ItemPedidoService itemPedidoService;
 	
 	
 	public void addPedido (RequestPedido request) {

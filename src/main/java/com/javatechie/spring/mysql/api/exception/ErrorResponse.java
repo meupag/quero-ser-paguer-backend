@@ -2,8 +2,6 @@ package com.javatechie.spring.mysql.api.exception;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 public class ErrorResponse 
 {
     public ErrorResponse(String message, List<String> details) {

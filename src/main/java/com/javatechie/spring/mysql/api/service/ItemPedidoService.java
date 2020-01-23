@@ -4,10 +4,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.javatechie.spring.mysql.api.exception.RecordNotFoundException;
 import com.javatechie.spring.mysql.api.model.ItemPedido;
 import com.javatechie.spring.mysql.api.model.Pedido;
@@ -26,21 +24,6 @@ public class ItemPedidoService {
 	
 	@Autowired
 	ProdutoRepository produtoRepository;
-	
-	/*
-	public void addItem(ItemPedidoDTO itemPedidoDto) {
-		ItemPedido item = new ItemPedido(itemPedidoDto);
-		if (pedidoRepository.findById(itemPedidoDto.getIdPedido()).isPresent() 
-				&& produtoRepository.findById(itemPedidoDto.getIdProduto()).isPresent()) {
-			
-		}
-		else {
-			
-		}
-			
-		
-		itemPedidoRepository.save(itemPedido);
-	}*/
 	
 	
     public List<ItemPedido> getAllItens() {
@@ -75,6 +58,30 @@ public class ItemPedidoService {
 		
 		if (itemOpt.isPresent()) {
 			ItemPedido item = itemOpt.get();
+			itemPedidoRepository.delete(item);
+			
+			Pedido pedido = pedidoRepository.findById(item.getIdPedido()).get();
+			
+			BigDecimal valorAtual = pedido.getValor().subtract(item.getPreco().multiply(item.getQuantidade()));
+			
+			if (pedido.getItensPedido().isEmpty()) {
+				pedidoRepository.delete(pedido);
+			}
+			else {
+				pedidoRepository.updateValor(valorAtual, pedido.getId());
+			}
+		}
+		else {
+			throw new RecordNotFoundException("Item não encontrado");
+		}
+	}
+	
+	/*
+	public void delItemPedido(Long id) {
+		Optional<ItemPedido> itemOpt = itemPedidoRepository.findById(id);
+		
+		if (itemOpt.isPresent()) {
+			ItemPedido item = itemOpt.get();
 			Pedido pedido = pedidoRepository.findById(item.getIdPedido()).get();
 			
 			BigDecimal valorAtual = pedido.getValor().subtract(item.getPreco());
@@ -86,10 +93,11 @@ public class ItemPedidoService {
 				pedidoRepository.delete(pedido);
 			}
 			itemPedidoRepository.delete(item);
+			
 		}
 		else {
 			throw new RecordNotFoundException("Item não encontrado");
 		}
 	}
-	
+	*/
 }
