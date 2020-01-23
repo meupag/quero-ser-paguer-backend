@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.javatechie.spring.mysql.api.dto.ProdutoDTO;
 import com.javatechie.spring.mysql.api.model.Produto;
 import com.javatechie.spring.mysql.api.service.ProdutoService;
-//import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/produto")
@@ -29,31 +29,31 @@ public class ProdutoController {
     ProdutoService produtoService;
     
 	
-	@PostMapping				//@ApiOperation(value = "Cadastra um produto")
+	@PostMapping				@ApiOperation(value = "Cadastra um produto")
 	public ResponseEntity<?> addProdutos(@RequestBody @Valid ProdutoDTO produtoDTO) {
 		produtoService.addProdutos(produtoDTO);
 		return new ResponseEntity<Void>( HttpStatus.OK );
 	}
 	
 	
-	@GetMapping					//@ApiOperation(value = "Consulta todos os produtos cadastrados")
+	@GetMapping					@ApiOperation(value = "Consulta todos os produtos cadastrados")
 	public @ResponseBody List<Produto> getAllProdutos() {
 		return produtoService.getAllProdutos();
 	}
 	
-	@GetMapping("/{id}")		//@ApiOperation(value = "Consulta produto via id")
+	@GetMapping("/{id}")		@ApiOperation(value = "Consulta produto via id")
 	public @ResponseBody Produto getProdutoById(@PathVariable Long id) {
 		return produtoService.getProdutoById(id);
 	}
 	
 	
-	@DeleteMapping("/{id}")		//@ApiOperation(value = "Deleta produto")
+	@DeleteMapping("/{id}")		@ApiOperation(value = "Deleta produto")
 	public ResponseEntity<?> delProduto(@PathVariable Long id) {
 		produtoService.delProduto(id);
 		return new ResponseEntity<Void>( HttpStatus.OK );
 	}
 	
-	@PutMapping("/{id}")		//@ApiOperation(value = "Atualiza dados do produto")
+	@PutMapping("/{id}")		@ApiOperation(value = "Atualiza dados do produto")
 	public  ResponseEntity<?> updateProduto(@PathVariable Long id, @RequestBody @Valid ProdutoDTO produtoDto) {
 		produtoService.updateProduto(id, produtoDto);
 		return new ResponseEntity<Void>( HttpStatus.OK );

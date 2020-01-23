@@ -75,29 +75,4 @@ public class ItemPedidoService {
 			throw new RecordNotFoundException("Item não encontrado");
 		}
 	}
-	
-	/*
-	public void delItemPedido(Long id) {
-		Optional<ItemPedido> itemOpt = itemPedidoRepository.findById(id);
-		
-		if (itemOpt.isPresent()) {
-			ItemPedido item = itemOpt.get();
-			Pedido pedido = pedidoRepository.findById(item.getIdPedido()).get();
-			
-			BigDecimal valorAtual = pedido.getValor().subtract(item.getPreco());
-			
-			if (pedido.getItensPedido().size() > 1) {
-				pedidoRepository.updateValor(valorAtual, pedido.getId());
-			}
-			else {
-				pedidoRepository.delete(pedido);
-			}
-			itemPedidoRepository.delete(item);
-			
-		}
-		else {
-			throw new RecordNotFoundException("Item não encontrado");
-		}
-	}
-	*/
 }

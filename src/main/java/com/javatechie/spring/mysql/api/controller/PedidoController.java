@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.javatechie.spring.mysql.api.integration.RequestPedido;
 import com.javatechie.spring.mysql.api.model.Pedido;
 import com.javatechie.spring.mysql.api.service.PedidoService;
-//import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/pedido")
@@ -29,35 +29,35 @@ public class PedidoController {
 	@Autowired
 	private PedidoService pedidoService;
 
-	@PostMapping						//@ApiOperation(value = "Cadastra um pedido com seus itens")
+	@PostMapping						@ApiOperation(value = "Cadastra um pedido com seus itens")
 	public ResponseEntity<?> addPedido(@RequestBody @Valid RequestPedido request) {
 		pedidoService.addPedido(request);
 		return new ResponseEntity<Void>( HttpStatus.OK );
 	}
 	
-	@GetMapping							//@ApiOperation(value = "Consulta todos os pedidos")
+	@GetMapping							@ApiOperation(value = "Consulta todos os pedidos")
 	public @ResponseBody List<Pedido> getAllPedidos() {
 		return pedidoService.getAllPedidos();
 	}
 	
-	@GetMapping("/{id}")				//@ApiOperation(value = "Consulta pedido via id do pedido")
+	@GetMapping("/{id}")				@ApiOperation(value = "Consulta pedido via id do pedido")
 	public @ResponseBody Pedido getPedidoById(@PathVariable Long id) {
 		return pedidoService.getPedidoById(id);
 	}
 	
-	@GetMapping("/cpf/{cpfCliente}")	//@ApiOperation(value = "Consulta pedidos de um cliente via CPF do cliente")
+	@GetMapping("/cpf/{cpfCliente}")	@ApiOperation(value = "Consulta pedidos de um cliente via CPF do cliente")
 	public @ResponseBody List<Pedido> getAllPedidosByCliente(@PathVariable @Size(min=11, max=11, message = "CPF deve conter 11 dígitos") String cpfCliente) {
 		return pedidoService.getAllPedidosByCliente(cpfCliente);
 	}
 	
 	
-	@DeleteMapping("/{id}")				//@ApiOperation(value = "Deleta pedido e seus itens")
+	@DeleteMapping("/{id}")				@ApiOperation(value = "Deleta pedido e seus itens")
 	public ResponseEntity<?> delPedido(@PathVariable Long id) {
 		pedidoService.delPedido(id);
 		return new ResponseEntity<Void>( HttpStatus.OK );
 	}
 	
-	@PutMapping("/{idPedido}")			//@ApiOperation(value = "Atualiza pedido e seus itens")
+	@PutMapping("/{idPedido}")			@ApiOperation(value = "Atualiza dados do pedido, dados dos itens e adiciona novos itens")
 	public ResponseEntity<?> updatePedido(@PathVariable Long idPedido, @RequestBody @Valid RequestPedido request) {
 		pedidoService.updatePedido(idPedido, request);
 		return new ResponseEntity<Void>( HttpStatus.OK );
