@@ -1,0 +1,46 @@
+extends layout
+
+block content
+	h1 #{title} #{cliente_detail[0].nome}
+	hr
+
+	each cliente in cliente_detail
+		div(class='row')
+			h3 #[em Dados Básicos]
+			div(class='col-sm-6')
+				p #[strong ID:] #{cliente._id}
+				p #[strong Nome:] #{cliente.nome}
+				p #[strong CPF:] #{cliente.cpf}
+				p #[strong Data Nascimento:] #{cliente.data_nascimento_br}
+			div(class='col-sm-6')
+				if pedido_list.length > 0
+					p(style='color: red') #[em Não é possível deletar cliente que possui pedidos associados ao mesmo.]
+					p(style='color: red') #[em Efetue o tratamento adequado dos pedidos relacionados abaixo antes de deletar este cliente.]
+				else
+					form(method='POST' action='')
+						div.form-group
+							p(style='color: red') #[em Você realmente deseja deletar este cliente? Após confirmar não será possível desfazer esta operação.]
+							input#_id.form-control(type='hidden', placeholder='_id do cliente' required='true' name='_id' value=(undefined===cliente ? '' : cliente._id) readonly='readonly')
+						button.btn.btn-primary(type='submit') Deletar
+					if errors
+						ul
+							for error in errors
+								li #{error.msg}
+		div(class='row')
+			hr
+			h3 #[em Pedidos Associados]
+
+			div.table-responsive
+				table.table.table-striped.table-sm
+					thead
+						tr
+							th ID Pedido
+							th Total
+					each pedido in pedido_list
+						tbody
+							tr
+								td
+									a(href=pedido.url) #{pedido._id}
+								td R$ #{pedido.valor_br}
+					else
+						p Não foram encontrados pedidos.

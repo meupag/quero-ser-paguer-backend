@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	h1= title
+	p Bem-vindo ao #[em Paguer Backend], um website desenvolvido por #[strong Phillipe] como resposta ao desafio da #[strong pag!]
+	hr
+
+	h1 Painel de controle
+
+	if error
+		p Erro ao buscar informações no banco de dados.
+	else
+		p O banco de dados possui a seguinte contagem de registros:
+
+		ul
+			li 
+				a(href='/catalog/produtos') #[strong Produtos:] !{data.produto_count}
+			li 
+				a(href='/catalog/clientes') #[strong Clientes:] !{data.cliente_count}
+			li 
+				a(href='/catalog/pedidos') #[strong Pedidos:] !{data.pedido_count}
+			li 
+				a(href='/catalog/itempedidos') #[strong Itens solicitados:] !{data.itempedido_count}

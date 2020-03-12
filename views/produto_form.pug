@@ -1,0 +1,20 @@
+extends layout
+
+block content
+
+	h1=title
+	hr
+
+	form(method='POST' action='')
+		div.form-group
+			label(for='nome') Nome:
+			input#nome.form-control(type='text', placeholder='Descrição do produto' required='true' name='nome' value=(undefined===produto ? '' : produto.nome))
+		div.form-group
+			label(for='preco_sugerido') Preço Sugerido:
+			input#preco_sugerido.form-control(type='text', placeholder='Sugestão de preço para o produto' required='true' name='preco_sugerido' value=(undefined===produto ? '' : produto.preco_sugerido))
+		button.btn.btn-primary(type='submit') Enviar
+
+	if errors
+		ul
+			for error in errors
+				li #{error.msg}

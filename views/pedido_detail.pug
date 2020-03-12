@@ -1,0 +1,47 @@
+extends layout
+
+block content
+	h1 #{title} ID #{pedido_detail[0]._id}
+	hr
+
+	each pedido in pedido_detail
+		div(class='row')
+			h3 #[em Dados Básicos]
+			div(class='col-sm-6')
+				p #[strong Total do pedido:] R$ #{pedido.valor_br}
+				p #[strong Cliente:] 
+					a(href=pedido.id_cliente.url) #{pedido.id_cliente.nome}
+				p #[strong CPF:] #{pedido.id_cliente.cpf}
+				p #[strong Data Nascimento:] #{pedido.id_cliente.data_nascimento_br}
+			div(class='col-sm-6')
+				p
+					a(href=pedido.url + '/update') Modificar este pedido
+				p
+					a(href=pedido.url + '/delete') Deletar este pedido
+		div(class='row')
+			hr
+			h3 #[em Itens]
+
+			div.table-responsive
+				table.table.table-striped.table-sm
+					thead
+						tr
+							th ID Item
+							th Quantidade
+							th Preço Unitário
+							th Total
+							th Descrição
+							th Preço Sugerido
+					each item in itempedido_list
+						tbody
+							tr
+								td
+									a(href=item.url) #{item._id}
+								td #{item.quantidade}
+								td R$ #{item.preco_br}
+								td R$ #{item.valor_total_br}
+								td
+									a(href=item.id_produto.url) #{item.id_produto.nome}
+								td R$ #{item.id_produto.preco_sugerido_br}
+					else
+						p Não foram encontrados itens.

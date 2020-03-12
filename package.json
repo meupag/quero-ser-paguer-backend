@@ -1,0 +1,31 @@
+{
+  "name": "express-paguer-backend",
+  "version": "0.0.0",
+  "engines": {
+    "node": "10.18.1"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "normalstart": "DEBUG=express-paguer-backend:* npm start",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "DEBUG=express-paguer-backend:* npm run devstart"
+  },
+  "dependencies": {
+    "async": "^3.2.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-validator": "^6.4.0",
+    "helmet": "^3.21.3",
+    "http-errors": "~1.6.3",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.2",
+    "morgan": "~1.9.1",
+    "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

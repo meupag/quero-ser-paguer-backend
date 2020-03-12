@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	h1=title
+	hr
+
+	div.table-responsive
+		table.table.table-striped.table-sm
+			thead
+				tr
+					th Descrição
+					th Preço Sugerido
+					th ID
+			each produto in produto_list
+				tbody
+					tr
+						td
+							a(href=produto.url) #{produto.nome}
+						td R$ #{produto.preco_sugerido_br}
+						td #{produto._id}
+			else
+				p Não foram encontrados produtos.

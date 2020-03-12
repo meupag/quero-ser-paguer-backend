@@ -1,0 +1,43 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    
+    block script
+  body
+
+    div(class='container-fluid')
+      div(class='row')
+
+        div(class='col-sm-2')
+          block sidebar
+            ul(class='sidebar-nav')
+              li 
+                a(href='/catalog') Home
+              li 
+                a(href='/catalog/produtos') Lista de produtos
+              li 
+                a(href='/catalog/clientes') Lista de clientes
+              li 
+                a(href='/catalog/pedidos') Lista de pedidos
+              li 
+                a(href='/catalog/itempedidos') Lista de itens solicitados
+              li 
+                hr
+              li 
+                a(href='/catalog/produto/create') Criar novo produto
+              li 
+                a(href='/catalog/cliente/create') Criar novo cliente
+              li 
+                a(href='/catalog/pedido/create') Criar novo pedido
+              li 
+                a(href='/catalog/itempedido/create') Criar novo item (pedido)
+
+        div(class='col-sm-10')
+          block content

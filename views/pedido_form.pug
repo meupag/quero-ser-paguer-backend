@@ -1,0 +1,72 @@
+extends layout
+
+block script
+	script(src='/javascripts/item.js', defer)
+
+block content
+	h1=title
+	hr
+
+	form(method='POST' action='')
+		div.form-group
+			label(for='id_cliente') Cliente:
+			select#id_cliente.form-control(type='select' placeholder='Selecione cliente' name='id_cliente[]' required='true')
+				- cliente_list.sort(function(a, b) {let textA = a.nome.toUpperCase(); let textB = b.nome.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+				for cliente in cliente_list
+					if pedido
+						option(value=cliente._id selected=(pedido.id_cliente.toString()==cliente._id.toString() ? 'selected' : false)) #{cliente.nome}
+					else
+						option(value=cliente._id) #{cliente.nome}
+
+		div.itemsgroup
+			if itempedido
+				each produto, index in itempedido.id_produto
+					div.row.item(style='margin-left:20px;margin-top:20px')
+						div(class='col-sm-10')
+							hr
+							div.form-group.col-sm-6
+								label(for='id_produto') Produto:
+								select#id_produto.form-control(type='select' placeholder='Selecione o produto' name='id_produto[]' required='true')
+									- produto_list.sort(function(a, b) {let textA = a.nome.toUpperCase(); let textB = b.nome.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+									for produto in produto_list
+										if itempedido
+											option(value=produto._id selected=(itempedido.id_produto[index].toString()==produto._id.toString() ? 'selected' : false)) #{produto.nome}
+										else
+											option(value=produto._id) #{produto.nome}
+
+							div.form-group.col-sm-3
+								label(for='quantidade') Quantidade:
+								input#quantidade.form-control(type='text', placeholder='Informe a quantidade' required='true' name='quantidade[]' value=(undefined===itempedido ? '' : itempedido.quantidade[index]))
+							div.form-group.col-sm-3
+								label(for='preco') Preço:
+								input#preco.form-control(type='text', placeholder='Informe o preço unitário' required='true' name='preco[]' value=(undefined===itempedido ? '' : itempedido.preco[index]))
+							hr
+						div(class='col-sm-2 rem-btn')
+			else
+				div.row.item(style='margin-left:20px;margin-top:20px')
+					div(class='col-sm-10')
+						hr
+						div.form-group.col-sm-6
+							label(for='id_produto') Produto:
+							select#id_produto.form-control(type='select' placeholder='Selecione o produto' name='id_produto[]' required='true')
+								- produto_list.sort(function(a, b) {let textA = a.nome.toUpperCase(); let textB = b.nome.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+								for produto in produto_list
+									if itempedido
+										option(value=produto._id selected=(itempedido.id_produto.toString()==produto._id.toString() ? 'selected' : false)) #{produto.nome}
+									else
+										option(value=produto._id) #{produto.nome}
+
+						div.form-group.col-sm-3
+							label(for='quantidade') Quantidade:
+							input#quantidade.form-control(type='text', placeholder='Informe a quantidade' required='true' name='quantidade[]' value=(undefined===itempedido ? '' : itempedido.quantidade))
+						div.form-group.col-sm-3
+							label(for='preco') Preço:
+							input#preco.form-control(type='text', placeholder='Informe o preço unitário' required='true' name='preco[]' value=(undefined===itempedido ? '' : itempedido.preco))
+						hr
+					div(class='col-sm-2 rem-btn')
+		button.btn.btn-primary(type='submit') Enviar
+
+	if errors
+		ul
+			for error in errors
+				li #{error.msg}
