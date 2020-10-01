@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	
+	h1=title
+	hr
+
+	form(method='POST' action='')
+		div.form-group
+			label(for='nome') Nome:
+			input#nome.form-control(type='text', placeholder='Nome do cliente' required='true' name='nome' value=(undefined===cliente ? '' : cliente.nome))
+		div.form-group
+			label(for='cpf') CPF:
+			input#cpf.form-control(type='text', placeholder='CPF do cliente' required='true' name='cpf' value=(undefined===cliente ? '' : cliente.cpf))
+		div.form-group
+			label(for='data_nascimento') Data Nascimento:
+			input#data_nascimento.form-control(type='date', required='true' name='data_nascimento' value=(undefined===cliente ? '' : cliente.data_nascimento))
+		button.btn.btn-primary(type='submit') Enviar
+
+	if errors
+		ul
+			for error in errors
+				li #{error.msg}

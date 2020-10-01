@@ -1,0 +1,41 @@
+extends layout
+
+block content
+	h1 #{title} #{produto_detail[0].nome}
+	hr
+
+	each produto in produto_detail
+		div(class='row')
+			h3 #[em Dados Básicos]
+			div(class='col-sm-6')
+				p #[strong ID:] #{produto._id}
+				p #[strong Descrição:] #{produto.nome}
+				p #[strong Preço Sugerido:] R$ #{produto.preco_sugerido_br}
+			div(class='col-sm-6')
+				p
+					a(href=produto.url + '/update') Modificar este produto
+				p
+					a(href=produto.url + '/delete') Deletar este produto
+		div(class='row')
+			hr
+			h3 #[em Itens de Pedidos Associados]
+
+			div.table-responsive
+				table.table.table-striped.table-sm
+					thead
+						tr
+							th ID Item
+							th Quantidade
+							th Preço Unitário
+							th ID Pedido
+					each item in itempedido_list
+						tbody
+							tr
+								td
+									a(href=item.url) #{item._id}
+								td #{item.quantidade}
+								td R$ #{item.preco_br}
+								td
+									a(href=item.id_pedido.url) #{item.id_pedido._id}
+					else
+						p Não foram encontrados itens.

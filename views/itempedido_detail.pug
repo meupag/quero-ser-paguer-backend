@@ -1,0 +1,35 @@
+extends layout
+
+block content
+	h1 #{title} ID #{itempedido_detail[0]._id} 
+	hr
+
+	each item in itempedido_detail
+		div(class='row')
+			div(class='col-sm-4')
+				h3 #[em Dados Básicos]
+				br
+			div(class='col-sm-4')
+				h3 #[em Informações Adicionais]
+				br
+		div(class='row')
+			div(class='col-sm-4')
+				p #[strong Descrição:] 
+					a(href=item.id_produto.url) #{item.id_produto.nome}
+				p #[strong Quantidade solicitada:] #{item.quantidade}
+				p #[strong Preço unitário:] R$ #{item.preco_br}
+				p #[strong Total do item:] R$ #{item.valor_total_br}
+			div(class='col-sm-4')
+				p #[strong Pedido:] 
+					a(href=item.id_pedido.url) #{item.id_pedido._id}
+				p #[strong Total do pedido:] R$ #{item.id_pedido.valor_br}
+				p #[strong Preço unitário sugerido:] R$ #{item.id_produto.preco_sugerido_br}
+				p #[strong Cliente:] 
+					a(href=item.id_pedido.id_cliente.url) #{item.id_pedido.id_cliente.nome}
+			div(class='col-sm-4')
+				p
+					a(href=item.url + '/update') Modificar este item
+				p
+					a(href=item.url + '/delete') Deletar este item
+		div(class='row')
+			hr

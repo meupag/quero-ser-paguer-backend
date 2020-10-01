@@ -1,0 +1,39 @@
+extends layout
+
+block content
+	h1=title
+	hr
+
+	div.table-responsive
+		table.table.table-striped.table-sm
+			thead
+				tr
+					th ID Item
+					th Quantidade
+					th Preço Unitário
+					th Total
+					th Descrição
+					th Preço Sugerido
+					th Pedido
+					th Cliente
+			each item in itempedido_list
+				tbody
+					tr
+						td
+							a(href=item.url) #{item._id}
+						td #{item.quantidade}
+						td R$ #{item.preco_br}
+						td R$ #{item.valor_total_br}
+						td
+							a(href=item.id_produto.url) #{item.id_produto.nome}
+						td R$ #{item.id_produto.preco_sugerido_br}
+						each pedido in pedido_list
+							if pedido._id.toString() == item.id_pedido.toString()
+								td
+									a(href=pedido.url) #{pedido._id}
+								td
+									a(href=pedido.id_cliente.url) #{pedido.id_cliente.nome}
+						else
+							p Não foram encontrados pedidos.
+			else
+				p Não foram encontrados itens.

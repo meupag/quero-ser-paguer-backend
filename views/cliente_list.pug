@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	h1=title
+	hr
+
+	div.table-responsive
+		table.table.table-striped.table-sm
+			thead
+				tr
+					th Cliente
+					th CPF
+					th Data Nascimento
+					th ID
+			each cliente in cliente_list
+				tbody
+					tr
+						td
+							a(href=cliente.url) #{cliente.nome}
+						td #{cliente.cpf}
+						td #{cliente.data_nascimento_br}
+						td #{cliente._id}
+			else
+				p Não foram encontrados clientes.

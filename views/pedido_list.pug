@@ -1,0 +1,27 @@
+extends layout
+
+block content
+	h1=title
+	hr
+
+	div.table-responsive
+		table.table.table-striped.table-sm
+			thead
+				tr
+					th ID Pedido
+					th Total
+					th Cliente
+					th CPF
+					th Data Nascimento
+			each pedido in pedido_list
+				tbody
+					tr
+						td
+							a(href=pedido.url) #{pedido._id}
+						td R$ #{pedido.valor_br}
+						td
+							a(href=pedido.id_cliente.url) #{pedido.id_cliente.nome}
+						td #{pedido.id_cliente.cpf}
+						td #{pedido.id_cliente.data_nascimento_br}
+			else
+				p Não foram encontrados pedidos.
