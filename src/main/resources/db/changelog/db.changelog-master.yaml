@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+     file: migrations/db.migration.sql    
+    
+     relativeToChangelogFile: true
